@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+  body {
+    color: #1e293b;
+    background-color: #f8fafc;
+  }
+}
+
+/* Duży, czytelny fokus dostępności dla klawiatury */
+:focus-visible {
+  outline: 3px solid #0e8ce8;
+  outline-offset: 2px;
+}
+
+/* Wygodne przyciski dotykowe i klikalne o wysokiej czytelności */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-white bg-school-600 hover:bg-school-700 active:bg-school-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-150;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 active:bg-slate-100 rounded-xl shadow-sm hover:shadow transition-all duration-150;
+}
+
+/* Karty o miękkich cieniach, nieprzemęczające wzroku */
+.card-clean {
+  @apply bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 shadow-soft transition-all duration-200;
+}

@@ -1,0 +1,90 @@
+# ==========================================
+# Python & Środowiska wirtualne
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================================
+# Node.js & Frontend (React / Vite)
+# ==========================================
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# Bazy danych (SQLite / pliki lokalne)
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+backend/contacts.db
+
+# ==========================================
+# Pliki instalatorów i binarne (.exe)
+# ==========================================
+*.exe
+!backend/downloads/.gitkeep
+
+# ==========================================
+# Zmienne środowiskowe i klucze
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Edytory kodu i IDE
+# ==========================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.bak
+
+# ==========================================
+# Pliki systemowe (Windows / macOS)
+# ==========================================
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
