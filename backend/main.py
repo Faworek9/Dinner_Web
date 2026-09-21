@@ -46,6 +46,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Ścieżka do skompilowanego frontendu (w kontenerze Docker: static/, w repo: frontend/dist)
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
+if not os.path.exists(STATIC_DIR):
+    STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+if not os.path.exists(STATIC_DIR):
+    STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+
+if os.path.exists(STATIC_DIR):
+    assets_dir = os.path.join(STATIC_DIR, "assets")
+    if os.path.exists(assets_dir):
+        from fastapi.staticfiles import StaticFiles
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+
 APP_METADATA = {
     "app_name": "Ewidencja Obiadów Szkolnych",
     "version": "2.4.2",
@@ -170,12 +184,17 @@ MANUAL_STEPS_DATA = [
 
 @app.get("/")
 def read_root():
+    if os.path.exists(STATIC_DIR):
+        index_file = os.path.join(STATIC_DIR, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
     return {
         "status": "online",
         "app": APP_METADATA["app_name"],
         "version": APP_METADATA["version"],
         "docs_url": "/docs"
     }
+
 
 @app.get("/api/info", response_model=AppInfoResponse)
 def get_app_info():
@@ -238,3 +257,22 @@ def download_latest_installer():
         filename=APP_METADATA["download_filename"],
         media_type="application/octet-stream"
     )
+
+# Obsługa routingu SPA oraz pozostałych plików statycznych (np. screenshots)
+if os.path.exists(STATIC_DIR):
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        # Nie przechwytuj zapytań do API, dokumentacji Swagger / OpenAPI
+        if full_path.startswith("api/") or full_path.startswith("docs") or full_path.startswith("openapi.json"):
+            raise HTTPException(status_code=404, detail="Not found")
+            
+        file_candidate = os.path.join(STATIC_DIR, full_path)
+        if os.path.isfile(file_candidate):
+            return FileResponse(file_candidate)
+            
+        index_file = os.path.join(STATIC_DIR, "index.html")
+        if os.path.isfile(index_file):
+            return FileResponse(index_file)
+            
+        raise HTTPException(status_code=404, detail="Not found")
+
