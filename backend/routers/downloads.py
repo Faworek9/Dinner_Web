@@ -14,10 +14,11 @@ router = APIRouter(prefix="/api/download", tags=["downloads"])
 
 # Domyślny adres pobierania instalatora z GitHub Releases
 # Format GitHuba: https://github.com/{USER}/{REPO}/releases/latest/download/{FILENAME}
-DEFAULT_DOWNLOAD_FILENAME = "EwidencjaObiadow-Instalator-v2.4.exe"
+DEFAULT_DOWNLOAD_FILENAME = "Dinner_App_Instalator.exe"
 DEFAULT_GITHUB_RELEASE_URL = (
     f"https://github.com/Faworek9/Dinner_Web/releases/latest/download/{DEFAULT_DOWNLOAD_FILENAME}"
 )
+
 
 def get_release_download_url() -> str:
     """Zwraca URL do pobrania z GitHub Releases (ze zmiennej środowiskowej lub domyślny)"""

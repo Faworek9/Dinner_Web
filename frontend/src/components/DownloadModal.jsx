@@ -6,11 +6,12 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
 
   const info = appInfo || {
     app_name: "Ewidencja Obiadów Szkolnych",
-    version: "2.4.2",
-    file_size_mb: 42.5,
+    version: "6.4",
+    file_size_mb: 71.3,
     os_requirement: "Windows 10 / Windows 11",
-    download_filename: "EwidencjaObiadow-Instalator-v2.4.exe"
+    download_filename: "Dinner_App_Instalator.exe"
   };
+
 
   const handleStartDownload = () => {
     // Rozpoczęcie pobierania pliku

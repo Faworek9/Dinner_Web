@@ -95,7 +95,7 @@ export default function Hero({ onDownloadClick, onOpenManual }) {
                   <div className="w-4 h-4 rounded bg-school-500 flex items-center justify-center text-[10px] font-bold">
                     O
                   </div>
-                  <span>Ewidencja Obiadów Szkolnych v2.4.2 — Szkoła Podstawowa nr 4 [Baza Lokalna]</span>
+                  <span>Ewidencja Obiadów Szkolnych v6.4 — Szkoła Podstawowa nr 4 [Baza Lokalna]</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>

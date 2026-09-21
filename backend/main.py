@@ -65,12 +65,13 @@ if os.path.exists(STATIC_DIR):
 
 APP_METADATA = {
     "app_name": "Ewidencja Obiadów Szkolnych",
-    "version": "2.4.2",
-    "release_date": "15 września 2026",
-    "file_size_mb": 42.5,
+    "version": "6.4",
+    "release_date": "22 września 2026",
+    "file_size_mb": 71.3,
     "os_requirement": "Windows 10 / Windows 11 (64-bit)",
-    "download_filename": "EwidencjaObiadow-Instalator-v2.4.exe"
+    "download_filename": "Dinner_App_Instalator.exe"
 }
+
 
 TESTIMONIALS_DATA = [
     Testimonial(
