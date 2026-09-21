@@ -24,6 +24,14 @@ def init_db():
             is_read INTEGER DEFAULT 0
         )
     """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS download_logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            filename TEXT NOT NULL,
+            downloaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            user_agent TEXT
+        )
+    """)
     conn.commit()
     conn.close()
 
@@ -50,3 +58,28 @@ def get_all_messages() -> List[Dict[str, Any]]:
     messages = [dict(row) for row in rows]
     conn.close()
     return messages
+
+def log_download(filename: str, user_agent: str = "") -> int:
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO download_logs (filename, downloaded_at, user_agent) VALUES (?, ?, ?)",
+        (filename, datetime.now().isoformat(), user_agent[:250] if user_agent else "")
+    )
+    conn.commit()
+    inserted_id = cursor.lastrowid
+    conn.close()
+    return inserted_id
+
+def get_download_count() -> int:
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM download_logs")
+    count = cursor.fetchone()[0]
+    conn.close()
+    return count
+
+# Inicjalizacja tabel przy imporcie modułu
+init_db()
+
+

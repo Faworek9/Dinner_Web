@@ -14,6 +14,7 @@ try:
         Testimonial,
         FaqItem
     )
+    from backend.routers.downloads import router as downloads_router
 except ImportError:
     from database import init_db, save_contact_message, get_all_messages
     from models import (
@@ -24,6 +25,8 @@ except ImportError:
         Testimonial,
         FaqItem
     )
+    from routers.downloads import router as downloads_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -243,20 +246,9 @@ def list_contact_messages():
     messages = get_all_messages()
     return {"count": len(messages), "messages": messages}
 
-@app.get("/api/download/latest")
-def download_latest_installer():
-    file_path = os.path.join(os.path.dirname(__file__), "downloads", APP_METADATA["download_filename"])
-    if not os.path.exists(file_path):
-        # Stwórz awaryjnie plik jeśli nie istnieje
-        os.makedirs(os.path.dirname(file_path), exist_ok=True)
-        with open(file_path, "wb") as f:
-            f.write(b"MZ-EWIDENCJA-OBIADOW-INSTALLER-V2.4-WINDOWS-PACKAGE")
-            
-    return FileResponse(
-        path=file_path,
-        filename=APP_METADATA["download_filename"],
-        media_type="application/octet-stream"
-    )
+# Dołączenie modułu pobierania (GitHub Releases / analityka)
+app.include_router(downloads_router)
+
 
 # Obsługa routingu SPA oraz pozostałych plików statycznych (np. screenshots)
 if os.path.exists(STATIC_DIR):
