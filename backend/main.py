@@ -235,7 +235,7 @@ def submit_contact_form(payload: ContactRequest, background_tasks: BackgroundTas
             message=payload.message
         )
         
-        # Asynchroniczna wysyłka e-maila na konrad321k@gmail.com w tle
+        # Asynchroniczna wysyłka e-maila na ewidencja.obiadow@gmail.com w tle
         background_tasks.add_task(
             send_contact_notification,
             name=payload.name,

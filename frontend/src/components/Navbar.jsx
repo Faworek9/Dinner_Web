@@ -27,10 +27,10 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
             <Mail className="w-3.5 h-3.5 text-school-300" />
             <span>Kontakt:</span>
             <a 
-              href="mailto:konrad321k@gmail.com" 
+              href="mailto:ewidencja.obiadow@gmail.com" 
               className="font-bold text-white hover:text-school-200 underline decoration-school-400"
             >
-              konrad321k@gmail.com
+              ewidencja.obiadow@gmail.com
             </a>
           </div>
         </div>

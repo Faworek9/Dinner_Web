@@ -9,14 +9,14 @@ logger = logging.getLogger(__name__)
 # Konfiguracja serwera pocztowego Gmail SMTP
 SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.gmail.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", 465))
-SMTP_USER = os.environ.get("SMTP_USER", "konrad321k@gmail.com")
+SMTP_USER = os.environ.get("SMTP_USER", "ewidencja.obiadow@gmail.com")
 # Hasło aplikacji generowane w Google Account (16 znaków, np. "abcd efgh ijkl mnop")
 SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
-NOTIFICATION_RECIPIENT = os.environ.get("ADMIN_EMAIL", "konrad321k@gmail.com")
+NOTIFICATION_RECIPIENT = os.environ.get("ADMIN_EMAIL", "ewidencja.obiadow@gmail.com")
 
 def send_contact_notification(name: str, school_name: str, contact_info: str, message: str) -> bool:
     """
-    Wysyła powiadomienie e-mail o nowej wiadomości z formularza na adres konrad321k@gmail.com.
+    Wysyła powiadomienie e-mail o nowej wiadomości z formularza na adres ewidencja.obiadow@gmail.com.
     Jeśli SMTP_PASSWORD nie jest ustawione (np. w środowisku lokalnym), nie powoduje błędu.
     """
     password = os.environ.get("SMTP_PASSWORD", SMTP_PASSWORD).replace(" ", "").strip()

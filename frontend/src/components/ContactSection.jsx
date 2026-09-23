@@ -47,13 +47,13 @@ export default function ContactSection() {
         });
         setFormData({ name: '', school_name: '', contact_info: '', message: '' });
       } else {
-        throw new Error(data.detail || 'Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie lub napisz na konrad321k@gmail.com.');
+        throw new Error(data.detail || 'Wystąpił problem z wysłaniem wiadomości. Spróbuj ponownie lub napisz na ewidencja.obiadow@gmail.com.');
       }
     } catch (err) {
       setStatusState({
         loading: false,
         success: false,
-        error: err.message || 'Nie udało się połączyć z serwerem. Prosimy o bezpośredni e-mail na konrad321k@gmail.com.',
+        error: err.message || 'Nie udało się połączyć z serwerem. Prosimy o bezpośredni e-mail na ewidencja.obiadow@gmail.com.',
         responseMsg: ''
       });
     }
@@ -94,10 +94,10 @@ export default function ContactSection() {
                   <div>
                     <span className="text-xs text-school-300 block">Napisz bezpośrednio na e-mail:</span>
                     <a 
-                      href="mailto:konrad321k@gmail.com" 
+                      href="mailto:ewidencja.obiadow@gmail.com" 
                       className="text-lg sm:text-xl font-bold text-white hover:text-school-200 tracking-tight underline decoration-school-400"
                     >
-                      konrad321k@gmail.com
+                      ewidencja.obiadow@gmail.com
                     </a>
                   </div>
                 </div>

@@ -107,10 +107,10 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
             </span>
           </div>
           <a
-            href="mailto:konrad321k@gmail.com"
+            href="mailto:ewidencja.obiadow@gmail.com"
             className="font-bold text-amber-900 hover:text-amber-800 underline shrink-0"
           >
-            Napisz: konrad321k@gmail.com
+            Napisz: ewidencja.obiadow@gmail.com
           </a>
         </div>
       </div>

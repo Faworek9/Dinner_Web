@@ -366,9 +366,9 @@ export default function ManualGuide({ onDownloadClick }) {
               {/* Dolna wizytówka wsparcia w spisie treści */}
               <div className="p-3.5 border-t border-slate-100 bg-slate-50/50 text-xs text-slate-600 flex items-center justify-between">
                 <span className="font-medium">Kontakt e-mail:</span>
-                <a href="mailto:konrad321k@gmail.com" className="font-semibold text-school-700 hover:underline flex items-center gap-1.5">
+                <a href="mailto:ewidencja.obiadow@gmail.com" className="font-semibold text-school-700 hover:underline flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-school-600" />
-                  konrad321k@gmail.com
+                  ewidencja.obiadow@gmail.com
                 </a>
               </div>
             </div>

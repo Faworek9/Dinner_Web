@@ -78,8 +78,8 @@ export default function Footer({ onOpenManual, onOpenFeedback, onDownloadClick }
             <div className="space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-4 h-4 text-school-400 shrink-0" />
-                <a href="mailto:konrad321k@gmail.com" className="hover:text-white font-medium">
-                  konrad321k@gmail.com
+                <a href="mailto:ewidencja.obiadow@gmail.com" className="hover:text-white font-medium">
+                  ewidencja.obiadow@gmail.com
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-1 leading-relaxed">

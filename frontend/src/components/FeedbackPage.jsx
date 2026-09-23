@@ -22,7 +22,7 @@ export default function FeedbackPage({ onDownloadClick }) {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('konrad321k@gmail.com').then(() => {
+    navigator.clipboard.writeText('ewidencja.obiadow@gmail.com').then(() => {
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 2500);
     });
@@ -230,7 +230,7 @@ export default function FeedbackPage({ onDownloadClick }) {
                 ) : (
                   <>
                     <Copy className="w-4 h-4 text-school-600" />
-                    <span>konrad321k@gmail.com</span>
+                    <span>ewidencja.obiadow@gmail.com</span>
                   </>
                 )}
               </button>
