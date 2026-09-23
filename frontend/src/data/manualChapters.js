@@ -341,7 +341,8 @@ W **Dinner App** zrobisz to jednym przyciskiem:
       },
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 113810.png",
-        caption: "Ustawienia poczty: wybór trybu Outlook vs SMTP / Microsoft 365"
+        caption: "Ustawienia poczty: wybór trybu Outlook vs SMTP / Microsoft 365",
+        size: "small"
       }
     ],
     steps: [
@@ -385,11 +386,11 @@ W **Dinner App** zrobisz to jednym przyciskiem:
   - Możliwość osobnego wyeksportowania sumy planowanych posiłków oraz sumy odliczeń.`,
     screenshots: [
       {
-        src: "/screenshots/Zrzut ekranu 2026-09-21 114757.png",
+        src: "/screenshots/eksport_indywidualny_excel.png",
         caption: "Okno eksportu danych indywidualnego ucznia do pliku Excel"
       },
       {
-        src: "/screenshots/Zrzut ekranu 2026-09-21 114841.png",
+        src: "/screenshots/eksport_zbiorczy_excel.png",
         caption: "Eksport danych zbiorczych z wyborem wariantu: podsumowanie łączne lub rozkład na dni"
       }
     ],

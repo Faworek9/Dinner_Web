@@ -410,7 +410,7 @@ export default function ManualGuide({ onDownloadClick }) {
               {activeChapter.screenshots && activeChapter.screenshots.length > 0 && (
                 <div className={`mb-10 ${
                   activeChapter.screenshotLayout === 'grid'
-                    ? 'grid grid-cols-1 md:grid-cols-2 gap-5 items-start'
+                    ? 'grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5 items-start -mx-1 sm:-mx-3 lg:-mx-5'
                     : 'space-y-6'
                 }`}>
                   {activeChapter.screenshots.map((s, idx) => {
