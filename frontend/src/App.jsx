@@ -9,9 +9,10 @@ import FaqSection from './components/FaqSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import DownloadModal from './components/DownloadModal.jsx';
 import Footer from './components/Footer.jsx';
+import FeedbackPage from './components/FeedbackPage.jsx';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home'); // 'home' | 'manual'
+  const [activeTab, setActiveTab] = useState('home'); // 'home' | 'manual' | 'feedback'
   const [activeManualStep, setActiveManualStep] = useState(0);
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [appInfo, setAppInfo] = useState(null);
@@ -50,6 +51,11 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenFeedback = () => {
+    setActiveTab('feedback');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleContactClick = () => {
     setActiveTab('home');
     setTimeout(() => {
@@ -62,7 +68,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
-      {/* 1. Główny pasek nawigacyjny: TYLKO wybór pomiędzy stronami ('Główna' / 'Podręcznik') */}
+      {/* 1. Główny pasek nawigacyjny: TYLKO wybór pomiędzy stronami ('Główna' / 'Podręcznik' / 'Zostaw opinię') */}
       <Navbar
         onDownloadClick={handleOpenDownload}
         activeTab={activeTab}
@@ -111,10 +117,20 @@ export default function App() {
             <ContactSection />
           </div>
         )}
+
+        {/* Widok: Zostaw opinię */}
+        {activeTab === 'feedback' && (
+          <div className="animate-fadeIn">
+            <FeedbackPage 
+              onDownloadClick={handleOpenDownload}
+            />
+          </div>
+        )}
       </main>
 
       <Footer 
         onOpenManual={() => handleOpenManual(0)} 
+        onOpenFeedback={handleOpenFeedback}
         onDownloadClick={handleOpenDownload} 
       />
 

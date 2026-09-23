@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShieldCheck, Heart, Mail } from 'lucide-react';
 
-export default function Footer({ onOpenManual, onDownloadClick }) {
+export default function Footer({ onOpenManual, onOpenFeedback, onDownloadClick }) {
   return (
     <footer className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,6 +40,11 @@ export default function Footer({ onOpenManual, onDownloadClick }) {
               <li>
                 <button onClick={onOpenManual} className="hover:text-white transition-colors text-left">
                   Podręcznik (Jak to działa)
+                </button>
+              </li>
+              <li>
+                <button onClick={onOpenFeedback} className="hover:text-white transition-colors text-left text-school-300 font-medium">
+                  Zostaw opinię / Sugestie
                 </button>
               </li>
               <li>

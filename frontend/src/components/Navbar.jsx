@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Mail, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
+import { Download, Mail, Menu, X, BookOpen, ShieldCheck, MessageSquarePlus } from 'lucide-react';
 
 export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           {/* Logo i Główne strony */}
-          <div className="flex items-center gap-8 lg:gap-12">
+          <div className="flex items-center gap-6 lg:gap-10">
             {/* Logo */}
             <div 
               onClick={() => handlePageSwitch('home')}
@@ -63,10 +63,10 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
             </div>
 
             {/* Górne menu: TYLKO wybór stron (jak w Google One) */}
-            <nav className="hidden md:flex items-center gap-2 h-18">
+            <nav className="hidden md:flex items-center gap-1 lg:gap-2 h-18">
               <button
                 onClick={() => handlePageSwitch('home')}
-                className={`relative px-4 py-6 text-sm sm:text-base font-bold transition-colors flex items-center gap-2 ${
+                className={`relative px-3.5 py-6 text-sm sm:text-base font-bold transition-colors flex items-center gap-2 ${
                   activeTab === 'home'
                     ? 'text-school-700 font-extrabold'
                     : 'text-slate-600 hover:text-slate-900'
@@ -80,7 +80,7 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
 
               <button
                 onClick={() => handlePageSwitch('manual')}
-                className={`relative px-4 py-6 text-sm sm:text-base font-bold transition-colors flex items-center gap-2 ${
+                className={`relative px-3.5 py-6 text-sm sm:text-base font-bold transition-colors flex items-center gap-2 ${
                   activeTab === 'manual'
                     ? 'text-school-700 font-extrabold'
                     : 'text-slate-600 hover:text-slate-900'
@@ -89,6 +89,21 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
                 <BookOpen className="w-4 h-4 text-school-500" />
                 <span>Podręcznik (Jak to działa)</span>
                 {activeTab === 'manual' && (
+                  <span className="absolute bottom-0 left-0 right-0 h-1 bg-school-600 rounded-t-full"></span>
+                )}
+              </button>
+
+              <button
+                onClick={() => handlePageSwitch('feedback')}
+                className={`relative px-3.5 py-6 text-sm sm:text-base font-bold transition-colors flex items-center gap-2 ${
+                  activeTab === 'feedback'
+                    ? 'text-school-700 font-extrabold'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <MessageSquarePlus className="w-4 h-4 text-school-500" />
+                <span>Zostaw opinię</span>
+                {activeTab === 'feedback' && (
                   <span className="absolute bottom-0 left-0 right-0 h-1 bg-school-600 rounded-t-full"></span>
                 )}
               </button>
@@ -151,6 +166,19 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
               Podręcznik (Jak to działa)
             </span>
             {activeTab === 'manual' && <span className="text-xs bg-school-600 text-white px-2 py-0.5 rounded-full">Aktywna</span>}
+          </button>
+
+          <button
+            onClick={() => handlePageSwitch('feedback')}
+            className={`w-full text-left px-4 py-3 rounded-xl font-bold flex items-center justify-between ${
+              activeTab === 'feedback' ? 'text-school-700 bg-school-50' : 'text-slate-800 hover:bg-slate-50'
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <MessageSquarePlus className="w-4 h-4 text-school-600" />
+              Zostaw opinię
+            </span>
+            {activeTab === 'feedback' && <span className="text-xs bg-school-600 text-white px-2 py-0.5 rounded-full">Aktywna</span>}
           </button>
 
           <div className="pt-2">
