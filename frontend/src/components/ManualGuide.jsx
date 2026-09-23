@@ -228,10 +228,12 @@ export default function ManualGuide({ onDownloadClick }) {
   const handleSelectChapter = (id) => {
     setActiveChapterId(id);
     setOpenFaqIndex(null); // zresetuj FAQ
-    // Przewiń płynnie na górę treści rozdziału
+    // Przewiń płynnie na górę treści rozdziału z uwzględnieniem przyklejonego paska nawigacji
     const contentEl = document.getElementById('chapter-content-top');
     if (contentEl) {
-      contentEl.scrollIntoView({ behavior: 'smooth' });
+      const yOffset = -130; // bezpieczny odstęp pod główny sticky navbar (~105px) + estetyczny margines
+      const y = contentEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
   };
 
@@ -376,7 +378,7 @@ export default function ManualGuide({ onDownloadClick }) {
           {/* PRAWA KOLUMNA: TREŚĆ ROZDZIAŁU (DUŻE ZRZUTY EKRANU)       */}
           {/* ======================================================== */}
           <main className="lg:col-span-8 xl:col-span-9 space-y-8">
-            <div id="chapter-content-top" className="card-clean bg-white p-6 sm:p-8 lg:p-10 border-slate-200 shadow-soft">
+            <div id="chapter-content-top" className="card-clean bg-white p-6 sm:p-8 lg:p-10 border-slate-200 shadow-soft scroll-mt-36">
               
               {/* Nagłówek rozdziału */}
               <div className="border-b border-slate-100 pb-6 mb-8">
