@@ -11,20 +11,29 @@ import {
   HelpCircle,
   Clock,
   MessageCircle,
-  FileCheck
+  FileCheck,
+  Copy,
+  Check
 } from 'lucide-react';
 
 export default function FeedbackPage({ onDownloadClick }) {
   // Aktywny formularz: 'general' (ogólna opinia) | 'feature' (opinia o funkcji)
   const [selectedForm, setSelectedForm] = useState('general');
+  const [emailCopied, setEmailCopied] = useState(false);
 
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('konrad321k@gmail.com').then(() => {
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2500);
+    });
+  };
   // Linki do formularzy Google (z parametrem embedded=true do ramki iframe)
   const generalFormEmbeddedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSf_KscEj81iLIHYwYoorbK-fYuXwv6Ms_2yzgw-r21m_hP6YQ/viewform?embedded=true";
   const generalFormDirectUrl = "https://docs.google.com/forms/d/e/1FAIpQLSf_KscEj81iLIHYwYoorbK-fYuXwv6Ms_2yzgw-r21m_hP6YQ/viewform?usp=header";
 
-  // Drugi formularz (gdy przygotujesz link, wkleimy go tutaj)
-  const featureFormEmbeddedUrl = ""; 
-  const featureFormDirectUrl = "";
+  // Drugi formularz (opinia o funkcji)
+  const featureFormEmbeddedUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfEmWE7voMl17oViaMbFiJIodHoQ4o8MrY4vqdogw46UfKk5Q/viewform?embedded=true"; 
+  const featureFormDirectUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfEmWE7voMl17oViaMbFiJIodHoQ4o8MrY4vqdogw46UfKk5Q/viewform?usp=header";
 
   return (
     <div className="py-10 md:py-16 bg-gradient-to-b from-slate-50 via-white to-slate-50 min-h-screen">
@@ -40,7 +49,7 @@ export default function FeedbackPage({ onDownloadClick }) {
             Zostaw opinię o programie
           </h1>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Ewidencja Obiadów powstaje w oparciu o codzienne doświadczenia intendentów, księgowych i dyrektorów szkół. 
+            Ewidencja Obiadów rozwija się dzięki opiniom intendentów, księgowych i dyrektorów szkół. 
             Wypełnij ankietę bezpośrednio poniżej – Twoje uwagi mają bezpośredni wpływ na kolejne aktualizacje.
           </p>
         </div>
@@ -70,11 +79,11 @@ export default function FeedbackPage({ onDownloadClick }) {
                   1. Ogólna opinia o aplikacji
                 </span>
                 <span className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 shrink-0">
-                  <Clock className="w-3 h-3" /> 2 min
+                  <Clock className="w-3 h-3" /> 3 min
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                Ocena wygody pracy, stabilności programu, czytelności i ogólnych wrażeń.
+                Oceń ogólne wrażenia, oszczędność czasu pracy, stabilność oraz wskaż ulubione funkcje i pomysły na rozwój.
               </p>
             </div>
           </button>
@@ -101,11 +110,11 @@ export default function FeedbackPage({ onDownloadClick }) {
                   2. Zgłoszenie ulepszenia funkcji
                 </span>
                 <span className="flex items-center gap-1 text-[11px] font-semibold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200 shrink-0">
-                  <Clock className="w-3 h-3" /> 3 min
+                  <Clock className="w-3 h-3" /> 2 min
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                Pomysł na nową opcję, usprawnienie raportów, odpisów lub księgowości.
+                Wybierz z listy konkretny moduł (np. odpisy, dofinansowania, kalendarz, import lub raporty) i opisz propozycje jego ulepszenia.
               </p>
             </div>
           </button>
@@ -120,9 +129,9 @@ export default function FeedbackPage({ onDownloadClick }) {
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
               {selectedForm === 'general' ? (
-                <span>Formularz: <strong>Ogólna opinia o aplikacji</strong></span>
+                <span>Formularz: <strong>Ogólna ocena aplikacji, oszczędności czasu i wygody pracy</strong></span>
               ) : (
-                <span>Formularz: <strong>Opinia o konkretnej funkcji</strong></span>
+                <span>Formularz: <strong>Opinia i sugestie do wybranej funkcji programu</strong></span>
               )}
             </div>
             
@@ -157,7 +166,7 @@ export default function FeedbackPage({ onDownloadClick }) {
               <iframe
                 src={generalFormEmbeddedUrl}
                 width="100%"
-                height="1050"
+                height="735"
                 frameBorder="0"
                 marginHeight="0"
                 marginWidth="0"
@@ -171,62 +180,19 @@ export default function FeedbackPage({ onDownloadClick }) {
 
           {/* Zawartość: Formularz 2 (Konkretna funkcja) */}
           {selectedForm === 'feature' && (
-            <div className="p-8 sm:p-12 text-center max-w-2xl mx-auto">
-              {featureFormEmbeddedUrl ? (
-                <iframe
-                  src={featureFormEmbeddedUrl}
-                  width="100%"
-                  height="1050"
-                  frameBorder="0"
-                  marginHeight="0"
-                  marginWidth="0"
-                  title="Formularz opinii o funkcji"
-                  className="w-full max-w-3xl border-0 rounded-xl"
-                >
-                  Ładowanie formularza...
-                </iframe>
-              ) : (
-                <div className="py-8">
-                  <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-5 border border-purple-100 shadow-xs">
-                    <Lightbulb className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                    Formularz zgłaszania pomysłów i funkcji
-                  </h3>
-                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                    Masz pomysł na usprawnienie programu, nowy format raportu lub specyficzne rozliczenie w Twojej szkole? 
-                    Gdy utworzysz drugi formularz w Google Forms, natychmiast go tutaj osadzimy.
-                  </p>
-
-                  <div className="bg-purple-50/70 border border-purple-200/80 rounded-2xl p-5 text-left mb-6">
-                    <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider mb-2">
-                      Co możesz nam zasugerować:
-                    </h4>
-                    <ul className="text-xs sm:text-sm text-purple-800 space-y-1.5">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-purple-600 shrink-0" />
-                        <span>Nowe opcje w module odpisów lub nieobecności</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-purple-600 shrink-0" />
-                        <span>Nietypowe szablony raportów dla Twojej gminy / CUW</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-purple-600 shrink-0" />
-                        <span>Integracje z innymi systemami (np. dzienniki elektroniczne)</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <a
-                    href="mailto:konrad321k@gmail.com?subject=Pomys%C5%82%20na%20now%C4%85%20funkcj%C4%99%20-%20Ewidencja%20Obiad%C3%B3w"
-                    className="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
-                  >
-                    <Mail className="w-4 h-4" />
-                    <span>Napisz bezpośrednio na e-mail</span>
-                  </a>
-                </div>
-              )}
+            <div className="w-full flex justify-center bg-white p-2 sm:p-4">
+              <iframe
+                src={featureFormEmbeddedUrl}
+                width="100%"
+                height="735"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+                title="Formularz zgłoszenia ulepszenia funkcji"
+                className="w-full max-w-3xl border-0 rounded-xl"
+              >
+                Ładowanie formularza Google Forms...
+              </iframe>
             </div>
           )}
 
@@ -247,14 +213,30 @@ export default function FeedbackPage({ onDownloadClick }) {
                 Jeśli Twoja placówka potrzebuje indywidualnej wyceny, wsparcia technicznego lub chcesz omówić wdrożenie w całej gminie – skontaktuj się bezpośrednio z autorem programu.
               </p>
             </div>
-            <div className="shrink-0 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-              <a
-                href="mailto:konrad321k@gmail.com?subject=Opinia%20o%20programie%20Ewidencja%20Obiad%C3%B3w"
-                className="w-full sm:w-auto bg-white hover:bg-slate-100 text-slate-900 font-bold px-6 py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm sm:text-base"
+            <div className="shrink-0 flex flex-col items-center gap-2 w-full sm:w-auto">
+              <button
+                onClick={handleCopyEmail}
+                className={`w-full sm:w-auto font-bold px-6 py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2.5 text-sm sm:text-base cursor-pointer active:scale-[0.97] ${
+                  emailCopied
+                    ? 'bg-emerald-500 text-white'
+                    : 'bg-white hover:bg-slate-100 text-slate-900'
+                }`}
               >
-                <Mail className="w-4 h-4 text-school-600" />
-                konrad321k@gmail.com
-              </a>
+                {emailCopied ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    <span>Skopiowano!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-school-600" />
+                    <span>konrad321k@gmail.com</span>
+                  </>
+                )}
+              </button>
+              <span className="text-xs text-slate-400">
+                {emailCopied ? 'Adres skopiowany do schowka ✓' : 'Kliknij, aby skopiować adres'}
+              </span>
             </div>
           </div>
         </div>
