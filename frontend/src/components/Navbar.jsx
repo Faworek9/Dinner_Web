@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Utensils, Download, Mail, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
+import { Download, Mail, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -47,9 +47,11 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
               onClick={() => handlePageSwitch('home')}
               className="flex items-center gap-3 cursor-pointer group py-2"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-school-500 to-school-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-                <Utensils className="w-5 h-5" />
-              </div>
+              <img 
+                src="/app_icon.png" 
+                alt="Ewidencja Obiadów" 
+                className="w-10 h-10 rounded-xl object-contain drop-shadow-sm group-hover:scale-105 transition-transform" 
+              />
               <div>
                 <span className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight block leading-tight">
                   Ewidencja Obiadów

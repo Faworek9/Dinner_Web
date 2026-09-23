@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         school: {
-          50: '#f0f7ff',
-          100: '#e0effe',
-          200: '#bae0fd',
-          300: '#7cc7fb',
-          400: '#38a9f7',
-          500: '#0e8ce8',
-          600: '#026fc7',
-          700: '#0358a1',
-          800: '#074b84',
-          900: '#0b3f6e',
-          950: '#072849',
+          50: '#eef2ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
+          950: '#1e1b4b',
         },
         warm: {
           50: '#fffbf5',
@@ -37,8 +37,8 @@ export default {
         sans: ['"Inter"', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(14, 55, 96, 0.08), 0 2px 6px -1px rgba(14, 55, 96, 0.04)',
-        'card': '0 10px 30px -4px rgba(7, 40, 73, 0.1), 0 4px 10px -2px rgba(7, 40, 73, 0.05)',
+        'soft': '0 4px 20px -2px rgba(79, 70, 229, 0.08), 0 2px 6px -1px rgba(79, 70, 229, 0.04)',
+        'card': '0 10px 30px -4px rgba(49, 46, 129, 0.1), 0 4px 10px -2px rgba(49, 46, 129, 0.05)',
       }
     },
   },

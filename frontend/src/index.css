@@ -14,7 +14,7 @@
 
 /* Duży, czytelny fokus dostępności dla klawiatury */
 :focus-visible {
-  outline: 3px solid #0e8ce8;
+  outline: 3px solid #4f46e5;
   outline-offset: 2px;
 }
 

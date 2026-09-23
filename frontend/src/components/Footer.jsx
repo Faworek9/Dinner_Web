@@ -1,5 +1,5 @@
 import React from 'react';
-import { Utensils, ShieldCheck, Heart, Mail } from 'lucide-react';
+import { ShieldCheck, Heart, Mail } from 'lucide-react';
 
 export default function Footer({ onOpenManual, onDownloadClick }) {
   return (
@@ -9,9 +9,11 @@ export default function Footer({ onOpenManual, onDownloadClick }) {
           {/* O programie */}
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-2.5 text-white font-extrabold text-lg">
-              <div className="w-8 h-8 rounded-lg bg-school-600 flex items-center justify-center text-white">
-                <Utensils className="w-5 h-5" />
-              </div>
+              <img 
+                src="/app_icon.png" 
+                alt="Logo" 
+                className="w-8 h-8 rounded-lg object-contain bg-white p-0.5" 
+              />
               <span>Ewidencja Obiadów Szkolnych</span>
             </div>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
