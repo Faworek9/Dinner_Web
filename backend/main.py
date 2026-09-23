@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 import os
@@ -15,6 +15,7 @@ try:
         FaqItem
     )
     from backend.routers.downloads import router as downloads_router
+    from backend.mailer import send_contact_notification
 except ImportError:
     from database import init_db, save_contact_message, get_all_messages
     from models import (
@@ -26,6 +27,8 @@ except ImportError:
         FaqItem
     )
     from routers.downloads import router as downloads_router
+    from mailer import send_contact_notification
+
 
 
 @asynccontextmanager
@@ -223,7 +226,7 @@ def get_manual():
     return {"steps": MANUAL_STEPS_DATA}
 
 @app.post("/api/contact", response_model=ContactResponse)
-def submit_contact_form(payload: ContactRequest):
+def submit_contact_form(payload: ContactRequest, background_tasks: BackgroundTasks):
     try:
         inserted_id = save_contact_message(
             name=payload.name,
@@ -231,9 +234,19 @@ def submit_contact_form(payload: ContactRequest):
             contact_info=payload.contact_info,
             message=payload.message
         )
+        
+        # Asynchroniczna wysyłka e-maila na konrad321k@gmail.com w tle
+        background_tasks.add_task(
+            send_contact_notification,
+            name=payload.name,
+            school_name=payload.school_name,
+            contact_info=payload.contact_info,
+            message=payload.message
+        )
+
         return ContactResponse(
             success=True,
-            message="Dziękujemy za kontakt! Twoja wiadomość została pomyślnie przesłana. Skontaktujemy się z Twoją szkołą w ciągu 24 godzin.",
+            message="Dziękujemy za kontakt! Twoja wiadomość została pomyślnie przesłana. Skontaktujemy się z Twoją szkołą najszybciej jak to możliwe.",
             contact_id=inserted_id
         )
     except Exception as e:
@@ -241,6 +254,7 @@ def submit_contact_form(payload: ContactRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Wystąpił błąd podczas zapisywania wiadomości: {str(e)}"
         )
+
 
 @app.get("/api/contact/messages")
 def list_contact_messages():

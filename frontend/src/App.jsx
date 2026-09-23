@@ -87,26 +87,6 @@ export default function App() {
               onOpenManual={() => handleOpenManual(0)} 
             />
 
-            {/* Skrócona zachęta do podręcznika na stronie głównej */}
-            <section className="py-14 bg-gradient-to-b from-slate-50 to-white border-t border-slate-100">
-              <div className="max-w-4xl mx-auto px-4 text-center">
-                <span className="text-xs font-bold uppercase tracking-wider text-school-600 mb-2 block">
-                  Instrukcja obsługi
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-                  Chcesz poznać program od podszewki?
-                </h3>
-                <p className="text-slate-600 mb-6 max-w-xl mx-auto text-base">
-                  Zobacz nasz przejrzysty podręcznik w układzie książki: ze spisem treści, zrzutami ekranu i odpowiedziami na pytania do każdej funkcji.
-                </p>
-                <button
-                  onClick={() => handleOpenManual(0)}
-                  className="btn-secondary text-base px-6 py-3 border-school-300 text-school-800 hover:bg-school-50 font-bold"
-                >
-                  📖 Otwórz podręcznik (Spis treści i opis funkcji)
-                </button>
-              </div>
-            </section>
 
             <SocialProof 
               statsData={statsData} 

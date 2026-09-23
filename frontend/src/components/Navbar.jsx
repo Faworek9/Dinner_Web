@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Utensils, Download, Phone, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
+import { Utensils, Download, Mail, Menu, X, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
-      {/* Pasek pomocy telefonicznej - dedykowana pomoc dla intendentów */}
+      {/* Górny pasek informacyjny */}
       <div className="bg-school-900 text-white text-xs md:text-sm py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
           <div className="flex items-center gap-2">
@@ -24,18 +24,18 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
             </span>
           </div>
           <div className="flex items-center gap-2 text-school-100">
-            <Phone className="w-3.5 h-3.5 text-school-300" />
-            <span>Infolinia dla intendentów:</span>
+            <Mail className="w-3.5 h-3.5 text-school-300" />
+            <span>Kontakt:</span>
             <a 
-              href="tel:790123456" 
+              href="mailto:konrad321k@gmail.com" 
               className="font-bold text-white hover:text-school-200 underline decoration-school-400"
             >
-              790 123 456
+              konrad321k@gmail.com
             </a>
-            <span className="text-xs text-school-300 hidden md:inline">(pon-pt 7:30 - 15:30)</span>
           </div>
         </div>
       </div>
+
 
       {/* Główny pasek nawigacyjny - wzorowany na Google One: TYLKO wybór głównych stron */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

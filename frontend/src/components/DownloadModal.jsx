@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Download, CheckCircle2, Phone, AlertCircle, Laptop, ArrowDownCircle } from 'lucide-react';
+import { X, Download, CheckCircle2, Mail, AlertCircle, Laptop, ArrowDownCircle } from 'lucide-react';
 
 export default function DownloadModal({ isOpen, onClose, appInfo }) {
   if (!isOpen) return null;
@@ -98,22 +98,23 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
           </div>
         </div>
 
-        {/* Wsparcie telefoniczne przy instalacji */}
+        {/* Wsparcie mailowe przy instalacji */}
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5">
-            <Phone className="w-5 h-5 text-amber-600 shrink-0" />
+            <Mail className="w-5 h-5 text-amber-600 shrink-0" />
             <span className="text-amber-950 font-medium">
-              Boisz się, że coś pójdzie nie tak?
+              Potrzebujesz pomocy przy instalacji?
             </span>
           </div>
           <a
-            href="tel:790123456"
+            href="mailto:konrad321k@gmail.com"
             className="font-bold text-amber-900 hover:text-amber-800 underline shrink-0"
           >
-            Zadzwoń: 790 123 456
+            Napisz: konrad321k@gmail.com
           </a>
         </div>
       </div>
     </div>
   );
+
 }

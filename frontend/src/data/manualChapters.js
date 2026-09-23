@@ -44,49 +44,139 @@ export const MANUAL_CHAPTERS = [
     ]
   },
   {
-    id: "zarzadzanie-uczniami-import",
+    id: "baza-uczniow-kartoteki",
     number: "02",
-    title: "Baza uczniów i import z Excela",
-    shortTitle: "Baza uczniów i Excel",
+    title: "Baza uczniów i kartoteki osobowe",
+    shortTitle: "Baza uczniów i kartoteki",
     category: "Dane i uczniowie",
-    iconName: "FileSpreadsheet",
-    description: "Koniec z ręcznym przepisywaniem setek dzieci z kartek. Zaimportuj całą listę uczniów szkoły jednym kliknięciem z pliku .xlsx.",
-    content: `Wcześniej dane uczniów były porozrzucane po wielu plikach Excela i zeszytach, przez co łatwo było o pomyłkę lub wpisanie tego samego dziecka dwukrotnie.
+    iconName: "Database",
+    description: "Zarządzanie kartotekami dzieci, filtrowanie po klasach, szybka wyszukiwarka oraz oznaczenia MOPS i SFCH.",
+    content: `Wcześniej dane uczniów były porozrzucane po wielu zeszytach, folderach i kartkach, przez co łatwo było o pomyłkę lub wpisanie tego samego dziecka dwukrotnie.
     
 W **Dinner App**:
 - **Jedna centralna baza SQL**: Każdy uczeń posiada swój unikalny wpis. Nie ma ryzyka dublowania osób.
-- **Błyskawiczny import z pliku Excel (.xlsx)**: Przycisk *Importuj .xlsx* w lewym panelu pozwala wczytać listę uczniów (imię, nazwisko, klasa, e-mail rodzica) w kilka sekund.
-- **Oznaczenia specjalne (Tagi)**: Możesz łatwo przypisać uczniom etykiety, np. **MOPS** (obiady finansowane przez pomoc społeczną) lub **SFCH** (stypendia/fundacje). Tagi są widoczne kolorowymi plakietkami na liście uczniów, co ułatwia późniejsze osobne rozliczenia.`,
+- **Szybkie wyszukiwanie i alfabetyczna lista**: Lewy panel boczny pozwala w ułamku sekundy odnaleźć dowolne dziecko wpisując fragment nazwiska lub imienia.
+- **Oznaczenia specjalne (Tagi)**: Możesz łatwo przypisać uczniom etykiety, np. **MOPS** (obiady finansowane przez ośrodek pomocy społecznej) lub **SFCH** (stypendia/fundacje). Tagi są widoczne kolorowymi plakietkami na liście uczniów, co ułatwia późniejsze osobne rozliczenia z gminą i fundacjami.
+- **Ręczne dodawanie nowych osób**: Gdy w trakcie roku szkolnego dołącza nowy uczeń, klikasz przycisk *+ Dodaj nową osobę* i wprowadzasz dane w prostym, przejrzystym formularzu.`,
     screenshots: [
       {
-        src: "/screenshots/Zrzut ekranu 2026-09-21 113522.png",
-        caption: "Lista uczniów po lewej stronie z wyszukiwarką, przyciskiem importu .xlsx oraz oznaczeniami MOPS i SFCH"
+        src: "/screenshots/kartoteka_ucznia_edycja.png",
+        caption: "Karta danych osobowych i kontaktowych ucznia: klasa, telefony rodziców, e-mail oraz oznaczenia SFCH i MOPS"
       }
     ],
     steps: [
-      "Kliknij przycisk 'Importuj .xlsx' w lewym górnym rogu nad listą osób.",
-      "Wybierz plik Excela z listą uczniów wygenerowany np. z dziennika elektronicznego (Librus, Vulcan).",
-      "Program automatycznie załaduje uczniów, przypisze ich do klas i zweryfikuje poprawność danych.",
-      "Jeśli potrzebujesz dodać pojedynczego ucznia w trakcie roku, kliknij '+ Dodaj nową osobę'."
+      "Przejrzyj alfabetyczną listę uczniów w lewym panelu programu.",
+      "Użyj pola wyszukiwarki, aby natychmiast odnaleźć wybrane dziecko.",
+      "Kliknij ucznia, aby otworzyć jego pełną miesięczną kartotekę z podziałem na dni.",
+      "W razie potrzeby dodaj nowego ucznia przyciskiem '+ Dodaj nową osobę' w lewym górnym rogu."
     ],
     faq: [
       {
-        q: "Jakie kolumny powinien zawierać plik Excela do importu?",
-        a: "Wystarczą standardowe kolumny: Imię, Nazwisko, Klasa oraz opcjonalnie Adres e-mail do powiadomień. Program jest elastyczny i rozpoznaje typowe formaty eksportu z dzienników elektronicznych."
-      },
-      {
-        q: "Co jeśli uczeń o danym nazwisku już istnieje w bazie?",
-        a: "Program posiada zabezpieczenie przed duplikatami – weryfikuje imię, nazwisko i klasę, dzięki czemu nie ma obawy, że jedno dziecko pojawi się na liście podwójnie."
-      },
-      {
         q: "Do czego służą plakietki MOPS i SFCH przy nazwiskach?",
         a: "Pozwalają natychmiast odróżnić uczniów, za których płaci ośrodek pomocy społecznej lub fundacja. Dzięki temu w zestawieniach finansowych od razu wiesz, które rachunki wystawić rodzicom, a które gminie."
+      },
+      {
+        q: "Co jeśli uczeń zmieni klasę lub grupę w trakcie roku szkolnego?",
+        a: "Wystarczy wejść w edycję danych ucznia i zmienić przypisaną klasę – wszystkie dotychczasowe rozliczenia i historia posiłków zostaną w 100% zachowane."
+      },
+      {
+        q: "Czy mogę usunąć ucznia, który przeniósł się do innej szkoły?",
+        a: "Tak, program pozwala na bezpieczne zarchiwizowanie lub usunięcie kartoteki ucznia z bazy danych."
+      }
+    ]
+  },
+  {
+    id: "import-danych-excel",
+    number: "03",
+    title: "Import danych z pliku Excel (.xlsx) i miękki import",
+    shortTitle: "Import z Excela (.xlsx)",
+    category: "Dane i uczniowie",
+    iconName: "FileSpreadsheet",
+    hasExcelTemplate: true,
+    screenshotSize: "medium",
+    description: "Masowy import uczniów, kontaktów i tygodniowych planów posiłków z gotowego pliku .xlsx oraz inteligentna funkcja miękkiego importu.",
+    content: `Import z pliku Excel (.xlsx) to najszybszy sposób na uruchomienie programu w szkole lub przedszkolu. W jednym prostym kroku wgrywasz listę uczniów z podziałem na klasy, kontakty do rodziców oraz tygodniowy rozkład obiadów.
+
+### Struktura kolumn pliku Excel (.xlsx)
+Arkusz importu składa się z 15 kolumn podzielonych na dwie strefy:
+
+1. **Dane osobowe i kontaktowe (Kolumny A – E)**:
+   - **Kolumna A (klasa)**: Oznaczenie klasy (np. *1A*, *2B*, *Grupa Przedszkolna*).
+   - **Kolumna B (nazwisko i imię)**: Pełne dane ucznia w formacie *Nazwisko Imię*.
+   - **Kolumna C (numer do mamy)**: Opcjonalny numer telefonu komórkowego do mamy.
+   - **Kolumna D (numer do taty)**: Opcjonalny numer telefonu komórkowego do taty.
+   - **Kolumna E (adres e-mail)**: E-mail do wysyłki automatycznych comiesięcznych rozliczeń obiadów.
+
+2. **Tygodniowy plan posiłków (Kolumny F – O)**:
+   - W pierwszym wierszu znajdują się scalone nagłówki dni tygodnia: **Poniedziałek**, **Wtorek**, **Środa**, **Czwartek**, **Piątek**.
+   - Pod każdym dniem znajdują się po dwie kolumny: **zupa** oraz **II danie**.
+   - W komórkach wpisujesz:
+     - **1** – uczeń jada dany posiłek w ten dzień tygodnia.
+     - **0** (lub pusta komórka) – uczeń nie korzysta z tego posiłku.
+
+---
+
+### Jak działa konfiguracja importu posiłków?
+Po wybraniu pliku .xlsx na ekranie pojawia się okno **Ustawienia importu posiłków**:
+- **Wybór roku szkolnego**: Program automatycznie rozpoznaje bieżący cykl (np. *Rok szkolny 2026/2027*).
+- **Przyciski szybkiego zaznaczania**:
+  - *Bieżący miesiąc* – importuje plan tylko na trwający miesiąc.
+  - *Rok szkolny (IX–VI)* – jednym ruchem zaznacza 10 miesięcy nauki szkolnej (od września do czerwca).
+  - *Wszystkie* / *Wyczyść* – pełna kontrola nad zakresem dat.
+- **Automatyczne rozpisanie dni roboczych**: Program pobiera deklarację tygodniową z pliku Excel i automatycznie powiela ją na **wszystkie dni robocze (Pn–Pt)** wybranych miesięcy, automatycznie omijając weekendy oraz zdefiniowane w programie ferie i święta.
+
+---
+
+### Funkcja „Miękki import” (Tylko aktualizacja istniejących uczniów)
+Na dole okna importu znajduje się kluczowa opcja:
+**⚡ Miękki import (tylko aktualizacja istniejących uczniów)**
+
+**Do czego służy i jak działa?**
+- **Gdy opcja jest ODZNACZONA (Tryb pełny – domyślny)**:
+  Program dodaje do bazy wszystkich nowych uczniów z pliku Excel, a dla osób już istniejących aktualizuje dane i plany posiłków. Jest to idealny tryb na początek roku szkolnego.
+- **Gdy opcja jest ZAZNACZONA (Miękki import)**:
+  Program aktualizuje dane i deklaracje posiłków **wyłącznie dla uczniów, którzy już wcześniej zostali wprowadzeni do bazy danych**. 
+  Osoby z pliku Excel, których nie ma jeszcze w programie, zostaną **całkowicie pominięte** (żaden nowy uczeń nie zostanie utworzony).
+
+**Kiedy warto włączyć Miękki import?**
+- Na przełomie semestrów lub miesięcy, gdy otrzymujesz zaktualizowany arkusz z deklaracjami obiadów i chcesz nanieść zmiany tylko dla zapisanych już dzieci.
+- Gdy pracujesz na pliku zawierającym całą szkołę (np. 500 uczniów), a na obiady chodzi tylko 180 zweryfikowanych osób – miękki import zaktualizuje plany tylko stołownikom bez zaśmiecania bazy pozostałymi uczniami.`,
+    screenshots: [
+      {
+        src: "/screenshots/ustawienia_importu_posilkow.png",
+        caption: "Okno ustawień importu posiłków: wybór miesięcy roku szkolnego oraz funkcja miękkiego importu"
+      }
+    ],
+    steps: [
+      "Pobierz gotowy wzór pliku .xlsx (zielony przycisk poniżej) lub skopiuj nagłówki bezpośrednio do pustego arkusza Excel.",
+      "Uzupełnij listę uczniów: wpisz klasę, nazwisko i imię, kontakty oraz wpisz '1' przy posiłkach, które dziecko jada w poszczególne dni tygodnia.",
+      "W programie Dinner App kliknij przycisk 'Importuj .xlsx' w lewym panelu nad listą uczniów i wskaż zapisany plik.",
+      "W oknie wyboru miesięcy zaznacz miesiące, na które ma obowiązywać plan (np. 'Rok szkolny (IX-VI)').",
+      "Jeśli chcesz zaktualizować tylko zapisanych wcześniej uczniów bez dodawania nowych osób, zaznacz opcję 'Miękki import'.",
+      "Kliknij przycisk 'Dalej ➔'. Program w kilka sekund zaimportuje całą szkołę i przygotuje ewidencję na wszystkie wybrane miesiące."
+    ],
+    faq: [
+      {
+        q: "Co wpisać w polach zupy i drugiego dania, jeśli uczeń nie jada obiadów w dany dzień?",
+        a: "Wpisz cyfrę '0' lub po prostu pozostaw komórkę pustą. Program zinterpretuje to jako brak posiłku w ten dzień."
+      },
+      {
+        q: "Czy w nagłówkach kolumn ważna jest wielkość liter?",
+        a: "Program automatycznie normalizuje nagłówki (ignoruje wielkość liter i spacje), ale zaleca się korzystanie z oficjalnego szablonu z drugiego wiersza."
+      },
+      {
+        q: "Co się stanie, jeśli w pliku Excel są puste numery telefonów?",
+        a: "Numery telefonów i adresy e-mail są opcjonalne – jeśli komórka jest pusta, program bez problemu zaimportuje ucznia, a dane możesz dopisać w dowolnym momencie w karcie ucznia."
+      },
+      {
+        q: "Czy miękki import usunie uczniów, których nie ma w nowym pliku Excel?",
+        a: "Nie! Miękki import nigdy niczego nie usuwa z bazy. Jedynie ignoruje nowe nazwiska z pliku, pozostawiając Twoją dotychczasową bazę uczniów w 100% nienaruszoną."
       }
     ]
   },
   {
     id: "ewidencja-posilkow",
-    number: "03",
+    number: "04",
     title: "Ewidencja posiłków – planowanie i odpisy",
     shortTitle: "Ewidencja posiłków",
     category: "Codzienna praca",
@@ -135,7 +225,7 @@ W **Dinner App**:
   },
   {
     id: "odwolywanie-po-klasach",
-    number: "04",
+    number: "05",
     title: "Grupowe odwoływanie dla klas (Wycieczki)",
     shortTitle: "Wycieczki i całe klasy",
     category: "Akcje masowe",
@@ -179,7 +269,7 @@ W **Dinner App**:
   },
   {
     id: "dane-zbiorcze-kuchnia",
-    number: "05",
+    number: "06",
     title: "Dane zbiorcze i raporty dla kuchni",
     shortTitle: "Dane zbiorcze dla kuchni",
     category: "Kuchnia i raporty",
@@ -224,7 +314,7 @@ W **Dinner App**:
   },
   {
     id: "seryjna-wysylka-email",
-    number: "06",
+    number: "07",
     title: "Seryjna wysyłka wiadomości e-mail",
     shortTitle: "Seryjna wysyłka e-mail",
     category: "Komunikacja i rozliczenia",
@@ -277,11 +367,12 @@ W **Dinner App** zrobisz to jednym przyciskiem:
   },
   {
     id: "eksport-excel",
-    number: "07",
+    number: "08",
     title: "Eksport ewidencji do pliku Excel (.xlsx)",
     shortTitle: "Eksport do Excela",
     category: "Księgowość i finanse",
     iconName: "Download",
+    screenshotLayout: "grid",
     description: "Wygeneruj gotowe zestawienia do plików .xlsx – zarówno dla pojedynczego ucznia, jak i zbiorczo dla całej szkoły.",
     content: `Choć program posiada własną bazę danych, wiemy, że księgowość w gminie często wymaga plików Excela. **Dinner App** posiada dedykowany moduł eksportu:
 
@@ -325,7 +416,7 @@ W **Dinner App** zrobisz to jednym przyciskiem:
   },
   {
     id: "ustawienia-cennik-dni-wolne",
-    number: "08",
+    number: "09",
     title: "Cennik, rachunek bankowy i dni wolne",
     shortTitle: "Cennik i dni wolne",
     category: "Konfiguracja",
@@ -376,11 +467,12 @@ W **Dinner App** zrobisz to jednym przyciskiem:
   },
   {
     id: "baza-danych-sqlite-postgres",
-    number: "09",
+    number: "10",
     title: "Baza danych: Lokalna (SQLite) vs Sieciowa (PostgreSQL)",
     shortTitle: "Baza lokalna i sieciowa",
     category: "Architektura i IT",
     iconName: "Database",
+    screenshotSize: "medium",
     description: "Pracuj na jednym komputerze w gabinecie intendenta lub współdziel dane z sekretariatem i księgowością w sieci.",
     content: `Aplikacja **Dinner App** została zaprojektowana tak, aby idealnie pasować zarówno do małej wiejskiej szkoły, jak i wielkiego zespołu szkolno-przedszkolnego:
 

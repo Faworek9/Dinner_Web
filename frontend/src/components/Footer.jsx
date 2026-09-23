@@ -1,5 +1,5 @@
 import React from 'react';
-import { Utensils, ShieldCheck, Heart, Phone, Mail } from 'lucide-react';
+import { Utensils, ShieldCheck, Heart, Mail } from 'lucide-react';
 
 export default function Footer({ onOpenManual, onDownloadClick }) {
   return (
@@ -66,23 +66,17 @@ export default function Footer({ onOpenManual, onDownloadClick }) {
           {/* Kontakt */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-3">
-              Wsparcie i autor
+              Kontakt z autorem
             </h4>
             <div className="space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-center gap-2 text-slate-300">
-                <Phone className="w-4 h-4 text-school-400 shrink-0" />
-                <a href="tel:790123456" className="hover:text-white font-bold">
-                  790 123 456
-                </a>
-              </div>
-              <div className="flex items-center gap-2 text-slate-300">
                 <Mail className="w-4 h-4 text-school-400 shrink-0" />
-                <a href="mailto:kontakt@ewidencja-obiadow.pl" className="hover:text-white">
-                  kontakt@ewidencja-obiadow.pl
+                <a href="mailto:konrad321k@gmail.com" className="hover:text-white font-medium">
+                  konrad321k@gmail.com
                 </a>
               </div>
-              <p className="text-xs text-slate-500 pt-1">
-                Godziny pracy: Pon – Pt, 7:30 – 15:30
+              <p className="text-xs text-slate-400 pt-1 leading-relaxed">
+                Bezpośredni kontakt w sprawach wdrożenia, testów lub pytań o program.
               </p>
             </div>
           </div>

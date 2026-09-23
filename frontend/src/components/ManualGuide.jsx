@@ -15,12 +15,16 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ArrowLeft, 
-  Phone, 
   ZoomIn, 
   X, 
   HelpCircle,
   Sparkles,
-  Maximize2
+  Maximize2,
+  Copy,
+  Check,
+  FileDown,
+  Zap,
+  Table
 } from 'lucide-react';
 import { MANUAL_CHAPTERS } from '../data/manualChapters.js';
 
@@ -171,6 +175,28 @@ export default function ManualGuide({ onDownloadClick }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [zoomImage, setZoomImage] = useState(null);
+  const [copyStatus, setCopyStatus] = useState(null);
+
+  const sampleRows = [
+    { klasa: '1A', nazwisko: 'Kowalski Jan', mama: '501100200', tata: '501300400', email: 'jan.kowalski@szkola.pl', meals: [1,1, 1,1, 1,1, 1,1, 1,1] },
+    { klasa: '1A', nazwisko: 'Nowak Zofia', mama: '601111222', tata: '', email: 'zofia.nowak@szkola.pl', meals: [1,0, 1,0, 1,0, 1,0, 1,0] },
+    { klasa: '1B', nazwisko: 'Wiśniewski Adam', mama: '701888999', tata: '701222333', email: 'adam.wisniewski@szkola.pl', meals: [0,1, 0,1, 0,1, 0,1, 0,1] }
+  ];
+
+  const handleCopyHeaders = () => {
+    // Format TSV z tabulatorami – bezpośrednie wklejenie Ctrl+V w Excelu do komórki A1
+    // Kopiujemy wyłącznie 2 wiersze nagłówków kolumn (A-O), bez danych uczniów
+    const r1 = ['', '', '', '', '', 'Poniedziałek', '', 'Wtorek', '', 'Środa', '', 'Czwartek', '', 'Piątek', ''].join('\t');
+    const r2 = ['klasa', 'nazwisko i imię', 'numer do mamy', 'numer do taty', 'adres e-mail', 'zupa', 'II danie', 'zupa', 'II danie', 'zupa', 'II danie', 'zupa', 'II danie', 'zupa', 'II danie'].join('\t');
+    const textToCopy = `${r1}\n${r2}`;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopyStatus(true);
+      setTimeout(() => setCopyStatus(false), 3500);
+    }).catch(err => {
+      console.error('Błąd kopiowania do schowka', err);
+    });
+  };
 
   // Obsługa klawisza ESC do zamykania powiększenia
   useEffect(() => {
@@ -236,17 +262,10 @@ export default function ManualGuide({ onDownloadClick }) {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0 w-full md:w-auto justify-end">
-            <span className="text-xs font-semibold text-slate-500 hidden sm:inline">
+          <div className="flex items-center shrink-0">
+            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 text-xs font-bold text-slate-600 border border-slate-200">
               Rozdział {activeChapter.number} z {MANUAL_CHAPTERS.length}
             </span>
-            <button
-              onClick={onDownloadClick}
-              className="btn-primary py-2.5 px-5 text-xs sm:text-sm whitespace-nowrap"
-            >
-              <Download className="w-4 h-4" />
-              <span>Pobierz program na komputer</span>
-            </button>
           </div>
         </div>
 
@@ -344,10 +363,10 @@ export default function ManualGuide({ onDownloadClick }) {
 
               {/* Dolna wizytówka wsparcia w spisie treści */}
               <div className="p-3.5 border-t border-slate-100 bg-slate-50/50 text-xs text-slate-600 flex items-center justify-between">
-                <span className="font-medium">Infolinia wsparcia:</span>
-                <a href="tel:790123456" className="font-bold text-school-700 hover:underline flex items-center gap-1">
-                  <Phone className="w-3.5 h-3.5" />
-                  790 123 456
+                <span className="font-medium">Kontakt e-mail:</span>
+                <a href="mailto:konrad321k@gmail.com" className="font-semibold text-school-700 hover:underline flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-school-600" />
+                  konrad321k@gmail.com
                 </a>
               </div>
             </div>
@@ -389,34 +408,51 @@ export default function ManualGuide({ onDownloadClick }) {
               {/* DUŻE, CZYTELNE ZRZUTY EKRANU (PEŁNA SZEROKOŚĆ)            */}
               {/* ======================================================== */}
               {activeChapter.screenshots && activeChapter.screenshots.length > 0 && (
-                <div className="mb-10 space-y-6">
-                  {activeChapter.screenshots.map((s, idx) => (
-                    <div 
-                      key={idx} 
-                      className="border border-slate-300 rounded-2xl overflow-hidden shadow-card bg-white transition-all group"
-                    >
-                      {/* Pasek okna aplikacji Windows */}
-                      <div className="bg-slate-800 text-slate-200 px-4 sm:px-5 py-3 flex items-center justify-between text-xs sm:text-sm select-none border-b border-slate-700">
-                        <div className="flex items-center gap-3 font-medium truncate">
-                          <div className="flex items-center gap-1.5 shrink-0">
-                            <span className="w-3 h-3 rounded-full bg-rose-400 inline-block"></span>
-                            <span className="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>
-                            <span className="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span>
-                          </div>
-                          <span className="truncate font-semibold text-white">
-                            Dinner App • {s.caption}
-                          </span>
-                        </div>
+                <div className={`mb-10 ${
+                  activeChapter.screenshotLayout === 'grid'
+                    ? 'grid grid-cols-1 md:grid-cols-2 gap-5 items-start'
+                    : 'space-y-6'
+                }`}>
+                  {activeChapter.screenshots.map((s, idx) => {
+                    const isGrid = activeChapter.screenshotLayout === 'grid';
+                    const sizeMode = s.size || activeChapter.screenshotSize || 'full';
+                    const sizeContainerClass = 
+                      isGrid
+                        ? 'w-full'
+                        : sizeMode === 'small'
+                        ? 'max-w-[560px] mx-auto'
+                        : sizeMode === 'medium'
+                        ? 'max-w-[760px] mx-auto'
+                        : 'max-w-full';
 
-                        {/* Przycisk powiększenia zrzutu */}
-                        <button
-                          onClick={() => setZoomImage(s.src)}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-school-600 hover:bg-school-500 active:bg-school-700 px-3 py-1.5 rounded-lg shadow-sm transition-all shrink-0 ml-2"
-                        >
-                          <Maximize2 className="w-3.5 h-3.5" />
-                          <span>Powiększ na pełny ekran</span>
-                        </button>
-                      </div>
+                    return (
+                      <div 
+                        key={idx} 
+                        className={`border border-slate-300 rounded-2xl overflow-hidden shadow-card bg-white transition-all group ${sizeContainerClass}`}
+                      >
+                        {/* Pasek okna aplikacji Windows */}
+                        <div className="bg-slate-800 text-slate-200 px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between text-xs sm:text-sm select-none border-b border-slate-700">
+                          <div className="flex items-center gap-2 sm:gap-3 font-medium truncate">
+                            <div className="flex items-center gap-1.5 shrink-0">
+                              <span className="w-2.5 h-2.5 rounded-full bg-rose-400 inline-block"></span>
+                              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span>
+                              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>
+                            </div>
+                            <span className="truncate font-semibold text-white text-xs sm:text-sm">
+                              Dinner App • {s.caption}
+                            </span>
+                          </div>
+
+                          {/* Przycisk powiększenia zrzutu */}
+                          <button
+                            onClick={() => setZoomImage(s.src)}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-school-600 hover:bg-school-500 active:bg-school-700 px-2.5 sm:px-3 py-1.5 rounded-lg shadow-sm transition-all shrink-0 ml-2 cursor-pointer"
+                            title="Powiększ na pełny ekran"
+                          >
+                            <Maximize2 className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">Powiększ</span>
+                          </button>
+                        </div>
 
                       {/* Zrzut ekranu w pełnej szerokości kolumny, 100% ostrości */}
                       <div 
@@ -431,26 +467,164 @@ export default function ManualGuide({ onDownloadClick }) {
                           loading="lazy"
                         />
 
-                        {/* Nakładka przy najechaniu */}
-                        <div className="absolute inset-0 bg-slate-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                          <span className="bg-slate-900/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2">
-                            <ZoomIn className="w-4 h-4" />
-                            Kliknij, aby otworzyć w 100% ostrości
-                          </span>
-                        </div>
                       </div>
 
-                      {/* Podpis zrzutu z podpowiedzią */}
-                      <div className="bg-slate-50/90 px-4 sm:px-5 py-2.5 text-xs text-slate-600 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                        <div>
-                          <strong className="text-slate-800">Fot. {idx + 1}:</strong> {s.caption}
+                      </div>
+                    );
+                })}
+                </div>
+              )}
+
+              {/* ======================================================== */}
+              {/* MODUŁ INTERAKTYWNY DLA ROZDZIAŁU 03 (SZABLON EXCEL .XLSX) */}
+              {/* ======================================================== */}
+              {activeChapter.hasExcelTemplate && (
+                <div className="mb-10 bg-gradient-to-br from-emerald-50/90 via-white to-teal-50/70 border-2 border-emerald-300/80 rounded-2xl p-5 sm:p-7 shadow-sm">
+                  <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-5 pb-6 border-b border-emerald-200/80">
+                    <div className="flex items-start gap-4">
+                      <div className="w-13 h-13 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                        <FileSpreadsheet className="w-7 h-7" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            Gotowy plik .xlsx
+                          </span>
+                          <span className="text-xs text-slate-500 font-medium">
+                            15 kolumn • Format Poniedziałek – Piątek
+                          </span>
                         </div>
-                        <span className="text-school-700 font-medium">
-                          🔍 Kliknij w obrazek, aby otworzyć pełny podgląd
-                        </span>
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                          Wzór arkusza do importu uczniów i posiłków
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                          Pobierz gotowy plik Excel z prawidłowymi nagłówkami lub jednym kliknięciem skopiuj strukturę do schowka i wklej (Ctrl+V) w pustym arkuszu.
+                        </p>
                       </div>
                     </div>
-                  ))}
+
+                    {/* Przyciski pobierania i kopiowania */}
+                    <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+                      <a
+                        href="/wzor_importu_uczniow.xlsx"
+                        download="wzor_importu_uczniow.xlsx"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-xs sm:text-sm shadow-sm transition-all shrink-0 cursor-pointer"
+                      >
+                        <FileDown className="w-4 h-4" />
+                        <span>Pobierz wzór (.xlsx)</span>
+                      </a>
+
+                      <button
+                        onClick={handleCopyHeaders}
+                        className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-semibold transition-all shrink-0 cursor-pointer ${
+                          copyStatus
+                            ? 'bg-emerald-100 border-emerald-400 text-emerald-900 font-bold shadow-xs'
+                            : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 shadow-2xs'
+                        }`}
+                        title="Kopiuje 2 wiersze nagłówków tabeli z tabulatorami – po wklejeniu (Ctrl+V) w komórce A1 w Excelu kolumny A-O powstaną natychmiast"
+                      >
+                        {copyStatus ? (
+                          <>
+                            <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                            <span>Skopiowano nagłówki!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="w-4 h-4 text-slate-500 shrink-0" />
+                            <span>Kopiuj nagłówki do Excela (Ctrl+V)</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Informacja po skopiowaniu */}
+                  {copyStatus && (
+                    <div className="mt-4 p-3 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-semibold flex items-center gap-2 animate-fade-in">
+                      <Check className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>
+                        ✅ Skopiowano nagłówki arkusza! Otwórz program Excel, zaznacz komórkę <strong>A1</strong> i wciśnij skrót <strong>Ctrl+V</strong> – 15 kolumn ułoży się automatycznie.
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Interaktywny podgląd struktury tabeli (15 kolumn) */}
+                  <div className="mt-5">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                        <Table className="w-3.5 h-3.5 text-emerald-600" />
+                        Podgląd układu arkusza importu (15 kolumn: A – O)
+                      </span>
+                      <span className="text-2xs text-slate-500 font-medium">
+                        Wiersz 1: Dni robocze • Wiersz 2: Nagłówki • Wiersze 3+: Kartoteki i deklaracje
+                      </span>
+                    </div>
+
+                    <div className="overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-2xs text-xs">
+                      <table className="min-w-[980px] w-full border-collapse">
+                        <thead>
+                          {/* Wiersz 1: Scalone grupy dni tygodnia */}
+                          <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 text-center select-none">
+                            <th colSpan="5" className="px-3 py-2 border-r border-slate-300 text-left bg-slate-50 text-slate-600 font-semibold text-2xs uppercase tracking-wider">
+                              1. Dane osobowe i kontaktowe (A – E)
+                            </th>
+                            <th colSpan="2" className="px-2 py-1.5 border-r border-slate-200 bg-amber-50 text-amber-900 font-bold">Poniedziałek</th>
+                            <th colSpan="2" className="px-2 py-1.5 border-r border-slate-200 bg-blue-50 text-blue-900 font-bold">Wtorek</th>
+                            <th colSpan="2" className="px-2 py-1.5 border-r border-slate-200 bg-emerald-50 text-emerald-900 font-bold">Środa</th>
+                            <th colSpan="2" className="px-2 py-1.5 border-r border-slate-200 bg-purple-50 text-purple-900 font-bold">Czwartek</th>
+                            <th colSpan="2" className="px-2 py-1.5 bg-rose-50 text-rose-900 font-bold">Piątek</th>
+                          </tr>
+                          {/* Wiersz 2: Dokładne nazwy kolumn */}
+                          <tr className="bg-slate-50 font-bold text-slate-800 border-b border-slate-200 text-left select-none">
+                            <th className="px-2.5 py-2 border-r border-slate-200 text-slate-900 font-bold">A: klasa</th>
+                            <th className="px-3 py-2 border-r border-slate-200 text-slate-900 font-bold">B: nazwisko i imię</th>
+                            <th className="px-2.5 py-2 border-r border-slate-200 text-slate-600">C: numer do mamy</th>
+                            <th className="px-2.5 py-2 border-r border-slate-200 text-slate-600">D: numer do taty</th>
+                            <th className="px-3 py-2 border-r-2 border-slate-300 text-slate-600">E: adres e-mail</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-amber-50/40 text-amber-950">zupa</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-amber-50/40 text-amber-950">II danie</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-blue-50/40 text-blue-950">zupa</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-blue-50/40 text-blue-950">II danie</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-emerald-50/40 text-emerald-950">zupa</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-emerald-50/40 text-emerald-950">II danie</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-purple-50/40 text-purple-950">zupa</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-purple-50/40 text-purple-950">II danie</th>
+                            <th className="px-2 py-2 border-r border-slate-200 text-center bg-rose-50/40 text-rose-950">zupa</th>
+                            <th className="px-2 py-2 text-center bg-rose-50/40 text-rose-950">II danie</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 text-slate-700">
+                          {sampleRows.map((r, idx) => (
+                            <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                              <td className="px-2.5 py-2 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/50">{r.klasa}</td>
+                              <td className="px-3 py-2 border-r border-slate-200 font-medium text-slate-800">{r.nazwisko}</td>
+                              <td className="px-2.5 py-2 border-r border-slate-200 text-slate-500 font-mono text-2xs">{r.mama}</td>
+                              <td className="px-2.5 py-2 border-r border-slate-200 text-slate-500 font-mono text-2xs">{r.tata || '—'}</td>
+                              <td className="px-3 py-2 border-r-2 border-slate-300 text-slate-600 truncate max-w-[150px]">{r.email}</td>
+                              {r.meals.map((m, mIdx) => (
+                                <td key={mIdx} className={`px-2 py-2 text-center border-r border-slate-200 font-bold ${
+                                  m === 1 ? 'text-emerald-700 bg-emerald-50/60' : 'text-slate-300'
+                                }`}>
+                                  {m}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Karta wyjaśniająca miękki import */}
+                  <div className="mt-5 p-4 rounded-xl bg-amber-50/90 border border-amber-200/90 text-amber-900 flex items-start gap-3 shadow-2xs">
+                    <Zap className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                    <div className="text-xs sm:text-sm leading-relaxed">
+                      <strong className="font-bold text-amber-950 block mb-1">
+                        Czym jest „Miękki import” w programie Dinner App?
+                      </strong>
+                      Zaznacz pole <em>„Miękki import (tylko aktualizacja istniejących uczniów)”</em> w oknie importu posiłków, gdy chcesz zaktualizować dane i plany obiadów <strong>wyłącznie dla dzieci, które już są w bazie</strong>. Nowe nazwiska z pliku zostaną bezpiecznie zignorowane, a dotychczasowa historia rozliczeń i odpisów pozostanie nienaruszona.
+                    </div>
+                  </div>
                 </div>
               )}
 
