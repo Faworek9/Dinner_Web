@@ -9,7 +9,8 @@ import {
   Mail, 
   Download, 
   Settings, 
-  Database, 
+  Database,
+  GraduationCap, 
   Search, 
   ChevronDown, 
   CheckCircle2, 
@@ -38,7 +39,8 @@ const ICON_MAP = {
   Mail,
   Download,
   Settings,
-  Database
+  Database,
+  GraduationCap
 };
 
 /**
@@ -119,6 +121,33 @@ function FormattedContent({ rawContent }) {
     const trimmed = line.trim();
     if (!trimmed) {
       flushList();
+      return;
+    }
+
+    // Sprawdź czy to pozioma linia: --- lub ***
+    if (trimmed === '---' || trimmed === '***') {
+      flushList();
+      renderedBlocks.push(
+        <hr key={`hr-${idx}`} className="my-6 border-slate-200" />
+      );
+      return;
+    }
+
+    // Sprawdź czy to nagłówek markdown: #, ##, ###
+    const headerMatch = trimmed.match(/^(#{1,4})\s+(.*)$/);
+    if (headerMatch) {
+      flushList();
+      const level = headerMatch[1].length;
+      renderedBlocks.push(
+        <h4 
+          key={`h-${idx}`} 
+          className={`font-extrabold text-slate-900 tracking-tight ${
+            level <= 2 ? 'text-lg sm:text-xl mt-6 mb-3' : 'text-base sm:text-lg mt-5 mb-2'
+          }`}
+        >
+          {parseInline(headerMatch[2])}
+        </h4>
+      );
       return;
     }
 
@@ -231,9 +260,8 @@ export default function ManualGuide({ onDownloadClick }) {
     // Przewiń płynnie na górę treści rozdziału z uwzględnieniem przyklejonego paska nawigacji
     const contentEl = document.getElementById('chapter-content-top');
     if (contentEl) {
-      const yOffset = -130; // bezpieczny odstęp pod główny sticky navbar (~105px) + estetyczny margines
-      const y = contentEl.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      const yOffset = -90; // bezpieczny odstęp pod główny sticky navbar (~72px) + estetyczny margines
+      window.scrollTo({ top: Math.max(0, contentEl.getBoundingClientRect().top + window.pageYOffset + yOffset), behavior: 'smooth' });
     }
   };
 
@@ -244,15 +272,15 @@ export default function ManualGuide({ onDownloadClick }) {
   const ActiveIcon = ICON_MAP[activeChapter.iconName] || BookOpen;
 
   return (
-    <div className="py-8 md:py-12 bg-slate-50 min-h-screen">
+    <div className="py-6 md:py-10 bg-slate-50 min-h-screen">
       {/* Poszerzony kontener dla maksymalnej czytelności zrzutów ekranu */}
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Pasek wprowadzający do książki podręcznika */}
-        <div className="mb-8 bg-white rounded-2xl border border-slate-200/90 p-5 sm:p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="mb-6 bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-school-600 text-white flex items-center justify-center shrink-0 shadow-sm">
-              <BookOpen className="w-6 h-6" />
+            <div className="w-11 h-11 rounded-2xl bg-school-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <BookOpen className="w-5 h-5" />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
@@ -277,18 +305,18 @@ export default function ManualGuide({ onDownloadClick }) {
           {/* ======================================================== */}
           {/* LEWA KOLUMNA: SPIS TREŚCI (SIDEBAR)                       */}
           {/* ======================================================== */}
-          <aside className="lg:col-span-4 xl:col-span-3 sticky top-24 space-y-4">
+          <aside className="lg:col-span-4 xl:col-span-3 sticky top-20 space-y-4">
             <div className="bg-white rounded-2xl border border-slate-200/90 shadow-soft overflow-hidden">
               
               {/* Nagłówek spisu treści */}
-              <div className="p-4 border-b border-slate-100 bg-slate-50/70">
-                <div className="flex items-center justify-between mb-3">
+              <div className="p-3.5 sm:p-4 border-b border-slate-100 bg-slate-50/70">
+                <div className="flex items-center justify-between mb-2.5">
                   <span className="text-xs font-bold uppercase tracking-wider text-school-700 flex items-center gap-1.5">
                     <BookOpen className="w-4 h-4 text-school-600" />
                     Spis treści
                   </span>
                   <span className="text-[11px] font-bold bg-school-100 text-school-800 px-2.5 py-0.5 rounded-full">
-                    9 rozdziałów
+                    {MANUAL_CHAPTERS.length} rozdziałów
                   </span>
                 </div>
 
@@ -300,7 +328,7 @@ export default function ManualGuide({ onDownloadClick }) {
                     placeholder="Filtruj tematy w spisie..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-school-500/20 focus:border-school-500 transition-all"
+                    className="w-full pl-9 pr-3 py-1.5 sm:py-2 text-xs rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-school-500/20 focus:border-school-500 transition-all"
                   />
                   {searchTerm && (
                     <button 
@@ -314,7 +342,7 @@ export default function ManualGuide({ onDownloadClick }) {
               </div>
 
               {/* Lista rozdziałów */}
-              <nav className="p-2 space-y-1 max-h-[calc(100vh-260px)] overflow-y-auto">
+              <nav className="p-1.5 sm:p-2 space-y-0.5 max-h-[calc(100vh-180px)] overflow-y-auto">
                 {filteredChapters.length === 0 ? (
                   <div className="p-6 text-center text-xs text-slate-500">
                     Brak wyników dla hasła "{searchTerm}".
@@ -328,7 +356,7 @@ export default function ManualGuide({ onDownloadClick }) {
                       <button
                         key={chap.id}
                         onClick={() => handleSelectChapter(chap.id)}
-                        className={`w-full text-left p-3 rounded-xl transition-all duration-150 flex items-start gap-3 group relative ${
+                        className={`w-full text-left p-2 sm:p-2.5 rounded-xl transition-all duration-150 flex items-start gap-2.5 group relative ${
                           isActive
                             ? 'bg-school-50 text-school-900 font-bold border border-school-200 shadow-xs'
                             : 'text-slate-700 hover:bg-slate-50/80 hover:text-slate-900'
@@ -336,10 +364,10 @@ export default function ManualGuide({ onDownloadClick }) {
                       >
                         {/* Wskaźnik aktywnego rozdziału */}
                         {isActive && (
-                          <span className="absolute left-0 top-2 bottom-2 w-1.5 bg-school-600 rounded-r-full"></span>
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1.5 bg-school-600 rounded-r-full"></span>
                         )}
 
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-colors ${
+                        <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-colors ${
                           isActive 
                             ? 'bg-school-600 text-white shadow-xs' 
                             : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
@@ -349,7 +377,7 @@ export default function ManualGuide({ onDownloadClick }) {
 
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-1.5 mb-0.5">
-                            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
+                            <span className="text-[9.5px] font-semibold uppercase tracking-wider text-slate-400">
                               {chap.category}
                             </span>
                           </div>

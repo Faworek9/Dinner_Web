@@ -6,40 +6,60 @@ export const MANUAL_CHAPTERS = [
     shortTitle: "Ekran główny",
     category: "Podstawy",
     iconName: "LayoutDashboard",
-    description: "Wszystko pod ręką w jednym, przejrzystym oknie – bez konieczności przełączania się między wieloma programami czy arkuszami.",
-    content: `Ekran główny aplikacji **Dinner App - Ewidencja Obiadów** został zaprojektowany z myślą o maksymalnej prostocie i czytelności. Składa się z trzech intuicyjnych paneli:
-    
-1. **Lewy panel boczny**: Alfabetyczna lista wszystkich uczniów w szkole, szybka wyszukiwarka po nazwisku lub imieniu, przycisk dodawania nowej osoby oraz importu z pliku Excel.
-2. **Górna belka narzędziowa**: Wybór miesiąca (np. 09.2026), przyciski szybkiej akcji (*Zmień dane*, *Eksport danych*, *Wyślij e-mail*) oraz podgląd aktualnie zaznaczonego ucznia.
-3. **Główny arkusz ewidencji**: Czytelna tabela z podziałem na każdy dzień roboczy w danym miesiącu oraz rozbiciem na **Zupę** i **Drugie danie (II danie)**.
-4. **Pasek podsumowania (po prawej)**: Błyskawiczne kwoty i sumy w trzech kolorach:
-   - **Niebieski (Planowane)**: Wartość wszystkich zaplanowanych posiłków w miesiącu.
-   - **Czerwony (Odwołane)**: Wartość odpisów za zgłoszone nieobecności.
-   - **Zielony (Wykonane / Do zapłaty)**: Rzeczywista kwota należności, jaką rodzic ma uiścić.`,
+    description: "Wszystko pod ręką w jednym, przejrzystym oknie – alfabetyczna lista uczniów, kalendarz posiłków i automatyczne podsumowania finansowe.",
+    content: `Ekran główny programu **Dinner App** został zaprojektowany tak, aby cała codzienna praca stołówki odbywała się w jednym, czytelnym oknie:
+
+### 1. Lewy panel boczny – Lista uczniów
+- **Alfabetyczna lista dzieci**: Uporządkowana według polskich reguł językowych (uwzględnia litery Ą, Ć, Ę, Ł, Ń, Ó, Ś, Ź, Ż).
+- **Automatyczne awatary**: Przy każdym nazwisku program wyświetla czytelną plakietkę z inicjałami dziecka, co ułatwia szybkie odszukanie ucznia wzrokiem.
+- **Wyszukiwarka na żywo**: Pole wyszukiwania filtruje listę natychmiast podczas wpisywania tekstu, a przycisk \`×\` pozwala błyskawicznie wyczyścić filtr.
+- **Plakietki dofinansowań posiłków**:
+  - 🟢 **[SFCH]** – uczeń objęty dofinansowaniem fundacji/stowarzyszenia (jasnozielone tło).
+  - 🟠 **[MOPS]** – uczeń objęty pomocą opieki społecznej (jasnopomarańczowe tło).
+- **Przycisk szybkiego dodawania**: Rozwijany formularz nad listą pozwala dopisać nowego ucznia i zatwierdzić go klawiszem \`Enter\` bez otwierania dodatkowych okien.
+
+### 2. Górny pasek narzędzi
+- **Wybór miesiąca**: Szybkie przełączanie między miesiącami (np. wrzesień 2026).
+- **Przyciski akcji**: Szybki dostęp do kluczowych funkcji (*Zmień dane*, *Eksport danych*, *Wyślij e-mail*).
+- **Płynna nawigacja bez myszki**: Wygodne przyciski **„Poprzedni uczeń”** oraz **„Następny uczeń”** pozwalają przeglądać kolejne dzieci jedno po drugim.
+
+### 3. Tabela ewidencji posiłków
+- **Dni robocze miesiąca**: Tabela obejmuje wyłącznie dni nauki szkolnej (od poniedziałku do piątku).
+- **Pionowe linie tygodni**: Wyraźne linie oddzielające poszczególne tygodnie (po każdym piątku) ułatwiają orientację w kalendarzu.
+- **Przypięte kolumny boczne**: Podczas przewijania dni w prawo nazwy posiłków po lewej stronie oraz podsumowanie po prawej zawsze pozostają widoczne na ekranie.
+- **Niezależne rozbicie**: Osobny wiersz dla **Zupy** i osobny dla **Drugiego dania**.
+
+### 4. Cykl posiłków i czytelne kolory
+- 🔵 **Niebieski (Planowane)**: posiłki zgłoszone do wydania w danym miesiącu.
+- 🔴 **Czerwony (Odwołane)**: zgłoszone nieobecności dziecka (choroby, wyjazdy).
+- 🟢 **Zielony (Wykonane / Do zapłaty)**: posiłki faktycznie zjedzone i ostateczna kwota do zapłaty (Planowane minus Odwołane).
+- 🟡 **Żółty**: dni wolne od szkoły (święta, ferie, dni dyrektorskie).
+
+> **Bezpieczeństwo logiczne**: Program nie pozwoli odwołać posiłku w dniu, w którym uczeń nie miał zaplanowanego obiadu.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 113522.png",
-        caption: "Rzeczywisty widok ekranu głównego programu dla ucznia Dąbrowski Jakub (Klasa 5A)"
+        caption: "Widok ekranu głównego programu dla ucznia Dąbrowski Jakub (Klasa 5A)"
       }
     ],
     steps: [
-      "Wybierz interesujący Cię miesiąc za pomocą strzałek przy polu miesiąca.",
-      "Wyszukaj ucznia wpisując jego nazwisko w polu wyszukiwarki lub klikając na liście po lewej.",
-      "Przejrzyj wiersze: Planowane, Odwołane oraz Wykonane posiłki na dany dzień.",
-      "Użyj przycisku 'Następna osoba ▶' w prawym dolnym rogu, aby płynnie przechodzić między uczniami."
+      "Wybierz interesujący Cię miesiąc strzałkami przy polu wyboru daty na górnym pasku.",
+      "Odszukaj ucznia na liście po lewej stronie lub wpisz nazwisko w wyszukiwarce.",
+      "Sprawdź wiersze: Planowane, Odwołane oraz Wykonane dla zupy i drugiego dania.",
+      "Użyj przycisków „Poprzedni uczeń” / „Następny uczeń”, aby wygodnie przejść do kolejnej osoby bez sięgania po myszkę."
     ],
     faq: [
       {
-        q: "Czy po zamknięciu programu wprowadzone dane zostają zapamiętane?",
-        a: "Tak, każda zmiana jest natychmiast bezpiecznie zapisywana w bazie SQL. Nie musisz szukać przycisku 'Zapisz plik' – dane są bezpieczne."
+        q: "Czy po zamknięciu programu wprowadzone dane zostają zapisane?",
+        a: "Tak, każda zmiana jest natychmiast automatycznie zapisywana. Nie musisz szukać przycisku „Zapisz plik” – dane są zawsze bezpieczne."
       },
       {
-        q: "Co oznaczają kolorowe liczby w kolumnie 'Razem' po prawej stronie?",
-        a: "Niebieska kwota to suma posiłków zaplanowanych na dany miesiąc, czerwona to kwota odliczeń (odpisów za zgłoszone nieobecności), a zielona to ostateczna kwota do zapłaty po uwzględnieniu wszystkich odpisów."
+        q: "Co oznaczają kolorowe kwoty w kolumnie „Razem” po prawej stronie?",
+        a: "Niebieska kwota to łączna wartość posiłków zaplanowanych na dany miesiąc, czerwona to suma odpisów za zgłoszone nieobecności, a zielona to ostateczna kwota do zapłaty przez rodzica."
       },
       {
-        q: "Czy mogę cofnąć się do rozliczeń z poprzednich miesięcy lub lat?",
-        a: "Tak, klikając strzałki przy polu wyboru miesiąca możesz w dowolnym momencie sprawdzić historię ewidencji i wydruków z ubiegłych miesięcy."
+        q: "Czy po przewinięciu tabeli w prawo nie zgubię nazwisk i posiłków?",
+        a: "Nie. Zarówno kolumny po lewej stronie (nazwy dań i wierszy), jak i kolumna z podsumowaniem „Razem” po prawej stronie są trwale przypięte do krawędzi ekranu."
       }
     ]
   },
@@ -50,14 +70,27 @@ export const MANUAL_CHAPTERS = [
     shortTitle: "Baza uczniów i kartoteki",
     category: "Dane i uczniowie",
     iconName: "Database",
-    description: "Zarządzanie kartotekami dzieci, filtrowanie po klasach, szybka wyszukiwarka oraz oznaczenia MOPS i SFCH.",
-    content: `Wcześniej dane uczniów były porozrzucane po wielu zeszytach, folderach i kartkach, przez co łatwo było o pomyłkę lub wpisanie tego samego dziecka dwukrotnie.
-    
-W **Dinner App**:
-- **Jedna centralna baza SQL**: Każdy uczeń posiada swój unikalny wpis. Nie ma ryzyka dublowania osób.
-- **Szybkie wyszukiwanie i alfabetyczna lista**: Lewy panel boczny pozwala w ułamku sekundy odnaleźć dowolne dziecko wpisując fragment nazwiska lub imienia.
-- **Oznaczenia specjalne (Tagi)**: Możesz łatwo przypisać uczniom etykiety, np. **MOPS** (obiady finansowane przez ośrodek pomocy społecznej) lub **SFCH** (stypendia/fundacje). Tagi są widoczne kolorowymi plakietkami na liście uczniów, co ułatwia późniejsze osobne rozliczenia z gminą i fundacjami.
-- **Ręczne dodawanie nowych osób**: Gdy w trakcie roku szkolnego dołącza nowy uczeń, klikasz przycisk *+ Dodaj nową osobę* i wprowadzasz dane w prostym, przejrzystym formularzu.`,
+    description: "Zarządzanie kartotekami dzieci, kontakty do rodziców, szybkie wyszukiwanie oraz oznaczenia dofinansowań SFCH i MOPS.",
+    content: `Koniec z gubiącymi się kartkami, zeszytami i podwójnie wpisanymi dziećmi. **Dinner App** gromadzi wszystkie dane uczniów w jednej, spójnej bazie:
+
+### Kartoteka ucznia – co zawiera?
+- **Dane podstawowe**: Imię i nazwisko oraz przypisana klasa lub grupa przedszkolna.
+- **Kontakty do obojga rodziców**: Osobny numer telefonu do mamy oraz numer telefonu do taty.
+- **Adres e-mail**: Adres poczty elektronicznej rodzica wykorzystywany do automatycznej wysyłki comiesięcznych rozliczeń.
+- **Automatyczny awatar**: Program sam generuje czytelną plakietkę z inicjałami dziecka, co ułatwia wzrokowe rozpoznawanie uczniów na liście.
+
+### Szybkie dodawanie i wyszukiwanie
+- **Błyskawiczny formularz**: Rozwijany formularz bezpośrednio nad listą uczniów pozwala wpisać nowe dziecko w kilka sekund i zatwierdzić klawiszem \`Enter\` bez otwierania osobnych okien.
+- **Wyszukiwarka na żywo**: Filtruje listę w ułamku sekundy podczas wpisywania tekstu. W pełni obsługuje polskie znaki diakrytyczne (ą, ć, ę, ł, ń, ó, ś, ź, ż), a przycisk \`×\` natychmiast czyści pole wyszukiwania.
+
+### Oznaczenia dofinansowań posiłków (SFCH / MOPS)
+Program pozwala natychmiast wyróżnić uczniów, których obiady są opłacane przez instytucje pomocowe:
+- 🟢 **SFCH (Stowarzyszenie / Fundacja)**: Uczeń oznaczony jest jasnozielonym tłem kafelka oraz plakietką \`[SFCH]\`.
+- 🟠 **MOPS (Opieka Społeczna)**: Uczeń oznaczony jest jasnopomarańczowym tłem kafelka oraz plakietką \`[MOPS]\`.
+- Oznaczenia te wykluczają się wzajemnie. Dzięki nim intendent od razu widzi, za których uczniów rachunek należy wystawić rodzicom, a za których ośrodkowi pomocy lub fundacji.
+
+### Bezpieczne usuwanie
+Możliwość usunięcia profilu ucznia (np. po przeprowadzce do innej szkoły) jest zabezpieczona wyraźnym komunikatem potwierdzającym, co zapobiega przypadkowemu skasowaniu danych.`,
     screenshots: [
       {
         src: "/screenshots/kartoteka_ucznia_edycja.png",
@@ -65,23 +98,23 @@ W **Dinner App**:
       }
     ],
     steps: [
-      "Przejrzyj alfabetyczną listę uczniów w lewym panelu programu.",
-      "Użyj pola wyszukiwarki, aby natychmiast odnaleźć wybrane dziecko.",
-      "Kliknij ucznia, aby otworzyć jego pełną miesięczną kartotekę z podziałem na dni.",
-      "W razie potrzeby dodaj nowego ucznia przyciskiem '+ Dodaj nową osobę' w lewym górnym rogu."
+      "Odszukaj ucznia na liście lub wpisz nazwisko w polu wyszukiwarki na żywo.",
+      "Kliknij ucznia, a następnie wybierz opcję edycji danych, aby uzupełnić telefony, e-mail lub klasę.",
+      "Jeśli dziecko korzysta z dofinansowania, zaznacz opcję SFCH lub MOPS – profil natychmiast zyska kolorową plakietkę.",
+      "Aby dodać nowego ucznia w trakcie roku, rozwiń formularz nad listą, wpisz dane i wciśnij klawisz Enter."
     ],
     faq: [
       {
         q: "Do czego służą plakietki MOPS i SFCH przy nazwiskach?",
-        a: "Pozwalają natychmiast odróżnić uczniów, za których płaci ośrodek pomocy społecznej lub fundacja. Dzięki temu w zestawieniach finansowych od razu wiesz, które rachunki wystawić rodzicom, a które gminie."
+        a: "Pozwalają natychmiast odróżnić uczniów, za których płaci ośrodek pomocy społecznej lub fundacja. Dzięki temu w zestawieniach od razu wiesz, które rachunki przekazać rodzicom, a które gminie."
       },
       {
-        q: "Co jeśli uczeń zmieni klasę lub grupę w trakcie roku szkolnego?",
-        a: "Wystarczy wejść w edycję danych ucznia i zmienić przypisaną klasę – wszystkie dotychczasowe rozliczenia i historia posiłków zostaną w 100% zachowane."
+        q: "Co jeśli uczeń zmieni klasę w trakcie roku szkolnego?",
+        a: "Wystarczy wejść w edycję profilu ucznia i zmienić przypisaną klasę – wszystkie dotychczasowe posiłki, wpłaty i historia odpisów zostaną w 100% zachowane."
       },
       {
-        q: "Czy mogę usunąć ucznia, który przeniósł się do innej szkoły?",
-        a: "Tak, program pozwala na bezpieczne zarchiwizowanie lub usunięcie kartoteki ucznia z bazy danych."
+        q: "Czy mogę usunąć ucznia, który przeniósł się do innej placówki?",
+        a: "Tak, program pozwala na bezpieczne usunięcie ucznia z bazy. Operacja zawsze wymaga potwierdzenia, co zapobiega pomyłkom."
       }
     ]
   },
@@ -95,82 +128,82 @@ W **Dinner App**:
     hasExcelTemplate: true,
     screenshotSize: "medium",
     description: "Masowy import uczniów, kontaktów i tygodniowych planów posiłków z gotowego pliku .xlsx oraz inteligentna funkcja miękkiego importu.",
-    content: `Import z pliku Excel (.xlsx) to najszybszy sposób na uruchomienie programu w szkole lub przedszkolu. W jednym prostym kroku wgrywasz listę uczniów z podziałem na klasy, kontakty do rodziców oraz tygodniowy rozkład obiadów.
+    content: `Import z pliku Excel to najszybszy sposób na uruchomienie programu we wrześniu lub w nowym semestrze. W jednym kroku wgrywasz listę uczniów z podziałem na klasy, kontakty do rodziców oraz tygodniowy grafik obiadów.
 
 ### Struktura kolumn pliku Excel (.xlsx)
-Arkusz importu składa się z 15 kolumn podzielonych na dwie strefy:
+Arkusz importu składa się z 15 kolumn podzielonych na dwie przejrzyste części:
 
-1. **Dane osobowe i kontaktowe (Kolumny A – E)**:
-   - **Kolumna A (klasa)**: Oznaczenie klasy (np. *1A*, *2B*, *Grupa Przedszkolna*).
-   - **Kolumna B (nazwisko i imię)**: Pełne dane ucznia w formacie *Nazwisko Imię*.
-   - **Kolumna C (numer do mamy)**: Opcjonalny numer telefonu komórkowego do mamy.
-   - **Kolumna D (numer do taty)**: Opcjonalny numer telefonu komórkowego do taty.
-   - **Kolumna E (adres e-mail)**: E-mail do wysyłki automatycznych comiesięcznych rozliczeń obiadów.
+1. **Dane osobowe i kontakty (Kolumny A – E)**:
+   - **Kolumna A (klasa)**: Oznaczenie klasy (np. *1A*, *2B*, *Oddział Przedszkolny*).
+   - **Kolumna B (nazwisko i imię)**: Dane ucznia w formacie *Nazwisko Imię*.
+   - **Kolumna C (numer do mamy)**: Telefon kontaktowy do mamy (opcjonalny).
+   - **Kolumna D (numer do taty)**: Telefon kontaktowy do taty (opcjonalny).
+   - **Kolumna E (adres e-mail)**: E-mail do comiesięcznych rozliczeń (opcjonalny).
 
 2. **Tygodniowy plan posiłków (Kolumny F – O)**:
-   - W pierwszym wierszu znajdują się scalone nagłówki dni tygodnia: **Poniedziałek**, **Wtorek**, **Środa**, **Czwartek**, **Piątek**.
-   - Pod każdym dniem znajdują się po dwie kolumny: **zupa** oraz **II danie**.
+   - Nagłówki dni roboczych: **Poniedziałek**, **Wtorek**, **Środa**, **Czwartek**, **Piątek**.
+   - Pod każdym dniem znajdują się dwie kolumny: **zupa** oraz **II danie**.
    - W komórkach wpisujesz:
      - **1** – uczeń jada dany posiłek w ten dzień tygodnia.
      - **0** (lub pusta komórka) – uczeń nie korzysta z tego posiłku.
+   *(Program w pełni obsługuje także starsze pliki 14-kolumnowe bez kolumny e-mail).*
 
 ---
 
-### Jak działa konfiguracja importu posiłków?
-Po wybraniu pliku .xlsx na ekranie pojawia się okno **Ustawienia importu posiłków**:
-- **Wybór roku szkolnego**: Program automatycznie rozpoznaje bieżący cykl (np. *Rok szkolny 2026/2027*).
-- **Przyciski szybkiego zaznaczania**:
-  - *Bieżący miesiąc* – importuje plan tylko na trwający miesiąc.
-  - *Rok szkolny (IX–VI)* – jednym ruchem zaznacza 10 miesięcy nauki szkolnej (od września do czerwca).
-  - *Wszystkie* / *Wyczyść* – pełna kontrola nad zakresem dat.
-- **Automatyczne rozpisanie dni roboczych**: Program pobiera deklarację tygodniową z pliku Excel i automatycznie powiela ją na **wszystkie dni robocze (Pn–Pt)** wybranych miesięcy, automatycznie omijając weekendy oraz zdefiniowane w programie ferie i święta.
+### Dwuetapowy proces importu posiłków
+Po kliknięciu przycisku *„Importuj .xlsx”* program prowadzi Cię przez dwa proste kroki:
+
+- **Krok 1 – Wybór zakresu i trybu**:
+  - **Wybór roku szkolnego**: Program automatycznie rozpoznaje bieżący cykl (np. *2026/2027*).
+  - **Przyciski szybkiego zaznaczania**:
+    - *Bieżący miesiąc* – importuje grafik tylko na trwający miesiąc.
+    - *Rok szkolny (IX–VI)* – jednym ruchem zaznacza 10 miesięcy nauki szkolnej (od września do czerwca). Miesiące wakacyjne są wyraźnie wyróżnione.
+    - *Wszystkie* / *Wyczyść* – pełna kontrola nad zakresem miesięcy.
+  - **Opcja „Miękki import”**: Specjalny przełącznik na dole okna (szczegóły poniżej).
+
+- **Krok 2 – Wskazanie pliku i automatyczne rozpisanie**:
+  - Wskazujesz plik \`.xlsx\`. Program pobiera tygodniowe deklaracje i powiela je na **wszystkie dni robocze** wybranych miesięcy, automatycznie pomijając weekendy oraz zdefiniowane w programie święta i ferie.
 
 ---
 
-### Funkcja „Miękki import” (Tylko aktualizacja istniejących uczniów)
-Na dole okna importu znajduje się kluczowa opcja:
+### Czym jest „Miękki import” i kiedy go włączyć?
+Na dole okna importu znajduje się przełącznik:
 **⚡ Miękki import (tylko aktualizacja istniejących uczniów)**
 
-**Do czego służy i jak działa?**
 - **Gdy opcja jest ODZNACZONA (Tryb pełny – domyślny)**:
-  Program dodaje do bazy wszystkich nowych uczniów z pliku Excel, a dla osób już istniejących aktualizuje dane i plany posiłków. Jest to idealny tryb na początek roku szkolnego.
+  Program dodaje do bazy wszystkich nowych uczniów z pliku, a dla istniejących aktualizuje dane i plany. To najlepszy tryb na początek roku szkolnego.
 - **Gdy opcja jest ZAZNACZONA (Miękki import)**:
-  Program aktualizuje dane i deklaracje posiłków **wyłącznie dla uczniów, którzy już wcześniej zostali wprowadzeni do bazy danych**. 
-  Osoby z pliku Excel, których nie ma jeszcze w programie, zostaną **całkowicie pominięte** (żaden nowy uczeń nie zostanie utworzony).
+  Program aktualizuje dane i deklaracje **wyłącznie dla dzieci, które już wcześniej znajdują się w bazie**. Nowe nazwiska z pliku zostaną bezpiecznie pominięte (żadne nowe konto nie zostanie utworzone). Nic z dotychczasowej bazy nie jest usuwane.
 
 **Kiedy warto włączyć Miękki import?**
-- Na przełomie semestrów lub miesięcy, gdy otrzymujesz zaktualizowany arkusz z deklaracjami obiadów i chcesz nanieść zmiany tylko dla zapisanych już dzieci.
-- Gdy pracujesz na pliku zawierającym całą szkołę (np. 500 uczniów), a na obiady chodzi tylko 180 zweryfikowanych osób – miękki import zaktualizuje plany tylko stołownikom bez zaśmiecania bazy pozostałymi uczniami.`,
+- Gdy w trakcie roku otrzymujesz nowy arkusz ze zmianami deklaracji i chcesz nanieść korekty tylko obecnym stołownikom.
+- Gdy plik Excel zawiera całą szkołę (np. 400 uczniów), a na obiady zapisało się tylko 150 osób – miękki import zaktualizuje plany stołowników bez zaśmiecania bazy pozostałymi dziećmi.`,
     screenshots: [
       {
         src: "/screenshots/ustawienia_importu_posilkow.png",
-        caption: "Okno ustawień importu posiłków: wybór miesięcy roku szkolnego oraz funkcja miękkiego importu"
+        caption: "Okno konfiguracji importu posiłków: wybór roku szkolnego, zakresu miesięcy oraz funkcja miękkiego importu"
       }
     ],
     steps: [
-      "Pobierz gotowy wzór pliku .xlsx (zielony przycisk poniżej) lub skopiuj nagłówki bezpośrednio do pustego arkusza Excel.",
-      "Uzupełnij listę uczniów: wpisz klasę, nazwisko i imię, kontakty oraz wpisz '1' przy posiłkach, które dziecko jada w poszczególne dni tygodnia.",
-      "W programie Dinner App kliknij przycisk 'Importuj .xlsx' w lewym panelu nad listą uczniów i wskaż zapisany plik.",
-      "W oknie wyboru miesięcy zaznacz miesiące, na które ma obowiązywać plan (np. 'Rok szkolny (IX-VI)').",
-      "Jeśli chcesz zaktualizować tylko zapisanych wcześniej uczniów bez dodawania nowych osób, zaznacz opcję 'Miękki import'.",
-      "Kliknij przycisk 'Dalej ➔'. Program w kilka sekund zaimportuje całą szkołę i przygotuje ewidencję na wszystkie wybrane miesiące."
+      "Pobierz gotowy wzór pliku .xlsx (zielony przycisk poniżej) lub skopiuj nagłówki do pustego arkusza.",
+      "Uzupełnij listę uczniów: klasa, nazwisko i imię, telefony, e-maile oraz wpisz cyfrę 1 przy posiłkach, które dziecko jada.",
+      "W programie kliknij przycisk „Importuj .xlsx” w lewym panelu nad listą uczniów i wskaż przygotowany plik.",
+      "Zaznacz miesiące, na które ma obowiązywać plan (np. przyciskiem „Rok szkolny (IX-VI)”).",
+      "Jeśli aktualizujesz tylko obecnych uczniów bez dopisywania nowych osób, zaznacz opcję „Miękki import”.",
+      "Kliknij „Dalej”. Program w kilka sekund zaimportuje dane i przygotuje ewidencję na wszystkie wybrane miesiące."
     ],
     faq: [
       {
-        q: "Co wpisać w polach zupy i drugiego dania, jeśli uczeń nie jada obiadów w dany dzień?",
-        a: "Wpisz cyfrę '0' lub po prostu pozostaw komórkę pustą. Program zinterpretuje to jako brak posiłku w ten dzień."
+        q: "Co wpisać w polach zupy i drugiego dania, jeśli uczeń nie jada w dany dzień?",
+        a: "Wpisz cyfrę 0 lub pozostaw komórkę pustą. Program zinterpretuje to jako brak posiłku."
       },
       {
-        q: "Czy w nagłówkach kolumn ważna jest wielkość liter?",
-        a: "Program automatycznie normalizuje nagłówki (ignoruje wielkość liter i spacje), ale zaleca się korzystanie z oficjalnego szablonu z drugiego wiersza."
-      },
-      {
-        q: "Co się stanie, jeśli w pliku Excel są puste numery telefonów?",
-        a: "Numery telefonów i adresy e-mail są opcjonalne – jeśli komórka jest pusta, program bez problemu zaimportuje ucznia, a dane możesz dopisać w dowolnym momencie w karcie ucznia."
+        q: "Czy w pliku Excel muszę obowiązkowo podawać numery telefonów i e-maile?",
+        a: "Nie, są to pola opcjonalne. Jeśli ich nie wpiszesz, uczeń zostanie zaimportowany, a dane kontaktowe możesz dopisać w dowolnej chwili w programie."
       },
       {
         q: "Czy miękki import usunie uczniów, których nie ma w nowym pliku Excel?",
-        a: "Nie! Miękki import nigdy niczego nie usuwa z bazy. Jedynie ignoruje nowe nazwiska z pliku, pozostawiając Twoją dotychczasową bazę uczniów w 100% nienaruszoną."
+        a: "Nie! Miękki import nigdy niczego nie usuwa z bazy. Ignoruje jedynie nowe nazwiska z pliku, a Twoja dotychczasowa baza pozostaje w 100% bezpieczna."
       }
     ]
   },
@@ -181,17 +214,32 @@ Na dole okna importu znajduje się kluczowa opcja:
     shortTitle: "Ewidencja posiłków",
     category: "Codzienna praca",
     iconName: "CalendarCheck",
-    description: "Seryjne planowanie i precyzyjne odwoływanie posiłków z osobnym podziałem na zupę i drugie danie.",
-    content: `Codzienna ewidencja w arkuszu kalkulacyjnym była koszmarem. W **Dinner App** masz do dyspozycji inteligentne narzędzie konfiguracji posiłków (*Zmień dane*):
+    description: "Szybkie planowanie szablonami tygodniowymi, precyzyjne nanoszenie odpisów oraz ochrona wcześniej zgłoszonych nieobecności.",
+    content: `Codzienna ewidencja obiadów w programie **Dinner App** jest szybka, intuicyjna i eliminuje ryzyko pomyłek rachunkowych:
 
-- **Podział na Zupę i II Danie**: Każdy dzień roboczy ma niezależne oznaczenie zupy i drugiego dania. Jeśli uczeń jada tylko zupy – program policzy dokładnie stawkę za zupę.
-- **Seryjne szablony tygodniowe**: Zamiast klikać każdy dzień w miesiącu z osobna, wybierasz gotowy szablon:
-  - *Pełne obiady (Pn-Pt)*
-  - *Tylko zupy*
-  - *Tylko II dania*
-  - Albo zaznaczasz wybrane dni tygodnia (np. tylko poniedziałki i środy) i klikasz **Wypełnij cały miesiąc szablonem**.
-- **Planowanie na wiele miesięcy**: Możesz zaplanować posiłki nie tylko na bieżący miesiąc, ale jednym ruchem na cały semestr lub rok szkolny.
-- **Seryjne i pojedyncze odwoływanie**: Gdy rodzic zgłasza chorobę, odznaczasz konkretne dni robocze. Program od razu podsumowuje kwotę zwrotu (*Wartość odwołań*).`,
+### Dwuskładnikowość i niezależne stawki
+- Każdy posiłek składa się z dwóch niezależnych części: **Zupy** oraz **Drugiego dania**.
+- Każda część ma własną, konfigurowalną stawkę cenową (np. zupa 5,00 zł, drugie danie 15,00 zł).
+- Dziecko może jeść samą zupę, samo drugie danie lub pełne obiady w dowolne dni robocze.
+
+### Trzy stany posiłku każdego dnia
+1. **Planowane**: zadeklarowane zapotrzebowanie na dany miesiąc.
+2. **Odwołane**: zgłoszone nieobecności dziecka (np. choroba, zwolnienie).
+3. **Wykonane (Do zapłaty)**: posiłki faktycznie zjedzone i podlegające opłacie (Planowane minus Odwołane).
+
+> **Wbudowane zabezpieczenie**: Program nie pozwala odwołać posiłku, który nie był wcześniej zaplanowany (pole odwołania jest wtedy zablokowane).
+
+### Szablony tygodniowe jednym kliknięciem
+Zamiast mozolnego klikania każdego dnia w miesiącu z osobna, w oknie *„Zmień dane”* korzystasz z gotowych szablonów:
+- *Pełne obiady* (zupa + II danie od poniedziałku do piątku).
+- *Tylko zupy* lub *Tylko drugie dania*.
+- *Wyczyść* (reset wyboru).
+- Przycisk **Wypełnij cały miesiąc szablonem** jednym ruchem nanosi ułożony grafik na wszystkie dni robocze miesiąca.
+
+### Planowanie wielomiesięczne i ochrona odwołań
+- **Na semestr lub cały rok**: Możesz przełączyć zakres edycji na *„Edytuj kilka miesięcy”* i zastosować stały plan posiłków na dowolny okres (np. IX–VI).
+- **Inteligentna ochrona odwołań**: Zastosowanie planu na wiele miesięcy **nie niszczy wcześniej wprowadzonych zgłoszeń nieobecności (odwołań)** na konkretne dni! Wcześniejsze odpisy zostają w 100% zachowane.
+- **Inteligentny start**: Po otwarciu okna edycji program sam podpowiada aktualny grafik ucznia z bieżącego miesiąca jako punkt wyjścia.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 114147.png",
@@ -203,23 +251,24 @@ Na dole okna importu znajduje się kluczowa opcja:
       }
     ],
     steps: [
-      "Wybierz ucznia z listy i kliknij fioletowy przycisk 'Zmień dane' na górnym pasku.",
-      "Wybierz kategorię: 'Planowane posiłki' (aby ustalić co dziecko jada) lub 'Odwołane posiłki' (aby nanieść nieobecności).",
-      "Wybierz gotowy szablon (np. Pełne obiady Pn-Pt) i kliknij 'Wypełnij cały miesiąc szablonem'.",
-      "Sprawdź podsumowanie na dole (liczba zup, drugich dań i łączny koszt) i kliknij 'Zapisz zmiany'."
+      "Wybierz ucznia z listy i kliknij fioletowy przycisk „Zmień dane” na górnym pasku.",
+      "Wybierz kategorię: „Planowane posiłki” (ustalenie grafiku) lub „Odwołane posiłki” (naniesienie nieobecności).",
+      "Wybierz gotowy szablon lub zaznacz wybrane dni i kliknij „Wypełnij cały miesiąc szablonem”.",
+      "Jeśli plan ma obowiązywać na dłużej, przełącz na „Edytuj kilka miesięcy” i wskaż zakres dat.",
+      "Sprawdź podsumowanie kwot na dole okna i kliknij „Zapisz zmiany”."
     ],
     faq: [
       {
-        q: "Co jeśli dziecko jada tylko drugie dania w wybrane dni tygodnia?",
-        a: "W szablonie tygodniowym odznaczasz zupy i zaznaczasz 'II danie' tylko przy wybranych dniach (np. Wtorek, Czwartek). Program automatycznie wypełni tak cały miesiąc."
+        q: "Co jeśli uczeń jada tylko drugie dania w wybrane dni tygodnia?",
+        a: "W szablonie tygodniowym odznaczasz zupy i zaznaczasz „II danie” tylko przy wybranych dniach (np. wtorek i czwartek). Klikasz „Wypełnij cały miesiąc szablonem”, a program sam prawidłowo policzy należność."
       },
       {
-        q: "Czy odwołanie posiłku natychmiast przelicza rachunek rodzica?",
-        a: "Tak! Wartość odwołanego posiłku od razu pojawia się w czerwonym polu 'Odliczenie' i pomniejsza zieloną kwotę 'Do zapłaty'."
+        q: "Czy odwołanie posiłku natychmiast pomniejsza rachunek rodzica?",
+        a: "Tak! Wartość odwołanego posiłku od razu pojawia się w czerwonym polu „Odliczenie” i pomniejsza ostateczną kwotę „Do zapłaty”."
       },
       {
-        q: "Czy mogę zaplanować posiłki od razu na 3 miesiące do przodu?",
-        a: "Tak, w oknie edycji wystarczy przełączyć zakres edycji z 'Edytuj aktualny miesiąc' na 'Edytuj kilka miesięcy' i wybrać interesujący Cię przedział czasowy."
+        q: "Co się stanie z odwołaniami, gdy zmienię plan posiłków na cały semestr?",
+        a: "Wcześniej wprowadzone odwołania są bezpieczne. Program zaktualizuje plan bazowy, ale zachowa wszystkie zgłoszone wcześniej nieobecności."
       }
     ]
   },
@@ -230,16 +279,21 @@ Na dole okna importu znajduje się kluczowa opcja:
     shortTitle: "Wycieczki i całe klasy",
     category: "Akcje masowe",
     iconName: "Bus",
-    description: "Cała klasa wyjeżdża na wycieczkę lub do teatru? Odwołaj obiady wszystkim uczniom jednym kliknięciem.",
-    content: `Jedna z najbardziej lubianych funkcji przez intendentów. Gdy klasa wyjeżdża na wycieczkę, dawniej trzeba było otwierać kartę każdego ucznia z osobna i ręcznie kasować obiad.
-    
-W **Dinner App**:
-- Klikasz przycisk **Zmień dane po klasach (Odwołania)**.
-- Wybierasz klasę (np. *Klasa 1A - 24 uczniów*).
-- Widzisz kalendarz dni roboczych z informacją, ilu uczniów ma zaplanowane obiady w danym dniu.
-- Zaznaczasz checkbox **Odwołaj obiad** przy dacie wycieczki.
-- Możesz też użyć przycisku **Odwołaj wszystkie** (np. dla wycieczek trzydniowych).
-- Klikasz **Zapisz odwołania** – w ułamku sekundy posiłki zostają odwołane dla każdego dziecka z tej klasy, a ich rachunki odpowiednio pomniejszone!`,
+    description: "Cała klasa wyjeżdża na wycieczkę lub do kina? Odwołaj obiady wszystkim uczniom jednym kliknięciem.",
+    content: `Gdy cała klasa wyjeżdża na wycieczkę szkolną, dawniej intendent musiał otwierać kartę każdego dziecka z osobna i ręcznie kasować posiłek. W **Dinner App** zrobisz to błyskawicznie:
+
+### Jak działa grupowe odwoływanie?
+- **Wybór klasy i terminu**: Klikasz przycisk *„Zmień dane po klasach (Odwołania)”* i wybierasz klasę z listy (np. *Klasa 4B – 24 uczniów*).
+- **Podgląd zapotrzebowania na żywo**: Przy każdym dniu kalendarza program wyświetla dokładną informację, ilu uczniów z danej klasy miało w tym dniu zaplanowany obiad.
+- **Wybór rodzaju posiłku**: Możesz odwołać całe obiady, tylko drugie dania lub same zupy (np. gdy klasa wraca ze spektaklu przed obiadem i zje samą zupę).
+- **Odwołanie na wiele dni**: Przycisk *„Odwołaj wszystkie”* pozwala jednym ruchem zaznaczyć np. 3 dni wycieczki trzydniowej.
+
+### Sprawiedliwe rozliczenie uczniów
+- **Tylko dla jedzących obiady**: Odwołanie zostaje zapisane wyłącznie u tych dzieci z klasy, które faktycznie miały na ten dzień zaplanowany posiłek. Ich miesięczny rachunek zostaje automatycznie pomniejszony o właściwy odpis.
+- **Dzieci bez obiadów**: Program nie ingeruje w konta dzieci, które w ogóle nie korzystają ze stołówki.
+
+### Błyskawiczne przywracanie
+Jeśli wyjazd zostanie przełożony lub odwołany z powodu pogody, w tym samym oknie klikasz przycisk *„Przywróć wszystkie”* i zapisujesz zmiany. Wszyscy uczniowie odzyskują swoje pierwotne plany posiłków.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 114037.png",
@@ -247,23 +301,23 @@ W **Dinner App**:
       }
     ],
     steps: [
-      "Przejdź do widoku 'Dane zbiorcze' i kliknij niebieski przycisk 'Zmień dane po klasach'.",
-      "Z lewej listy wybierz klasę, która wyjeżdża na wycieczkę.",
-      "Zaznacz dni, w których klasa nie będzie jadła obiadów w szkole.",
-      "Kliknij 'Zapisz odwołania'. Program zaktualizuje konta wszystkich dzieci z tej klasy."
+      "Przejdź do widoku „Dane zbiorcze” i kliknij niebieski przycisk „Zmień dane po klasach”.",
+      "Z lewej listy wybierz klasę, która wyjeżdża ze szkoły.",
+      "Zaznacz dni nieobecności i wskaż rodzaj odwoływanego posiłku (cały obiad, zupa lub drugie danie).",
+      "Kliknij „Zapisz odwołania”. Program natychmiast zaktualizuje rozliczenia wszystkich wyjeżdżających dzieci."
     ],
     faq: [
       {
         q: "Co jeśli dwoje dzieci z tej klasy nie jedzie na wycieczkę i zostaje w świetlicy na obiedzie?",
-        a: "Po grupowym odwołaniu dla klasy możesz po prostu wejść w kartę tego konkretnego ucznia i jednym kliknięciem przywrócić mu obiad na ten dzień."
+        a: "Po grupowym odwołaniu dla klasy wejdź po prostu w kartę tego konkretnego ucznia i jednym kliknięciem przywróć mu obiad na ten dzień."
       },
       {
-        q: "Czy wycieczka zostanie odwołana tylko dzieciom, które miały wykupione posiłki?",
-        a: "Dokładnie tak – program odwołuje obiady wyłącznie tym uczniom, którzy mieli zaplanowany posiłek. Nie ingeruje w konta dzieci, które nie korzystają ze stołówki."
+        q: "Czy odpis zostanie naliczony uczniowi, który nie jada obiadów w szkole?",
+        a: "Nie. Program odwołuje posiłki wyłącznie tym dzieciom, które miały zaplanowany obiad na dany dzień."
       },
       {
-        q: "Co jeśli wycieczka została odwołana i dzieci jednak zjedzą obiad?",
-        a: "W tym samym oknie klikasz przycisk 'Przywróć wszystkie' i zapisujesz zmiany. Wszyscy uczniowie odzyskują swoje pierwotne plany posiłków."
+        q: "Co zrobić, gdy wycieczka została odwołana i dzieci jednak zjedzą obiad?",
+        a: "W tym samym oknie klikasz przycisk „Przywróć wszystkie” i zapisujesz zmiany. Wszyscy uczniowie odzyskują swoje pierwotne obiady."
       }
     ]
   },
@@ -274,41 +328,48 @@ W **Dinner App**:
     shortTitle: "Dane zbiorcze dla kuchni",
     category: "Kuchnia i raporty",
     iconName: "ChefHat",
-    description: "Koniec z pomyłkami przy liczeniu porcji. Rzetelne podsumowanie zup i drugich dań na każdy dzień roboczy.",
-    content: `Kluczowe narzędzie dla kucharek i intendenta. Przycisk **Dane zbiorcze (Wszyscy)** przełącza widok tabeli z pojedynczego ucznia na całą szkołę:
+    description: "Codzienne zapotrzebowanie stołówki dla kucharek i magazynu. Dokładna liczba zup i drugich dań na każdy dzień roboczy.",
+    content: `Kluczowe narzędzie codziennej pracy intendenta i personelu kuchennego. Przycisk **„Dane zbiorcze (Wszyscy)”** przełącza widok z pojedynczego ucznia na podsumowanie całej szkoły:
 
-- **Dzienna liczba porcji**: Dla każdego dnia roboczego w miesiącu tabela pokazuje dokładną sumę:
-  - Ile **zup** ugotować (np. 176 zup).
-  - Ile **drugich dań** przygotować (np. 198 drugich dań).
-- **Trzy poziomy informacji na dany dzień**:
-  - *Planowane*: Ile posiłków pierwotnie zamówiono.
-  - *Odwołane*: Ile dzieci zgłosiło nieobecność (podświetlone czytelnym kolorem).
-  - *Wykonane*: Dokładna liczba posiłków do wydania przez kuchnię.
-- **Podsumowanie finansowe miesiąca**: Po prawej stronie widać całościowe podsumowanie stołówki: suma planowana, suma odliczeń i suma rzeczywistego wykonania. Zero pomyłek w słupkach.`,
+### Dzienna liczba porcji na każdy dzień roboczy
+Dla każdego dnia miesiąca tabela wyświetla precyzyjne podsumowanie:
+- **Zupy do przygotowania**: Ile zup ugotować danego dnia (np. 182 zupy).
+- **Drugie dania do przygotowania**: Ile drugich dań wydać (np. 210 dań).
+- **Suma posiłków łącznie**: Całkowita liczba wydawanych dań.
+- **Liczba odwołań**: Ile nieobecności zgłoszono na ten dzień.
+- **Posiłki wykonane**: Liczba posiłków faktycznie do ugotowania przez kuchnię.
+
+### Aktualizacja na bieżąco w czasie rzeczywistym
+Gdy rodzic rano zadzwoni ze zgłoszeniem choroby i intendent naniesie odwołanie, tabela zbiorcza **natychmiast pomniejsza liczbę porcji na dany dzień**. Kucharki otrzymują zawsze aktualną informację i nie gotują zbędnych obiadów.
+
+### Ułatwienie dla magazynu i kontrola kosztów
+- **Planowanie zakupów**: Znając zapotrzebowanie na kolejne dni tygodnia, intendent zamawia dokładnie tyle mięsa, warzyw czy nabiału, ile potrzeba.
+- **Koniec z marnowaniem żywności**: Zero wyrzucanych porcji i zero sytuacji, w których dla kogoś zabraknie drugiego dania.
+- **Podsumowanie finansowe miesiąca**: Po prawej stronie widać całościowe zestawienie stołówki (łączna kwota planowana, suma odliczeń i rzeczywiste wykonanie) – gotowe do uzgodnienia z księgowością.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 113544.png",
-        caption: "Widok 'Dane zbiorcze' – sumy zup i drugich dań dla każdego dnia miesiąca oraz łączne finanse"
+        caption: "Widok 'Dane zbiorcze' – sumy zup i drugich dań dla każdego dnia miesiąca oraz łączne finanse stołówki"
       }
     ],
     steps: [
-      "W lewym panelu kliknij przycisk 'Dane zbiorcze (Wszyscy)'.",
-      "W głównej tabeli pojawi się podsumowanie wszystkich uczniów z całej szkoły.",
-      "Odczytaj liczbę zup i drugich dań na dzisiejszy dzień i przekaż informację paniom kucharkom.",
-      "Sprawdź prawe podsumowanie finansowe na koniec miesiąca, aby uzgodnić kwoty z księgowością."
+      "W lewym panelu nad listą uczniów kliknij przycisk „Dane zbiorcze (Wszyscy)”.",
+      "W głównej tabeli odszukaj kolumnę z dzisiejszą datą.",
+      "Odczytaj liczbę zup i drugich dań do ugotowania i przekaż informację kucharkom.",
+      "Na koniec miesiąca sprawdź prawe podsumowanie finansowe, aby uzgodnić kwoty z księgowością szkoły."
     ],
     faq: [
       {
         q: "O której godzinie dane zbiorcze są aktualne?",
-        a: "Dane aktualizują się w czasie rzeczywistym. Jeśli rodzic zadzwoni o 8:00 rano i naniesiesz odpis, tabela zbiorcza natychmiast zmniejszy liczbę porcji na dany dzień o 1."
+        a: "Dane aktualizują się natychmiast w czasie rzeczywistym. Każde zgłoszenie nieobecności wprowadzone rano od razu koryguje liczbę porcji."
       },
       {
-        q: "Czy mogę wydrukować to zestawienie na papierze dla kuchni?",
-        a: "Tak! Program pozwala wyeksportować dane zbiorcze do pliku Excel jednym kliknięciem, skąd możesz je błyskawicznie wydrukować."
+        q: "Czy mogę wydrukować to zestawienie dla kuchni na kartce?",
+        a: "Tak! Kliknij przycisk „Eksport danych” i wybierz „Szczegółowy rozkład na dni” – otrzymasz gotowy arkusz Excel do wydrukowania i powieszenia w kuchni."
       },
       {
-        q: "Czy widać podział na posiłki nauczycielskie i uczniowskie?",
-        a: "W tabeli zbiorczej widać całościową liczbę porcji, a dzięki filtracji po klasach/grupach możesz wyodrębnić pracowników i uczniów."
+        q: "Czy widać różnicę między liczbą zup a drugich dań?",
+        a: "Tak, w każdym dniu zupy i drugie dania są wykazywane w osobnych wierszach, co eliminuje zgadywanie w kuchni."
       }
     ]
   },
@@ -319,21 +380,39 @@ W **Dinner App**:
     shortTitle: "Seryjna wysyłka e-mail",
     category: "Komunikacja i rozliczenia",
     iconName: "Mail",
-    description: "Największa rewolucja w programie. Automatyczne wysyłanie spersonalizowanych rozliczeń do wszystkich rodziców jednym kliknięciem.",
-    content: `Ręczne wysyłanie maili lub SMS-ów z kwotami do 150 czy 300 rodziców zajmowało intendentom dziesiątki, a w skali roku **setki godzin żmudnej pracy**.
-    
-W **Dinner App** zrobisz to jednym przyciskiem:
-- **Pełna personalizacja wiadomości**: Wiadomość nie jest ogólnym ogłoszeniem! Każdy rodzic otrzymuje wiadomość przygotowaną specjalnie dla swojego dziecka.
-- **Inteligentne znaczniki automatyczne**: Program sam wstawia w treść:
-  - \`[nazwisko i imię ucznia]\`
-  - \`[klasa]\`
-  - \`[kwota do zapłaty]\` (wyliczona co do grosza po odpisach)
-  - \`[termin płatności]\` (np. do 28.09.2026)
-  - \`[numer konta]\` (numer IBAN szkoły z ustawień)
-  - \`[liczba wydanych posiłków]\` oraz \`[liczba odwołanych posiłków]\`
-- **Dwa tryby wysyłki do wyboru**:
-  1. **Półautomatyczna przez Microsoft Outlook**: Aplikacja generuje wiadomości i korzysta z programu Outlook na komputerze szkolnym. 100% bezpieczne dla kont szkolnych, bez podawania haseł w aplikacji.
-  2. **W pełni automatyczna w tle**: Przez tradycyjny serwer SMTP (np. Gmail) lub bezpośrednio przez konto Microsoft 365 (Microsoft Graph API).`,
+    description: "Automatyczne wysyłanie spersonalizowanych rozliczeń do rodziców jednym kliknięciem. Ogromna oszczędność czasu każdego miesiąca.",
+    content: `Ręczne przepisywanie kwot i pisanie setek maili co miesiąc zabierało intendentom wiele godzin. W **Dinner App** zrobisz to kilkoma kliknięciami:
+
+### Pełna personalizacja wiadomości (Zgodność z RODO)
+Wiadomość nie jest ogólnym ogłoszeniem – każdy rodzic otrzymuje w 100% osobną, prywatną wiadomość dotyczącą wyłącznie jego dziecka. Program sam wstawia w treść:
+- Imię i nazwisko ucznia oraz klasę.
+- Wyliczoną kwotę do zapłaty (po odliczeniu wszystkich zgłoszonych odpisów).
+- Termin płatności oraz numer konta bankowego szkoły (IBAN).
+- Liczbę wydanych obiadów i zgłoszonych odwołań.
+
+### Dwa warianty wysyłki
+- **Wysyłka indywidualna**: Wysłanie rozliczenia do rodzica konkretnego dziecka z poziomu jego karty.
+- **Masowa wysyłka (Hurtowy mailing)**: Rozebranie rozliczeń do wszystkich rodziców w szkole lub wybranej klasy za jednym zamachem.
+
+### 4 gotowe szablony pism
+1. *Zbliżający się termin płatności* (standardowe comiesięczne przypomnienie z kwotą).
+2. *Powiadomienie o zaległej płatności* (upomnienie o przekroczeniu terminu).
+3. *Miesięczne rozliczenie obiadów* (pełne zestawienie wydanych posiłków, odwołań i stawek).
+4. *Własna wiadomość* (dowolna treść z automatycznym nagłówkiem i podpisem intendenta).
+
+### Wygodne filtry i podgląd na żywo
+- **Szybkie filtry**: Wybór konkretnej klasy, wyszukiwarka po nazwisku oraz przycisk *„Zaznacz tylko z e-mailem”*.
+- **Pasek postępu na żywo**: Licznik wysyłki (np. \`45 / 120\`) oraz bieżący status każdego rodzica (*Oczekuje*, *Wysyłanie...*, *Wysłano*, *Błąd* z dymkiem wyjaśniającym przyczynę).
+- **Przycisk „Przerwij wysyłanie”**: Pozwala w bezpieczny sposób zatrzymać proces w dowolnym momencie.
+
+### Dwa tryby wysyłki i pełne bezpieczeństwo
+1. **Tryb Półautomatyczny (Microsoft Outlook na komputerze)**:
+   - Program przygotowuje wiadomości i korzysta ze szkolnego Outlooka.
+   - **Zero wpisywania haseł do skrzynki w programie** – w 100% bezpieczne dla szkolnych kont Office 365. Outlook sam archiwizuje pocztę w profilu użytkownika.
+2. **Tryb W Pełni Automatyczny (Wysyłka w tle: SMTP lub Microsoft 365)**:
+   - Wysyłka w tle przez szkolny serwer SMTP (lub Gmail z hasłem aplikacji) albo przez Microsoft 365 (Microsoft Graph API).
+   - **Ściśle lokalne bezpieczeństwo haseł**: Dane logowania do poczty są zapisywane **wyłącznie lokalnie na Twoim komputerze** (\`email_config.json\`) – **nigdy nie trafiają do wspólnej bazy danych szkoły**, więc inni pracownicy nie mają dostępu do Twojej skrzynki.
+   - Obsługa zapisu w folderze *Elementy wysłane* (IMAP), ukrytej kopii (BCC) oraz testów połączenia.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 114642.png",
@@ -346,23 +425,23 @@ W **Dinner App** zrobisz to jednym przyciskiem:
       }
     ],
     steps: [
-      "Kliknij przycisk 'Wyślij e-mail seryjnie' na górnym pasku ewidencji.",
-      "Zaznacz odbiorców (możesz zaznaczyć wszystkich jednym kliknięciem lub przefiltrować po wybranej klasie).",
-      "Wybierz gotowy wzór szablonu (np. 'Zbliżający się termin płatności') i ustaw termin płatności.",
-      "Kliknij fioletowy przycisk 'Wyślij e-mail'. Program wyśle spersonalizowane maile w tle!"
+      "Kliknij przycisk „Wyślij e-mail” na górnym pasku ewidencji.",
+      "Zaznacz odbiorców (np. przyciskiem „Zaznacz tylko z e-mailem” lub wybierając klasę).",
+      "Wybierz gotowy szablon (np. „Zbliżający się termin płatności”) i wskaż termin wpłaty.",
+      "Sprawdź treść wiadomości i kliknij fioletowy przycisk „Wyślij e-mail”. Program wyśle spersonalizowane maile do wszystkich rodziców."
     ],
     faq: [
       {
         q: "Czy rodzice widzą adresy e-mail innych rodziców?",
-        a: "Absolutnie nie. Każdy rodzic otrzymuje w 100% osobną, indywidualną wiadomość skierowaną tylko do niego, z danymi wyłącznie jego dziecka. Pełna zgodność z RODO."
+        a: "Absolutnie nie. Każdy rodzic otrzymuje w 100% osobną, indywidualną wiadomość z danymi wyłącznie swojego dziecka. Pełna zgodność z RODO."
       },
       {
         q: "Czy muszę konfigurować serwery pocztowe, jeśli mamy w szkole program Outlook?",
-        a: "Nie! Wystarczy wybrać tryb 'Półautomatyczna (Outlook)' – program wykorzysta bezpiecznie Twojego szkolnego Outlooka bez wpisywania żadnych haseł."
+        a: "Nie! Wystarczy wybrać tryb „Półautomatyczna (Outlook)” – program wykorzysta bezpiecznie Twojego szkolnego Outlooka bez wpisywania żadnych haseł."
       },
       {
-        q: "Czy mogę zmienić treść wiadomości lub dopisać własną informację (np. o zebraniu)?",
-        a: "Tak, treść tematu i wiadomości można w każdej chwili edytować bezpośrednio w oknie wysyłki."
+        q: "Czy mogę zmienić treść wiadomości przed wysłaniem?",
+        a: "Tak, treść tematu i wiadomości można w każdej chwili swobodnie edytować bezpośrednio w oknie wysyłki."
       }
     ]
   },
@@ -374,16 +453,26 @@ W **Dinner App** zrobisz to jednym przyciskiem:
     category: "Księgowość i finanse",
     iconName: "Download",
     screenshotLayout: "grid",
-    description: "Wygeneruj gotowe zestawienia do plików .xlsx – zarówno dla pojedynczego ucznia, jak i zbiorczo dla całej szkoły.",
-    content: `Choć program posiada własną bazę danych, wiemy, że księgowość w gminie często wymaga plików Excela. **Dinner App** posiada dedykowany moduł eksportu:
+    description: "Generowanie gotowych zestawień w arkuszach Excel (.xlsx) – indywidualnie dla ucznia oraz zbiorczo dla całej szkoły.",
+    content: `Wiemy, że urzędy gmin i księgowość szkolna wymagają rozliczeń w arkuszu kalkulacyjnym. **Dinner App** generuje gotowe pliki Excel (.xlsx) jednym kliknięciem:
 
-- **Eksport indywidualny ucznia**:
-  - Tabela 1:1 z rozkładem na dni robocze miesiąca (zupy, drugie dania).
-  - Wyliczona wartość planowana, suma odliczeń i kwota do zapłaty.
-  - Generuje gotowy, sformatowany plik z automatyczną nazwą: \`nazwisko_imie_MM.rrrr.xlsx\`.
-- **Eksport danych zbiorczych**:
-  - Dwa warianty do wyboru: **Podsumowanie łączne** (do sprawozdań budżetowych) lub **Szczegółowy rozkład na dni** (dla kuchni i intendenta).
-  - Możliwość osobnego wyeksportowania sumy planowanych posiłków oraz sumy odliczeń.`,
+### Trzy warianty raportów do wyboru
+1. **Raport indywidualny ucznia (Wierne odwzorowanie 1:1)**:
+   - Elegancka kopia karty ewidencyjnej z programu.
+   - Zawiera dane dziecka, klasę, rozbicie na zupę i drugie danie, wiersze: *Planowane*, *Odwołane* i *Wykonane*, żółte wyróżnienie dni wolnych oraz podsumowanie kosztów.
+   - Automatyczna, czytelna nazwa pliku: \`nazwisko_imie_MM.rrrr.xlsx\`.
+
+2. **Raport zbiorczy – Podsumowanie łączne (Cała szkoła)**:
+   - Tabela zawierająca wszystkich uczniów szkoły w podziale na klasy.
+   - Wykaz liczby zjedzonych zup, drugich dań oraz łącznej kwoty do zapłaty.
+   - Na dole arkusza znajduje się wiersz podsumowania finansowego i ilościowego całej placówki – gotowy dokument dla księgowości i gminy.
+
+3. **Raport zbiorczy – Szczegółowy rozkład na dni**:
+   - Pełna macierz: uczniowie w wierszach, wszystkie dni robocze miesiąca w kolumnach z rozbiciem na zupę i drugie danie.
+   - Oznaczenie dni wolnych oraz dzienne sumy zapotrzebowania na dole tabeli – idealne dla personelu kuchni i do archiwum stołówki.
+
+### Zgodność i gotowość do druku
+Pliki generowane są w uniwersalnym formacie \`.xlsx\`, w pełni zgodnym z programami Microsoft Excel, LibreOffice Calc oraz Arkuszami Google. Arkusze posiadają wyraźne obramowania, czytelne nagłówki i formatowanie walutowe (zł).`,
     screenshots: [
       {
         src: "/screenshots/eksport_indywidualny_excel.png",
@@ -391,27 +480,27 @@ W **Dinner App** zrobisz to jednym przyciskiem:
       },
       {
         src: "/screenshots/eksport_zbiorczy_excel.png",
-        caption: "Eksport danych zbiorczych z wyborem wariantu: podsumowanie łączne lub rozkład na dni"
+        caption: "Eksport danych zbiorczych: wybór podsumowania łącznego lub rozkładu na dni"
       }
     ],
     steps: [
-      "W widoku ucznia lub danych zbiorczych kliknij przycisk 'Eksport danych'.",
+      "W widoku ucznia lub danych zbiorczych kliknij przycisk „Eksport danych”.",
       "Wybierz wariant eksportu (np. Pełna ewidencja obiadów lub Podsumowanie łączne).",
-      "Kliknij 'Eksportuj do pliku Excel'.",
-      "Plik zostanie zapisany na Twoim dysku i jest gotowy do otwarcia lub wydrukowania."
+      "Kliknij „Eksportuj do pliku Excel”.",
+      "Plik zostanie zapisany na Twoim komputerze i jest od razu gotowy do otwarcia lub wydrukowania."
     ],
     faq: [
       {
-        q: "Czy wygenerowany plik otworzy się w starszych wersjach programu Excel lub LibreOffice?",
-        a: "Tak, generowane pliki to standardowy format .xlsx zgodny z Microsoft Excel (2007-2024), Office 365, LibreOffice Calc oraz Arkuszami Google."
+        q: "Czy wygenerowany plik otworzy się w programie Excel lub LibreOffice?",
+        a: "Tak, generowane pliki to standardowy format .xlsx zgodny z Microsoft Excel (wszystkie wersje), LibreOffice Calc oraz Arkuszami Google."
       },
       {
-        q: "Czy plik zawiera estetyczne formatowanie i nagłówki?",
+        q: "Czy plik zawiera estetyczne formatowanie tabeli?",
         a: "Tak, arkusz jest czytelnie pokolorowany, posiada wyraźne nagłówki, obramowania tabel i formatowanie walutowe (zł)."
       },
       {
         q: "Gdzie domyślnie zapisują się wyeksportowane pliki?",
-        a: "W folderze 'Pobrane' na Twoim komputerze lub w wybranej przez Ciebie lokalizacji."
+        a: "W folderze „Pobrane” na Twoim komputerze lub w lokalizacji wskazanej podczas zapisu."
       }
     ]
   },
@@ -422,19 +511,27 @@ W **Dinner App** zrobisz to jednym przyciskiem:
     shortTitle: "Cennik i dni wolne",
     category: "Konfiguracja",
     iconName: "Settings",
-    description: "Dostosuj globalne stawki za zupy i drugie dania, numer konta do przelewów oraz zablokuj ferie w kalendarzu.",
-    content: `Wszystkie parametry finansowe szkoły konfigurujesz w przejrzystym oknie **Ustawienia** (dostępnym przez ikonę koła zębatego w lewym górnym rogu):
+    description: "Konfiguracja stawek cennika, numeru konta szkoły, kalendarza przerw i ferii oraz opcji przejścia na nowy rok szkolny.",
+    content: `Wszystkie parametry finansowe i organizacyjne szkoły konfigurujesz w oknie **Ustawienia** (ikona koła zębatego w lewym górnym rogu). Panel podzielony jest na czytelne, rozwijane sekcje:
 
-1. **Ustawienia cennika obiadów**:
-   - Cena za zupę (PLN / zł) – np. 5,00 zł
-   - Cena za drugie danie (PLN / zł) – np. 15,00 zł
-   - Stawki te są automatycznie stosowane przy wszystkich nowych kalkulacjach.
-2. **Dane do przelewu i płatności**:
-   - Numer rachunku bankowego do wpłat (IBAN) – wstawiany automatycznie do generowanych wiadomości mailowych.
-   - Domyślny dzień miesiąca na płatność (np. 10. lub 25. dzień).
-3. **Dni wolne od szkoły (święta i ferie)**:
-   - Kalendarz, w którym zaznaczasz dni wolne od nauki (przerwy świąteczne, ferie zimowe, dni dyrektorskie).
-   - W te dni program automatycznie blokuje i zeruje posiłki dla wszystkich uczniów naraz, więc nikt nie zostanie błędnie obciążony opłatą!`,
+### 1. Ustawienia cennika obiadów
+- Definiowanie stawek za **zupę** oraz **drugie danie** z dokładnością do grosza (np. zupa 5,00 zł, drugie danie 15,00 zł).
+- Wprowadzone stawki są automatycznie stosowane przy wszystkich nowych kalkulacjach posiłków.
+
+### 2. Dane do przelewu i płatności
+- **Numer rachunku bankowego szkoły (IBAN)**: wstawiany automatycznie do generowanych wiadomości mailowych do rodziców.
+- **Domyślny dzień miesiąca na płatność**: np. wpłaty do 10. lub 25. dnia miesiąca.
+
+### 3. Globalny kalendarz dni wolnych od szkoły
+- Kalendarz obejmujący całą placówkę: ferie zimowe, przerwy świąteczne, święta państwowe oraz dni dyrektorskie.
+- Oznaczenie dnia jako wolnego wymaga zaledwie jednego kliknięcia w kalendarzu.
+- **Inteligentna i nieniszcząca „Wirtualna Maska”**:
+  - Oznaczenie dnia jako wolnego automatycznie blokuje posiłki, zeruje naliczanie opłat i wyróżnia kolumnę na żółto.
+  - **Plany uczniów nie są kasowane**: Jeśli dzień wolny oznaczono omyłkowo lub termin uległ zmianie, jego odznaczenie natychmiast przywraca oryginalne plany posiłków wszystkich uczniów bez konieczności ponownego wpisywania!
+
+### 4. Bezpieczeństwo i resetowanie
+- W ustawieniach znajduje się moduł przygotowania bazy do nowego roku szkolnego (promowanie klas, usuwanie absolwentów i reset obiadów), który szczegółowo opisujemy w osobnym **Rozdziale 10: Przejście na nowy rok szkolny**.
+- Dostępne jest również bezpieczne przywracanie ustawień fabrycznych zabezpieczone ostrzeżeniami przed przypadkowym wykonaniem.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 113627.png",
@@ -447,44 +544,118 @@ W **Dinner App** zrobisz to jednym przyciskiem:
     ],
     steps: [
       "Kliknij ikonę koła zębatego w lewym panelu nad listą uczniów.",
-      "Rozwiń sekcję 'Ustawienia cennika obiadów' i wpisz aktualne stawki.",
-      "W sekcji 'Dane do przelewu' podaj numer rachunku bankowego szkoły.",
-      "W sekcji 'Dni wolne od szkoły' zaznacz terminy ferii i świąt, a następnie kliknij 'Zamknij i zapisz'."
+      "Rozwiń sekcję „Ustawienia cennika obiadów” i wpisz aktualne stawki za zupę oraz drugie danie.",
+      "W sekcji „Dane do przelewu” podaj numer rachunku bankowego szkoły oraz termin wpłat.",
+      "W sekcji „Dni wolne od szkoły” zaznacz w kalendarzu święta i ferie, a następnie kliknij „Zamknij i zapisz”."
     ],
     faq: [
       {
-        q: "Co jeśli w trakcie roku szkolnego gmina podniesie stawkę za obiady?",
-        a: "Zmieniasz stawkę w cenniku – nowe wyliczenia od kolejnego miesiąca będą uwzględniać nową cenę, a historia minionych miesięcy zachowa ówczesne stawki."
+        q: "Co jeśli w trakcie roku szkolnego wzrośnie cena obiadów?",
+        a: "Zmieniasz stawkę w cenniku. Nowe kalkulacje uwzględnią nową cenę od kolejnego miesiąca, a historia minionych miesięcy zachowa ówczesne stawki."
       },
       {
-        q: "Czy muszę pamiętać o odwoływaniu obiadów w Boże Narodzenie i Wielkanoc?",
-        a: "Nie! Wystarczy zaznaczyć te dni w sekcji 'Dni wolne od szkoły'. Program sam wykluczy je ze wszystkich planów posiłków dla całej szkoły."
+        q: "Czy muszę pamiętać o odwoływaniu obiadów w ferie dla każdego dziecka?",
+        a: "Nie! Wystarczy zaznaczyć ferie w kalendarzu dni wolnych – program sam wykluczy te dni ze wszystkich planów posiłków w całej szkole."
       },
       {
-        q: "Czy można zresetować dane przed nowym rokiem szkolnym?",
-        a: "W ustawieniach znajduje się bezpieczna sekcja resetowania i archiwizacji bazy, zabezpieczona ostrzeżeniem przed przypadkowym kliknięciem."
+        q: "Co jeśli przez pomyłkę zaznaczę dzień wolny w normalny dzień nauki?",
+        a: "Kliknij ten dzień ponownie w kalendarzu, aby go odznaczyć. Oryginalne plany posiłków wszystkich uczniów wrócą natychmiast na swoje miejsce."
+      }
+    ]
+  },
+  {
+    id: "nowy-rok-szkolny",
+    number: "10",
+    title: "Przejście na nowy rok szkolny",
+    shortTitle: "Nowy rok szkolny",
+    category: "Administracja",
+    iconName: "GraduationCap",
+    description: "Automatyczny awans uczniów do kolejnych klas, bezpieczne usuwanie absolwentów oraz przygotowanie czystego grafiku na wrzesień.",
+    content: `Zamknięcie starego roku szkolnego i przygotowanie bazy na wrzesień bywało w szkołach pracochłonne. Zamiast ręcznie zmieniać klasę każdemu dziecku z osobna (np. 1A na 2A u setek uczniów) lub pojedynczo kasować absolwentów, moduł **Przejście na nowy rok szkolny** wykonuje całą procedurę automatycznie za jednym kliknięciem:
+
+### 1. Automatyczny awans klas do wyższego poziomu
+Program inteligentnie rozpoznaje oznaczenia klas w bazie i automatycznie podnosi ich poziom o 1 dla wszystkich roczników:
+- **Cyfry arabskie**: klasa \`1A\` staje się \`2A\`, \`2b\` staje się \`3b\`, \`7c\` staje się \`8c\`.
+- **Oddziały przedszkolne i zerówki**: zerówka \`0\` przechodzi do klasy \`1\`, a \`0A\` do \`1A\`.
+- **Cyfry rzymskie**: klasa \`I A\` przechodzi do \`II A\`, \`VII B\` do \`VIII B\`.
+- **Zapisy słowne i prefiksy**: \`klasa 3B\` przechodzi w \`klasa 4B\`, a \`kl. 7A\` w \`kl. 8A\`.
+- **Ochrona nauczycieli i pracowników**: Osoby bez przypisanej klasy lub o nazwach nieliczbowych (np. *Nauczyciele*, *Personel*, *Sekretariat*) pozostają w 100% nienaruszone.
+
+### 2. Usuwanie uczniów kończących szkołę (absolwentów)
+- **Czysta kartoteka**: Zaznaczenie opcji *„Usuń uczniów kończących szkołę (absolwentów)”* trwale usuwa z bazy rocznik opuszczający placówkę wraz z ich ewidencją posiłków.
+- **Konfigurowalny poziom**: Domyślnie ustawiona jest klasa **8** (szkoła podstawowa), ale pole możesz łatwo zmienić na dowolny inny poziom (np. klasa \`4\` dla liceum czy klasa \`5\` dla technikum).
+- **Opcjonalność**: Jeśli chcesz zachować absolwentów w bazie, wystarczy odznaczyć to pole.
+
+### 3. Zresetowanie posiłków na nowy rok
+- Zaznaczenie opcji *„Zresetuj posiłki dla wszystkich uczniów”* (zalecane przy przejściu na nowy rok) czyści dotychczasowe obiady (planowane, odwołane i wykonane) ze wszystkich miesięcy.
+- Daje to intendentowi całkowicie czysty grafik gotowy na przyjęcie nowych deklaracji obiadowych we wrześniu.
+- Jeśli szkoła potrzebuje historii minionego roku, przed wykonaniem operacji wystarczy zapisać roczne raporty do plików Excel.
+
+### 4. Podgląd skutków operacji na żywo przed wykonaniem
+Program na bieżąco analizuje bazę danych i w czytelnej ramce wyświetla dokładne statystyki przed uruchomieniem procedury:
+- 🟢 **Awans do wyższej klasy**: dokładna liczba uczniów, którzy przejdą do kolejnej klasy (np. *9 uczniów*).
+- 🔴 **Absolwenci (do usunięcia)**: dokładna liczba dzieci z rocznika kończącego szkołę (np. *1 uczeń*).
+- 👥 **Bez zmian (brak klasy / personel)**: liczba kont pracowniczych, które nie ulegną żadnej modyfikacji (np. *0 osób*).
+
+### 5. Bezpieczeństwo i potwierdzenie
+Po kliknięciu przycisku **„Przejdź na nowy rok szkolny”** program wyświetla czytelne okno z podsumowaniem wszystkich operacji i wymaga wyraźnego potwierdzenia intendenta, co w 100% chroni przed przypadkowym wykonaniem.`,
+    screenshots: [
+      {
+        src: "/screenshots/przejscie_na_nowy_rok_szkolny.png",
+        caption: "Moduł przejścia na nowy rok szkolny: awans klas, usuwanie absolwentów oraz podgląd skutków operacji na żywo"
+      }
+    ],
+    steps: [
+      "Otwórz Ustawienia (ikona koła zębatego w lewym panelu) i rozwiń kartę „Przejście na nowy rok szkolny”.",
+      "Sprawdź podgląd na żywo: liczbę uczniów zakwalifikowanych do awansu oraz liczbę absolwentów.",
+      "Upewnij się, jaka klasa jest wpisana jako kończąca szkołę (domyślnie 8 dla szkoły podstawowej).",
+      "Zaznacz opcję zresetowania posiłków, aby rozpocząć wrzesień z czystym grafikiem obiadów.",
+      "Kliknij fioletowy przycisk „Przejdź na nowy rok szkolny” i potwierdź wykonanie operacji w oknie dialogowym."
+    ],
+    faq: [
+      {
+        q: "Co się stanie z kontami nauczycieli i pracowników stołówki?",
+        a: "Konta o oznaczeniach nieliczbowych (np. Nauczyciele, Personel) są bezpieczne – program nie zmienia ich przypisania ani ich nie usuwa."
+      },
+      {
+        q: "Czy mogę promować klasy bez usuwania absolwentów?",
+        a: "Tak! Wystarczy odznaczyć pole „Usuń uczniów kończących szkołę (absolwentów)”. Wtedy rocznik opuszczający szkołę pozostanie w bazie danych."
+      },
+      {
+        q: "Co zrobić przed przejściem na nowy rok, aby zachować archiwalne rozliczenia?",
+        a: "Przed wykonaniem resetu warto wejść w moduł „Eksport danych” i wyeksportować raport roczny do pliku Excel lub zachować kopię pliku bazy danych."
       }
     ]
   },
   {
     id: "baza-danych-sqlite-postgres",
-    number: "10",
+    number: "11",
     title: "Baza danych: Lokalna (SQLite) vs Sieciowa (PostgreSQL)",
     shortTitle: "Baza lokalna i sieciowa",
     category: "Architektura i IT",
     iconName: "Database",
     screenshotSize: "medium",
-    description: "Pracuj na jednym komputerze w gabinecie intendenta lub współdziel dane z sekretariatem i księgowością w sieci.",
-    content: `Aplikacja **Dinner App** została zaprojektowana tak, aby idealnie pasować zarówno do małej wiejskiej szkoły, jak i wielkiego zespołu szkolno-przedszkolnego:
+    description: "Praca na jednym komputerze lub współdzielenie danych w sieci z sekretariatem i księgowością oraz bezkonfliktowa synchronizacja.",
+    content: `Program **Dinner App** idealnie dopasowuje się do potrzeb małych szkół, jak i dużych zespołów szkolno-przedszkolnych:
 
-- **Lokalna baza (SQLite)** – domyślny tryb pracy:
-  - Wszystkie dane zapisywane są bezpośrednio w bezpiecznym pliku na Twoim komputerze.
-  - Zero konfiguracji serwerów, zero skomplikowanych haseł.
-  - Program działa w 100% offline, nawet jeśli w szkole padnie internet.
-- **Sieciowa baza (PostgreSQL / Supabase)** – praca zespołowa (wielostanowiskowa):
-  - Idealne rozwiązanie, gdy nad obiadami pracują np. dwie osoby: intendent przyjmujący zgłoszenia w gabinecie oraz księgowa rozliczająca wpłaty w sekretariacie.
-  - Baza może znajdować się na lokalnym serwerze szkolnym lub w bezpiecznej chmurze (np. Supabase).
-  - Obie osoby widzą te same dane na żywo bez konieczności przesyłania plików pendrivem!`,
+### 1. Lokalna baza danych (SQLite) – tryb domyślny
+- Wszystkie dane zapisywane są bezpośrednio w pliku na dysku Twojego komputera (\`dinner_app.db\`).
+- Zero konfiguracji serwerów, zero skomplikowanych haseł.
+- Program działa w 100% offline – możesz swobodnie pracować nawet wtedy, gdy w szkole nie ma internetu.
+
+### 2. Sieciowa baza danych (PostgreSQL) – praca zespołowa
+- Rozwiązanie wielostanowiskowe: intendent w gabinecie przyjmuje zgłoszenia i odwołania, a księgowa w sekretariacie jednocześnie rozlicza wpłaty.
+- Obie osoby pracują na tych samych, aktualnych danych na żywo bez konieczności przenoszenia plików na pendrive.
+
+### 3. Czysty podział danych i ochrona prywatności
+- **Wspólna baza sieciowa**: przechowuje wyłącznie dane operacyjne stołówki (kartoteka uczniów, ewidencja obiadów, kalendarz dni wolnych i cennik).
+- **Pamięć lokalna Twojego komputera**: przechowuje prywatne hasła do Twojej skrzynki pocztowej (\`email_config.json\`). Dzięki temu inni pracownicy korzystający z programu nie mają wglądu w Twoje hasła ani prywatne ustawienia.
+
+### 4. Okno „Przenieś dane” (Dwukierunkowa synchronizacja)
+Program posiada dedykowane narzędzie do bezpiecznego przenoszenia danych między komputerem a serwerem sieciowym (SQLite ⇄ PostgreSQL):
+- 🛡️ **Miękkie przeniesienie (Zalecane – bezkonfliktowe)**: Inteligentne scalanie danych. Jeśli w bazie docelowej uczeń ma już zapisany adres e-mail, zarejestrowane posiłki czy odwołania, dane te **nie są nadpisywane**. Program dopisuje wyłącznie brakujących uczniów i nowe dni.
+- ⚠️ **Twarde przeniesienie**: Całkowite wyczyszczenie bazy docelowej i wstawienie dokładnej kopii ze źródła (zabezpieczone oknem ostrzegawczym).
+- **Pasek postępu i raport**: Wskaźnik postępu (0–100%) na żywo oraz pełne podsumowanie po zakończeniu operacji.`,
     screenshots: [
       {
         src: "/screenshots/Zrzut ekranu 2026-09-21 113955.png",
@@ -492,23 +663,23 @@ W **Dinner App** zrobisz to jednym przyciskiem:
       }
     ],
     steps: [
-      "Otwórz Ustawienia i rozwiń sekcję 'Baza danych (Lokalna SQLite / Sieciowa PostgreSQL)'.",
-      "Wybierz 'Lokalna baza (SQLite)', jeśli pracujesz na jednym komputerze.",
-      "Wybierz 'Sieciowa baza (PostgreSQL)', jeśli chcesz połączyć kilka komputerów w szkole.",
-      "Wpisz parametry połączenia (host, baza, użytkownik) i kliknij 'Połącz i zapisz'."
+      "Otwórz Ustawienia i rozwiń sekcję „Baza danych”.",
+      "Wybierz „Lokalna baza (SQLite)”, jeśli pracujesz na jednym komputerze w szkole.",
+      "Wybierz „Sieciowa baza (PostgreSQL)”, jeśli chcesz połączyć kilka komputerów w szkole.",
+      "Aby zsynchronizować dane między komputerem a siecią, kliknij przycisk „Przenieś dane” i wybierz bezpieczne „Miękkie przeniesienie”."
     ],
     faq: [
       {
         q: "Czy do korzystania z programu potrzebuję informatyka?",
-        a: "W trybie lokalnym (SQLite) absolutnie nie – program instaluje się w 15 sekund i działa od razu. W trybie sieciowym (PostgreSQL) szkolny informatyk może podłączyć bazę w kilka minut."
+        a: "W trybie lokalnym nie – program działa od razu po instalacji. W trybie sieciowym szkolny informatyk może skonfigurować połączenie w kilka minut."
       },
       {
         q: "Czy dane dzieci są bezpieczne pod kątem RODO?",
-        a: "W trybie lokalnym dane nigdy nie opuszczają dysku komputera w szkole. W trybie sieciowym połączenie jest szyfrowane (SSL), co gwarantuje pełną zgodność z normami oświatowymi."
+        a: "W trybie lokalnym dane nigdy nie opuszczają dysku komputera w szkole. W trybie sieciowym połączenie jest w pełni szyfrowane (SSL)."
       },
       {
         q: "Jak zrobić kopię zapasową bazy danych?",
-        a: "W trybie lokalnym wystarczy skopiować plik bazy danych (np. na bezpieczny pendrive szkolny). W trybie PostgreSQL kopie zapasowe mogą wykonywać się automatycznie."
+        a: "W trybie lokalnym wystarczy skopiować plik bazy danych (np. na bezpieczny szkolny pendrive). W trybie PostgreSQL kopie zapasowe mogą wykonywać się automatycznie na serwerze."
       }
     ]
   }

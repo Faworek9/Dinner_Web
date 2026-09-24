@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Mail, Menu, X, BookOpen, ShieldCheck, MessageSquarePlus } from 'lucide-react';
+import { Download, Mail, Menu, X, BookOpen, MessageSquarePlus } from 'lucide-react';
 
 export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,31 +12,6 @@ export default function Navbar({ onDownloadClick, activeTab, setActiveTab }) {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
-      {/* Górny pasek informacyjny */}
-      <div className="bg-school-900 text-white text-xs md:text-sm py-1.5 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center p-1 rounded-full bg-emerald-500/20 text-emerald-300">
-              <ShieldCheck className="w-3.5 h-3.5" />
-            </span>
-            <span className="font-medium text-slate-200">
-              Oficjalna strona programu dla polskich szkół i przedszkoli
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-school-100">
-            <Mail className="w-3.5 h-3.5 text-school-300" />
-            <span>Kontakt:</span>
-            <a 
-              href="mailto:ewidencja.obiadow@gmail.com" 
-              className="font-bold text-white hover:text-school-200 underline decoration-school-400"
-            >
-              ewidencja.obiadow@gmail.com
-            </a>
-          </div>
-        </div>
-      </div>
-
-
       {/* Główny pasek nawigacyjny - wzorowany na Google One: TYLKO wybór głównych stron */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
