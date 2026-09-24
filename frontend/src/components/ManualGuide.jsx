@@ -10,7 +10,7 @@ import {
   Download, 
   Settings, 
   Database,
-  GraduationCap, 
+  GraduationCap,  
   Search, 
   ChevronDown, 
   CheckCircle2, 
@@ -25,7 +25,8 @@ import {
   Check,
   FileDown,
   Zap,
-  Table
+  Table,
+  ShieldCheck
 } from 'lucide-react';
 import { MANUAL_CHAPTERS } from '../data/manualChapters.js';
 
@@ -645,14 +646,38 @@ export default function ManualGuide({ onDownloadClick }) {
                     </div>
                   </div>
 
-                  {/* Karta wyjaśniająca miękki import */}
-                  <div className="mt-5 p-4 rounded-xl bg-amber-50/90 border border-amber-200/90 text-amber-900 flex items-start gap-3 shadow-2xs">
-                    <Zap className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                    <div className="text-xs sm:text-sm leading-relaxed">
-                      <strong className="font-bold text-amber-950 block mb-1">
-                        Czym jest „Miękki import” w programie Dinner App?
-                      </strong>
-                      Zaznacz pole <em>„Miękki import (tylko aktualizacja istniejących uczniów)”</em> w oknie importu posiłków, gdy chcesz zaktualizować dane i plany obiadów <strong>wyłącznie dla dzieci, które już są w bazie</strong>. Nowe nazwiska z pliku zostaną bezpiecznie zignorowane, a dotychczasowa historia rozliczeń i odpisów pozostanie nienaruszona.
+                  {/* Karty wyjaśniające opcje bezpieczeństwa importu */}
+                  <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                    {/* Bezpieczny import danych */}
+                    <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200/90 text-emerald-950 flex items-start gap-3 shadow-2xs">
+                      <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                      <div className="text-xs sm:text-sm leading-relaxed">
+                        <div className="flex items-center gap-2 mb-1">
+                          <strong className="font-bold text-emerald-950">
+                            Bezpieczny import danych
+                          </strong>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-200 text-emerald-900 uppercase">
+                            Zalecane
+                          </span>
+                        </div>
+                        Gdy kolumny posiłków w pliku Excel są puste (lub wgrywasz plik z samymi kontaktami), program <strong>nie wyzeruje obiadów ucznia w bazie</strong>, lecz zachowa dotychczasowe wpisy. Puste komórki nie nadpisują również istniejących numerów telefonów i adresów e-mail.
+                      </div>
+                    </div>
+
+                    {/* Aktualizacja tylko istniejących uczniów */}
+                    <div className="p-4 rounded-xl bg-amber-50/90 border border-amber-200/90 text-amber-950 flex items-start gap-3 shadow-2xs">
+                      <Zap className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                      <div className="text-xs sm:text-sm leading-relaxed">
+                        <div className="flex items-center gap-2 mb-1">
+                          <strong className="font-bold text-amber-950">
+                            Aktualizacja tylko istniejących uczniów
+                          </strong>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-200 text-amber-900 uppercase">
+                            Opcja
+                          </span>
+                        </div>
+                        Zaktualizuje dane i grafiki obiadów <strong>wyłącznie dla dzieci już wprowadzonych do programu</strong>. Nowe nazwiska z pliku Excel zostaną bezpiecznie pominięte (żadni nowi uczniowie nie będą dodawani), chroniąc bazę przed zaśmieceniem.
+                      </div>
                     </div>
                   </div>
                 </div>

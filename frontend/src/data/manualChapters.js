@@ -121,89 +121,90 @@ Możliwość usunięcia profilu ucznia (np. po przeprowadzce do innej szkoły) j
   {
     id: "import-danych-excel",
     number: "03",
-    title: "Import danych z pliku Excel (.xlsx) i miękki import",
+    title: "Import danych z pliku Excel (.xlsx) i bezpieczna aktualizacja",
     shortTitle: "Import z Excela (.xlsx)",
     category: "Dane i uczniowie",
     iconName: "FileSpreadsheet",
     hasExcelTemplate: true,
     screenshotSize: "medium",
-    description: "Masowy import uczniów, kontaktów i tygodniowych planów posiłków z gotowego pliku .xlsx oraz inteligentna funkcja miękkiego importu.",
-    content: `Import z pliku Excel to najszybszy sposób na uruchomienie programu we wrześniu lub w nowym semestrze. W jednym kroku wgrywasz listę uczniów z podziałem na klasy, kontakty do rodziców oraz tygodniowy grafik obiadów.
+    description: "Masowy import uczniów, kontaktów i grafików posiłków z pliku .xlsx, ochrona istniejących obiadów oraz aktualizacja bez ryzyka utraty danych.",
+    content: `Import z pliku Excel to najszybszy sposób na uruchomienie programu we wrześniu oraz bieżącą aktualizację bazy w trakcie roku szkolnego. Program pozwala wgrać listę uczniów, kontakty do rodziców oraz tygodniowy grafik obiadów w kilka sekund.
 
-### Struktura kolumn pliku Excel (.xlsx)
-Arkusz importu składa się z 15 kolumn podzielonych na dwie przejrzyste części:
-
-1. **Dane osobowe i kontakty (Kolumny A – E)**:
-   - **Kolumna A (klasa)**: Oznaczenie klasy (np. *1A*, *2B*, *Oddział Przedszkolny*).
-   - **Kolumna B (nazwisko i imię)**: Dane ucznia w formacie *Nazwisko Imię*.
-   - **Kolumna C (numer do mamy)**: Telefon kontaktowy do mamy (opcjonalny).
-   - **Kolumna D (numer do taty)**: Telefon kontaktowy do taty (opcjonalny).
-   - **Kolumna E (adres e-mail)**: E-mail do comiesięcznych rozliczeń (opcjonalny).
-
-2. **Tygodniowy plan posiłków (Kolumny F – O)**:
-   - Nagłówki dni roboczych: **Poniedziałek**, **Wtorek**, **Środa**, **Czwartek**, **Piątek**.
-   - Pod każdym dniem znajdują się dwie kolumny: **zupa** oraz **II danie**.
-   - W komórkach wpisujesz:
-     - **1** – uczeń jada dany posiłek w ten dzień tygodnia.
-     - **0** (lub pusta komórka) – uczeń nie korzysta z tego posiłku.
-   *(Program w pełni obsługuje także starsze pliki 14-kolumnowe bez kolumny e-mail).*
+### Pełna elastyczność formatu arkusza Excel (.xlsx)
+Program automatycznie dopasowuje się do struktury Twojego pliku:
+1. **Pełny arkusz obiadowy (15 kolumn)**:
+   - **Kolumny A – E (Dane osobowe i kontakty)**: Klasa, Nazwisko i imię, Telefon do mamy, Telefon do taty, Adres e-mail.
+   - **Kolumny F – O (Plan posiłków Pn – Pt)**: Pod każdym dniem roboczym kolumny *zupa* oraz *II danie* (wpisujesz \`1\` = posiłek wykupiony, \`0\` lub puste = brak posiłku).
+2. **Starsze szablony szkolne (14 kolumn)**: Pełne wsparcie dla arkuszy bez kolumny adresu e-mail.
+3. **Arkusze tylko z kontaktami (od 2 do 5 kolumn)**: Jeśli chcesz zaktualizować wyłącznie same telefony, e-maile czy klasy uczniów bez ruszania posiłków – program bez problemu odczyta taki plik!
 
 ---
 
 ### Dwuetapowy proces importu posiłków
-Po kliknięciu przycisku *„Importuj .xlsx”* program prowadzi Cię przez dwa proste kroki:
+Po kliknięciu przycisku *„Importuj .xlsx”* nad listą uczniów program prowadzi Cię przez dwa proste kroki:
 
-- **Krok 1 – Wybór zakresu i trybu**:
-  - **Wybór roku szkolnego**: Program automatycznie rozpoznaje bieżący cykl (np. *2026/2027*).
-  - **Przyciski szybkiego zaznaczania**:
-    - *Bieżący miesiąc* – importuje grafik tylko na trwający miesiąc.
-    - *Rok szkolny (IX–VI)* – jednym ruchem zaznacza 10 miesięcy nauki szkolnej (od września do czerwca). Miesiące wakacyjne są wyraźnie wyróżnione.
-    - *Wszystkie* / *Wyczyść* – pełna kontrola nad zakresem miesięcy.
-  - **Opcja „Miękki import”**: Specjalny przełącznik na dole okna (szczegóły poniżej).
+- **Krok 1 – Wybór zakresu i opcji**:
+  - **Wybór roku szkolnego i miesięcy**: Wskazujesz rok szkolny (np. *2026/2027*) oraz zaznaczasz miesiące obowiązywania planu (przyciski: *Bieżący miesiąc*, *Rok szkolny (IX–VI)*, *Wszystkie* / *Wyczyść*). Miesiące wakacyjne są wyraźnie wyróżnione.
+  - Na dole okna konfigurujesz dwie kluczowe opcje bezpieczeństwa (szczegółowo opisane poniżej).
 
-- **Krok 2 – Wskazanie pliku i automatyczne rozpisanie**:
-  - Wskazujesz plik \`.xlsx\`. Program pobiera tygodniowe deklaracje i powiela je na **wszystkie dni robocze** wybranych miesięcy, automatycznie pomijając weekendy oraz zdefiniowane w programie święta i ferie.
+- **Krok 2 – Wskazanie pliku i czytelne podsumowanie**:
+  - Wskazujesz przygotowany plik \`.xlsx\`. Program automatycznie rozpisuje obiady na dni robocze wybranych miesięcy (omijając weekendy i ferie).
+  - Po zakończeniu wyświetla **dokładny raport z podsumowaniem**: liczbę dodanych uczniów, zaktualizowanych profili, pominiętych osób, zaktualizowanych grafików oraz obiadów zachowanych bez zmian.
 
 ---
 
-### Czym jest „Miękki import” i kiedy go włączyć?
-Na dole okna importu znajduje się przełącznik:
-**⚡ Miękki import (tylko aktualizacja istniejących uczniów)**
+### Opcja 1: 🛡️ Bezpieczny import danych [ZALECANE]
+Ta opcja jest **domyślnie włączona** i stanowi główną tarczę chroniącą Twoje dotychczasowe dane:
 
-- **Gdy opcja jest ODZNACZONA (Tryb pełny – domyślny)**:
-  Program dodaje do bazy wszystkich nowych uczniów z pliku, a dla istniejących aktualizuje dane i plany. To najlepszy tryb na początek roku szkolnego.
-- **Gdy opcja jest ZAZNACZONA (Miękki import)**:
-  Program aktualizuje dane i deklaracje **wyłącznie dla dzieci, które już wcześniej znajdują się w bazie**. Nowe nazwiska z pliku zostaną bezpiecznie pominięte (żadne nowe konto nie zostanie utworzone). Nic z dotychczasowej bazy nie jest usuwane.
+- **Jak działa?**
+  Gdy w importowanym pliku Excel którekolwiek kolumny są  puste, program **nie wyzeruje zapisanych danych ucznia w bazie**, lecz bezpiecznie zachowa dotychczasowe wpisy.
+- **Ochrona kontaktów i posiłków**:
+  Puste komórki w pliku Excel dla klasy, telefonów do rodziców lub adresu e-mail, czy planowanych posiłków **nigdy nie kasują** danych wprowadzonych wcześniej do programu.
+- **Kiedy z niej korzystać?**
+  Zawsze! Dzięki niej możesz w trakcie roku bezpiecznie zaimportować plik z nowymi numerami telefonów czy zaktualizowanymi adresami e-mail od rodziców bez obaw, że uczniom znikną zamówione obiady.
 
-**Kiedy warto włączyć Miękki import?**
-- Gdy w trakcie roku otrzymujesz nowy arkusz ze zmianami deklaracji i chcesz nanieść korekty tylko obecnym stołownikom.
-- Gdy plik Excel zawiera całą szkołę (np. 400 uczniów), a na obiady zapisało się tylko 150 osób – miękki import zaktualizuje plany stołowników bez zaśmiecania bazy pozostałymi dziećmi.`,
+---
+
+### Opcja 2: ⚡ Aktualizacja tylko istniejących uczniów [OPCJA]
+Ta funkcja pozwala precyzyjnie kontrolować, kto trafia do Twojej bazy danych:
+
+- **Jak działa?**
+  Gdy zaznaczysz tę opcję, program naniesie zmiany **wyłącznie u dzieci, które już znajdują się w programie**. Wszystkie nowe nazwiska z pliku Excel zostaną zignorowane (żaden nowy uczeń nie zostanie dopisany).
+- **Ochrona przed zaśmieceniem bazy**:
+  Nic z bazy nie jest usuwane – Twoja dotychczasowa lista uczniów pozostaje w 100% nienaruszona.
+- **Kiedy z niej korzystać?**
+  Gdy otrzymujesz ze szkolnego sekretariatu zbiorczy plik obejmujący całą szkołę (np. 500 uczniów), a obiady jada tylko 160 zapisanych dzieci. Włączenie tej opcji zaktualizuje dane stołowników bez dodawania pozostałych 340 uczniów do bazy.`,
     screenshots: [
       {
         src: "/screenshots/ustawienia_importu_posilkow.png",
-        caption: "Okno konfiguracji importu posiłków: wybór roku szkolnego, zakresu miesięcy oraz funkcja miękkiego importu"
+        caption: "Okno konfiguracji importu posiłków: wybór miesięcy oraz opcje 'Bezpieczny import danych' i 'Aktualizacja tylko istniejących uczniów'"
       }
     ],
     steps: [
       "Pobierz gotowy wzór pliku .xlsx (zielony przycisk poniżej) lub skopiuj nagłówki do pustego arkusza.",
-      "Uzupełnij listę uczniów: klasa, nazwisko i imię, telefony, e-maile oraz wpisz cyfrę 1 przy posiłkach, które dziecko jada.",
+      "Uzupełnij arkusz danymi uczniów (możesz wpisać pełne deklaracje obiadów lub same dane kontaktowe).",
       "W programie kliknij przycisk „Importuj .xlsx” w lewym panelu nad listą uczniów i wskaż przygotowany plik.",
-      "Zaznacz miesiące, na które ma obowiązywać plan (np. przyciskiem „Rok szkolny (IX-VI)”).",
-      "Jeśli aktualizujesz tylko obecnych uczniów bez dopisywania nowych osób, zaznacz opcję „Miękki import”.",
-      "Kliknij „Dalej”. Program w kilka sekund zaimportuje dane i przygotuje ewidencję na wszystkie wybrane miesiące."
+      "W oknie ustawień zaznacz miesiące, na które ma obowiązywać grafik (np. „Rok szkolny (IX-VI)”).",
+      "Pozostaw włączony „Bezpieczny import danych”, aby chronić dotychczasowe obiady przed przypadkowym wyzerowaniem.",
+      "Jeśli aktualizujesz tylko obecnych stołowników bez dopisywania nowych osób, zaznacz opcję „Aktualizacja tylko istniejących uczniów”.",
+      "Kliknij „Dalej ➔”. Program zaktualizuje bazę i wyświetli raport podsumowujący operację."
     ],
     faq: [
       {
-        q: "Co wpisać w polach zupy i drugiego dania, jeśli uczeń nie jada w dany dzień?",
-        a: "Wpisz cyfrę 0 lub pozostaw komórkę pustą. Program zinterpretuje to jako brak posiłku."
+        q: "Co daje opcja „Bezpieczny import danych”?",
+        a: "Chroni Cię przed przypadkowym skasowaniem danych wpisanych w programie. Jeśli na przykład, w pliku Excel nie wypełnisz kolumn z posiłkami (bo chcesz zaktualizować np. tylko nowe telefony rodziców), program zachowa wszystkie dotychczasowe plany obiadów uczniów bez zmian."
       },
       {
-        q: "Czy w pliku Excel muszę obowiązkowo podawać numery telefonów i e-maile?",
-        a: "Nie, są to pola opcjonalne. Jeśli ich nie wpiszesz, uczeń zostanie zaimportowany, a dane kontaktowe możesz dopisać w dowolnej chwili w programie."
+        q: "Co się stanie, jeśli w pliku Excel komórka z telefonem jest pusta, a uczeń ma już telefon w bazie?",
+        a: "Program inteligentnie chroni Twoje dane – pusta komórka w Excelu nie skasuje zapisanego wcześniej numeru telefonu ani adresu e-mail."
       },
       {
-        q: "Czy miękki import usunie uczniów, których nie ma w nowym pliku Excel?",
-        a: "Nie! Miękki import nigdy niczego nie usuwa z bazy. Ignoruje jedynie nowe nazwiska z pliku, a Twoja dotychczasowa baza pozostaje w 100% bezpieczna."
+        q: "Czy mogę zaimportować plik z samymi kontaktami (bez kolumn z posiłkami)?",
+        a: "Tak! Program obsługuje arkusze o różnej liczbie kolumn (od 2 do 15). Dzięki Bezpiecznemu importowi możesz wgrać same kontakty, a obiady dzieci pozostaną nienaruszone."
+      },
+      {
+        q: "Kiedy włączyć opcję „Aktualizacja tylko istniejących uczniów”?",
+        a: "Włącz ją, gdy dostajesz z sekretariatu plik obejmujący całą szkołę (np. 500 dzieci), a chcesz zaktualizować dane wyłącznie tych 180 uczniów, którzy są już zapisani na obiady w programie."
       }
     ]
   },
