@@ -26,7 +26,9 @@ import {
   FileDown,
   Zap,
   Table,
-  ShieldCheck
+  ShieldCheck,
+  Lock,
+  Utensils
 } from 'lucide-react';
 import { MANUAL_CHAPTERS } from '../data/manualChapters.js';
 
@@ -646,24 +648,16 @@ export default function ManualGuide({ onDownloadClick }) {
                     </div>
                   </div>
 
-                  {/* Karty wyjaśniające opcje bezpieczeństwa importu */}
-                  <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                    {/* Bezpieczny import danych */}
-                    <div className="p-4 rounded-xl bg-emerald-50/90 border border-emerald-200/90 text-emerald-950 flex items-start gap-3 shadow-2xs">
-                      <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                      <div className="text-xs sm:text-sm leading-relaxed">
-                        <div className="flex items-center gap-2 mb-1">
-                          <strong className="font-bold text-emerald-950">
-                            Bezpieczny import danych
-                          </strong>
-                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-200 text-emerald-900 uppercase">
-                            Zalecane
-                          </span>
-                        </div>
-                        Gdy kolumny posiłków w pliku Excel są puste (lub wgrywasz plik z samymi kontaktami), program <strong>nie wyzeruje obiadów ucznia w bazie</strong>, lecz zachowa dotychczasowe wpisy. Puste komórki nie nadpisują również istniejących numerów telefonów i adresów e-mail.
-                      </div>
+                  {/* Domyślna ochrona danych */}
+                  <div className="mt-5 p-3.5 rounded-xl bg-emerald-50/90 border border-emerald-200/90 text-emerald-950 flex items-center gap-3 text-xs sm:text-sm shadow-2xs">
+                    <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+                    <div>
+                      <strong className="font-bold">Domyślne bezpieczeństwo:</strong> Puste komórki w pliku Excel <strong>nigdy nie wyzerują obiadów</strong> ani nie skasują istniejących numerów telefonów i adresów e-mail wprowadzonych wcześniej do programu.
                     </div>
+                  </div>
 
+                  {/* Karty wyjaśniające 3 opcjonalne tryby importu */}
+                  <div className="mt-3.5 grid grid-cols-1 md:grid-cols-3 gap-3.5">
                     {/* Aktualizacja tylko istniejących uczniów */}
                     <div className="p-4 rounded-xl bg-amber-50/90 border border-amber-200/90 text-amber-950 flex items-start gap-3 shadow-2xs">
                       <Zap className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
@@ -677,6 +671,38 @@ export default function ManualGuide({ onDownloadClick }) {
                           </span>
                         </div>
                         Zaktualizuje dane i grafiki obiadów <strong>wyłącznie dla dzieci już wprowadzonych do programu</strong>. Nowe nazwiska z pliku Excel zostaną bezpiecznie pominięte (żadni nowi uczniowie nie będą dodawani), chroniąc bazę przed zaśmieceniem.
+                      </div>
+                    </div>
+
+                    {/* Tylko dodawaj nowe dane */}
+                    <div className="p-4 rounded-xl bg-blue-50/90 border border-blue-200/90 text-blue-950 flex items-start gap-3 shadow-2xs">
+                      <Lock className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                      <div className="text-xs sm:text-sm leading-relaxed">
+                        <div className="flex items-center gap-2 mb-1">
+                          <strong className="font-bold text-blue-950">
+                            Tylko dodawaj nowe dane
+                          </strong>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-200 text-blue-900 uppercase">
+                            Opcja
+                          </span>
+                        </div>
+                        Gdy uczeń ma już wpisaną klasę, telefon, e-mail lub posiłki w wybranym miesiącu, <strong>dane te pozostaną bez zmian</strong>. Program zablokuje nadpisywanie i uzupełni wyłącznie te pola, które dotychczas były puste.
+                      </div>
+                    </div>
+
+                    {/* Puste komórki posiłków interpretuj jako 0 */}
+                    <div className="p-4 rounded-xl bg-purple-50/90 border border-purple-200/90 text-purple-950 flex items-start gap-3 shadow-2xs">
+                      <Utensils className="w-5 h-5 text-purple-600 shrink-0 mt-0.5" />
+                      <div className="text-xs sm:text-sm leading-relaxed">
+                        <div className="flex items-center gap-2 mb-1">
+                          <strong className="font-bold text-purple-950">
+                            Puste komórki interpretuj jako 0
+                          </strong>
+                          <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-200 text-purple-900 uppercase">
+                            Opcja
+                          </span>
+                        </div>
+                        Gdy komórka w kolumnie posiłków w pliku Excel jest pusta, <strong>program ustawi 0 (skasuje posiłek)</strong>. Włącz tylko wtedy, gdy chcesz celowo wyczyścić obiady pustymi komórkami z pliku.
                       </div>
                     </div>
                   </div>

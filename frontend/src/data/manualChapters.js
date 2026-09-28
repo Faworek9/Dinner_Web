@@ -145,7 +145,7 @@ Po kliknięciu przycisku *„Importuj .xlsx”* nad listą uczniów program prow
 
 - **Krok 1 – Wybór zakresu i opcji**:
   - **Wybór roku szkolnego i miesięcy**: Wskazujesz rok szkolny (np. *2026/2027*) oraz zaznaczasz miesiące obowiązywania planu (przyciski: *Bieżący miesiąc*, *Rok szkolny (IX–VI)*, *Wszystkie* / *Wyczyść*). Miesiące wakacyjne są wyraźnie wyróżnione.
-  - Na dole okna konfigurujesz dwie kluczowe opcje bezpieczeństwa (szczegółowo opisane poniżej).
+  - Na dole okna możesz włączyć jedną z trzech dodatkowych opcji importu (szczegółowo opisane poniżej).
 
 - **Krok 2 – Wskazanie pliku i czytelne podsumowanie**:
   - Wskazujesz przygotowany plik \`.xlsx\`. Program automatycznie rozpisuje obiady na dni robocze wybranych miesięcy (omijając weekendy i ferie).
@@ -153,19 +153,7 @@ Po kliknięciu przycisku *„Importuj .xlsx”* nad listą uczniów program prow
 
 ---
 
-### Opcja 1: 🛡️ Bezpieczny import danych [ZALECANE]
-Ta opcja jest **domyślnie włączona** i stanowi główną tarczę chroniącą Twoje dotychczasowe dane:
-
-- **Jak działa?**
-  Gdy w importowanym pliku Excel którekolwiek kolumny są  puste, program **nie wyzeruje zapisanych danych ucznia w bazie**, lecz bezpiecznie zachowa dotychczasowe wpisy.
-- **Ochrona kontaktów i posiłków**:
-  Puste komórki w pliku Excel dla klasy, telefonów do rodziców lub adresu e-mail, czy planowanych posiłków **nigdy nie kasują** danych wprowadzonych wcześniej do programu.
-- **Kiedy z niej korzystać?**
-  Zawsze! Dzięki niej możesz w trakcie roku bezpiecznie zaimportować plik z nowymi numerami telefonów czy zaktualizowanymi adresami e-mail od rodziców bez obaw, że uczniom znikną zamówione obiady.
-
----
-
-### Opcja 2: ⚡ Aktualizacja tylko istniejących uczniów [OPCJA]
+### Opcja 1: ⚡ Aktualizacja tylko istniejących uczniów [OPCJA]
 Ta funkcja pozwala precyzyjnie kontrolować, kto trafia do Twojej bazy danych:
 
 - **Jak działa?**
@@ -173,11 +161,33 @@ Ta funkcja pozwala precyzyjnie kontrolować, kto trafia do Twojej bazy danych:
 - **Ochrona przed zaśmieceniem bazy**:
   Nic z bazy nie jest usuwane – Twoja dotychczasowa lista uczniów pozostaje w 100% nienaruszona.
 - **Kiedy z niej korzystać?**
-  Gdy otrzymujesz ze szkolnego sekretariatu zbiorczy plik obejmujący całą szkołę (np. 500 uczniów), a obiady jada tylko 160 zapisanych dzieci. Włączenie tej opcji zaktualizuje dane stołowników bez dodawania pozostałych 340 uczniów do bazy.`,
+  Gdy otrzymujesz ze szkolnego sekretariatu zbiorczy plik obejmujący całą szkołę (np. 500 uczniów), a obiady jada tylko 160 zapisanych dzieci. Włączenie tej opcji zaktualizuje dane stołowników bez dodawania pozostałych 340 uczniów do bazy.
+
+---
+
+### Opcja 2: 🔒 Tylko dodawaj nowe dane [OPCJA]
+Ta funkcja gwarantuje całkowitą nienaruszalność wszystkiego, co zostało już wcześniej wprowadzone do programu:
+
+- **Jak działa?**
+  Gdy zaznaczysz tę opcję, program **zablokuje nadpisywanie jakichkolwiek istniejących danych**. Jeżeli uczeń ma już w programie wpisaną klasę, telefon, adres e-mail lub zaplanowane posiłki w wybranym miesiącu – dane te **pozostaną bez zmian**.
+- **Tylko uzupełnianie braków**:
+  Z pliku Excel program pobierze i zapisze informacje **wyłącznie w dotychczas pustych polach** (np. dopisze brakujący e-mail lub doda posiłki uczniom, którzy dotychczas nie mieli jeszcze zaplanowanych obiadów w danym miesiącu).
+- **Kiedy z niej korzystać?**
+  Gdy w trakcie roku wprowadziłeś już własne korekty w programie (np. uczeń zmienił deklarację, rodzic podał inny telefon), a teraz wgrywasz kolejny arkusz z sekretariatu i chcesz uzupełnić wyłącznie brakujące dane bez ryzyka nadpisania swoich poprawek.
+
+---
+
+### Opcja 3: 🍽️ Puste komórki posiłków interpretuj jako 0 [OPCJA]
+Ta funkcja pozwala na celowe i kontrolowane wyzerowanie obiadów za pomocą pliku Excel:
+
+- **Jak działa?**
+  Domyślnie program chroni Twoje posiłki (pusta komórka w Excelu oznacza: *„pozostaw dotychczasowy plan ucznia bez zmian”*). Gdy jednak zaznaczysz tę opcję, program **każdą pustą komórkę w kolumnie posiłków potraktuje jako 0 (brak posiłku)** i skasuje przypisany obiad w bazie.
+- **Kiedy z niej korzystać?**
+  Gdy zamiast standardowego zapisu z wykorzystaniem 1 i 0 w pliku Exel, pozostawiono puste komórki w przypadku braku posiłku`,
     screenshots: [
       {
         src: "/screenshots/ustawienia_importu_posilkow.png",
-        caption: "Okno konfiguracji importu posiłków: wybór miesięcy oraz opcje 'Bezpieczny import danych' i 'Aktualizacja tylko istniejących uczniów'"
+        caption: "Okno konfiguracji importu posiłków: wybór miesięcy oraz opcje 'Aktualizacja tylko istniejących uczniów', 'Tylko dodawaj nowe dane' i 'Puste komórki posiłków interpretuj jako 0'"
       }
     ],
     steps: [
@@ -185,26 +195,35 @@ Ta funkcja pozwala precyzyjnie kontrolować, kto trafia do Twojej bazy danych:
       "Uzupełnij arkusz danymi uczniów (możesz wpisać pełne deklaracje obiadów lub same dane kontaktowe).",
       "W programie kliknij przycisk „Importuj .xlsx” w lewym panelu nad listą uczniów i wskaż przygotowany plik.",
       "W oknie ustawień zaznacz miesiące, na które ma obowiązywać grafik (np. „Rok szkolny (IX-VI)”).",
-      "Pozostaw włączony „Bezpieczny import danych”, aby chronić dotychczasowe obiady przed przypadkowym wyzerowaniem.",
-      "Jeśli aktualizujesz tylko obecnych stołowników bez dopisywania nowych osób, zaznacz opcję „Aktualizacja tylko istniejących uczniów”.",
+      "Jeśli aktualizujesz tylko obecnych stołowników bez dopisywania nowych osób z pliku, zaznacz opcję „Aktualizacja tylko istniejących uczniów”.",
+      "Jeśli chcesz wyłącznie uzupełnić brakujące dane bez modyfikowania dotychczas wpisanych telefonów i obiadów, zaznacz opcję „Tylko dodawaj nowe dane”.",
+      "Jeśli puste komórki w pliku Excel mają celowo wyzerować (skasować) dotychczasowe obiady ucznia, zaznacz opcję „Puste komórki posiłków interpretuj jako 0”.",
       "Kliknij „Dalej ➔”. Program zaktualizuje bazę i wyświetli raport podsumowujący operację."
     ],
     faq: [
       {
-        q: "Co daje opcja „Bezpieczny import danych”?",
-        a: "Chroni Cię przed przypadkowym skasowaniem danych wpisanych w programie. Jeśli na przykład, w pliku Excel nie wypełnisz kolumn z posiłkami (bo chcesz zaktualizować np. tylko nowe telefony rodziców), program zachowa wszystkie dotychczasowe plany obiadów uczniów bez zmian."
+        q: "Co program robi domyślnie, gdy komórka z posiłkiem w Excelu jest pusta?",
+        a: "Domyślnie program chroni Twoje dane – pusta komórka w Excelu nie wyzeruje zaplanowanych obiadów ucznia w bazie. Program pozostawi dotychczasowy grafik bez zmian. Obiady zostaną wyzerowane pustymi polami tylko wtedy, gdy celowo zaznaczysz opcję „Puste komórki posiłków interpretuj jako 0”."
       },
       {
         q: "Co się stanie, jeśli w pliku Excel komórka z telefonem jest pusta, a uczeń ma już telefon w bazie?",
-        a: "Program inteligentnie chroni Twoje dane – pusta komórka w Excelu nie skasuje zapisanego wcześniej numeru telefonu ani adresu e-mail."
+        a: "Program inteligentnie chroni Twoje dane – pusta komórka w Excelu nigdy nie skasuje zapisanego wcześniej numeru telefonu ani adresu e-mail."
       },
       {
         q: "Czy mogę zaimportować plik z samymi kontaktami (bez kolumn z posiłkami)?",
-        a: "Tak! Program obsługuje arkusze o różnej liczbie kolumn (od 2 do 15). Dzięki Bezpiecznemu importowi możesz wgrać same kontakty, a obiady dzieci pozostaną nienaruszone."
+        a: "Tak! Program obsługuje arkusze o różnej liczbie kolumn (od 2 do 15). Możesz wgrać same kontakty, a obiady dzieci pozostaną w 100% nienaruszone."
       },
       {
         q: "Kiedy włączyć opcję „Aktualizacja tylko istniejących uczniów”?",
         a: "Włącz ją, gdy dostajesz z sekretariatu plik obejmujący całą szkołę (np. 500 dzieci), a chcesz zaktualizować dane wyłącznie tych 180 uczniów, którzy są już zapisani na obiady w programie."
+      },
+      {
+        q: "Czym różni się opcja „Tylko dodawaj nowe dane” od zachowania standardowego?",
+        a: "W standardowym trybie, jeśli uczeń ma w bazie telefon A, a w pliku Excel wpiszesz telefon B, program zaktualizuje numer na B. Gdy włączysz „Tylko dodawaj nowe dane”, program zablokuje jakiekolwiek zmiany i pozostawi telefon A, uzupełniając wyłącznie te pola, które dotychczas były puste."
+      },
+      {
+        q: "Kiedy zaznaczyć opcję „Puste komórki posiłków interpretuj jako 0”?",
+        a: "Zaznacz ją, gdy dzieci zrezygnowały z posiłków (np. w nowym semestrze uczeń nie jada już w piątki) i w pliku Excel usunięto jedynki z tych dni. Ta opcja spowoduje, że puste miejsca w arkuszu wyzerują posiłki w programie."
       }
     ]
   },

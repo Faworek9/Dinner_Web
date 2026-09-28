@@ -38,7 +38,7 @@ export default function SecondaryNav({ activeTab, onSelectManualStep, activeManu
   const scrollToSection = (sectionId) => {
     const el = document.getElementById(sectionId);
     if (el) {
-      const yOffset = -140; // bezpieczny offset pod główny pasek (105px) + margines
+      const yOffset = -135; // 72px (Navbar) + ~48px (SecondaryNav) + 15px marginesu
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
@@ -62,20 +62,20 @@ export default function SecondaryNav({ activeTab, onSelectManualStep, activeManu
   if (!visible) return null;
 
   return (
-    <div className="sticky top-[115px] z-30 w-full pointer-events-none transition-all duration-300 animate-fadeIn">
-      <div className="max-w-5xl mx-auto px-4 flex justify-center">
-        {/* Wyśrodkowana kapsuła nawigacyjna w stylu Google One bez zbędnego drugiego przycisku pobierania */}
-        <div className="pointer-events-auto bg-slate-900/95 backdrop-blur-md text-white p-1.5 rounded-full shadow-2xl border border-slate-700/80 inline-flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+    <div className="sticky top-[72px] z-30 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all duration-300 animate-fadeIn">
+      <div className="max-w-5xl mx-auto px-4 flex justify-center py-2 sm:py-2.5">
+        {/* Wyśrodkowana nawigacja podrzędna spójna z jasnym motywem serwisu */}
+        <div className="p-1 bg-slate-100/90 rounded-full border border-slate-200/80 inline-flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
           {activeTab === 'home' && homeItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                   isActive
-                    ? 'bg-school-600 text-white shadow-md shadow-school-600/30'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-school-600 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
                 }`}
               >
                 {item.label}
@@ -92,10 +92,10 @@ export default function SecondaryNav({ activeTab, onSelectManualStep, activeManu
                   if (onSelectManualStep) onSelectManualStep(item.stepIndex);
                   scrollToSection('manual');
                 }}
-                className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 ${
+                className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 cursor-pointer ${
                   isActive
-                    ? 'bg-school-600 text-white shadow-md shadow-school-600/30'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                    ? 'bg-school-600 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
                 }`}
               >
                 {item.label}
