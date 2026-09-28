@@ -44,15 +44,15 @@ export default function Hero({ onDownloadClick, onOpenManual }) {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-left max-w-2xl mx-auto">
             <div className="flex items-center gap-2.5 text-slate-700 bg-white/80 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium shadow-xs">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Działa bez stałego internetu</span>
+              <span>Działa bez internetu</span>
             </div>
             <div className="flex items-center gap-2.5 text-slate-700 bg-white/80 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium shadow-xs">
               <ShieldCheck className="w-4 h-4 text-school-600 shrink-0" />
-              <span>100% zgodne z RODO (dane w szkole)</span>
+              <span>100% zgodne z RODO</span>
             </div>
             <div className="flex items-center gap-2.5 text-slate-700 bg-white/80 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium shadow-xs">
               <Clock className="w-4 h-4 text-amber-600 shrink-0" />
-              <span>Wdrożenie i nauka w 15 minut</span>
+              <span>Nauka w 15 minut</span>
             </div>
           </div>
         </div>
