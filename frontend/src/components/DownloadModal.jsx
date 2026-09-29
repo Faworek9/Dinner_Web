@@ -6,7 +6,7 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
 
   const info = appInfo || {
     app_name: "Ewidencja Obiadów Szkolnych",
-    version: "6.4",
+    version: "7.3",
     file_size_mb: 71.3,
     os_requirement: "Windows 10 / Windows 11",
     download_filename: "Dinner_App_Instalator.exe"
@@ -75,7 +75,7 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
               1
             </span>
             <p>
-              Kliknij pobrany plik na dolnym pasku przeglądarki lub w folderze <strong>Pobrane</strong> na Twoim komputerze.
+              Kliknij pobrany plik (<strong>Dinner_App_Instalator.exe</strong>) na dolnym pasku przeglądarki lub w folderze <strong>Pobrane</strong>.
             </p>
           </div>
 
@@ -84,7 +84,7 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
               2
             </span>
             <p>
-              W oknie instalatora kliknij <strong>Dalej</strong> i <strong>Zainstaluj</strong>. Instalacja potrwa około 15 sekund.
+              W oknie instalatora kliknij <strong>Dalej</strong> i <strong>Zainstaluj</strong>. Instalacja potrwa około 15 sekund (jeśli pojawi się filtr Windows SmartScreen, kliknij <em>Więcej informacji</em> → <em>Uruchom mimo to</em>).
             </p>
           </div>
 
@@ -93,7 +93,7 @@ export default function DownloadModal({ isOpen, onClose, appInfo }) {
               3
             </span>
             <p>
-              Gotowe! Na Twoim pulpicie pojawi się ikona z talerzem obiadowym. Kliknij ją dwukrotnie, aby rozpocząć bezpłatny test.
+              Gotowe! Na Twoim pulpicie pojawi się ikona programu <strong>Ewidencja Obiadów</strong> (fioletowe logo ze sztućcami). Kliknij ją dwukrotnie, aby uruchomić pełną, całkowicie darmową wersję programu.
             </p>
           </div>
         </div>

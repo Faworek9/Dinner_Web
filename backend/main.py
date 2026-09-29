@@ -10,8 +10,6 @@ try:
         ContactRequest,
         ContactResponse,
         AppInfoResponse,
-        StatsResponse,
-        Testimonial,
         FaqItem
     )
     from backend.routers.downloads import router as downloads_router
@@ -22,8 +20,6 @@ except ImportError:
         ContactRequest,
         ContactResponse,
         AppInfoResponse,
-        StatsResponse,
-        Testimonial,
         FaqItem
     )
     from routers.downloads import router as downloads_router
@@ -68,52 +64,13 @@ if os.path.exists(STATIC_DIR):
 
 APP_METADATA = {
     "app_name": "Ewidencja Obiadów Szkolnych",
-    "version": "6.4",
+    "version": "7.3",
     "release_date": "22 września 2026",
     "file_size_mb": 71.3,
     "os_requirement": "Windows 10 / Windows 11 (64-bit)",
     "download_filename": "Dinner_App_Instalator.exe"
 }
 
-
-TESTIMONIALS_DATA = [
-    Testimonial(
-        id=1,
-        author="Pani Maria Kowalczyk",
-        role="Starszy Intendent",
-        school="Szkoła Podstawowa nr 4",
-        city="Siedlce",
-        quote="Przed wprowadzeniem programu koniec każdego miesiąca oznaczał siedzenie po godzinach ze stosem zeszytów i kalkulatorem. Teraz raport dla księgowej w gminie drukuję jednym kliknięciem przed godziną 14:00. Wszystko się zgadza co do grosza!",
-        years_using="od 3 lat"
-    ),
-    Testimonial(
-        id=2,
-        author="Pan Tomasz Wiśniewski",
-        role="Kierownik Gospodarczy",
-        school="Zespół Szkolno-Przedszkolny",
-        city="Wieliczka",
-        quote="Nasi pracownicy stołówki i sekretariatu nie przesiadują całymi dniami przed komputerem i bali się skomplikowanego systemu. Ten program jest tak przejrzysty, że po 20 minutach każdy wiedział, jak zaznaczyć nieobecność czy wydać obiad.",
-        years_using="od 2 lat"
-    ),
-    Testimonial(
-        id=3,
-        author="Pani Barbara Szymańska",
-        role="Główna Księgowa",
-        school="Szkoła Podstawowa im. KEN",
-        city="Swarzędz",
-        quote="Największą ulgą są automatyczne odpisy za zgłoszone nieobecności. Rodzice dostają jasne kwitki opłat z dokładnym wykazem odliczeń. Skończyły się telefony z pretensjami i ciągłe korygowanie tabel w Excelu.",
-        years_using="od 4 lat"
-    ),
-    Testimonial(
-        id=4,
-        author="Pani Danuta Zielińska",
-        role="Dyrektor Szkoły",
-        school="Szkoła Podstawowa nr 12",
-        city="Gdynia",
-        quote="Zależało nam na bezpieczeństwie danych (RODO) i stabilności. Program działa bezpośrednio na komputerze w szkole, nie wymaga logowania przez przeglądarkę i działa nawet wtedy, gdy w szkole padnie internet.",
-        years_using="od ponad roku"
-    )
-]
 
 FAQ_DATA = [
     FaqItem(
@@ -148,9 +105,9 @@ FAQ_DATA = [
     ),
     FaqItem(
         id=6,
-        category="Wersja próbna i licencja",
-        question="Czy mogę przetestować program bez żadnych zobowiązań?",
-        answer="Tak! Pobrana wersja pozwala na bezpłatne i w pełni funkcjonalne przetestowanie programu na przykładowych danych lub we własnej szkole. Do pobrania programu nie jest wymagane podawanie karty płatniczej ani podpisywanie umów."
+        category="Licencja i koszty",
+        question="Czy program jest całkowicie darmowy?",
+        answer="Tak! Program jest w 100% darmowy dla szkół i przedszkoli. Pobranie i korzystanie z pełnej wersji jest całkowicie bezpłatne – bez żadnych ukrytych opłat, subskrypcji, limitów czasowych ani podpisywania papierowych umów."
     )
 ]
 
@@ -206,16 +163,6 @@ def read_root():
 @app.get("/api/info", response_model=AppInfoResponse)
 def get_app_info():
     return AppInfoResponse(**APP_METADATA)
-
-@app.get("/api/stats", response_model=StatsResponse)
-def get_stats():
-    return StatsResponse(
-        active_schools=142,
-        meals_served_monthly=48500,
-        satisfaction_rate=99,
-        years_on_market=6,
-        testimonials=TESTIMONIALS_DATA
-    )
 
 @app.get("/api/faq")
 def get_faq():

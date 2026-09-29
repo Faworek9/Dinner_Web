@@ -15,13 +15,13 @@ export default function ProblemsSolutions({ onOpenManual }) {
   const improvements = [
     {
       id: 1,
-      category: "Powiadomienia i SMS",
+      category: "Powiadomienia e-mail",
       icon: Mail,
       titleMain: "Wysyłaj rozliczenia do setek rodziców ",
       titleHighlight: "jednym kliknięciem myszy",
       expandedTitle: "Automatyczna wysyłka rozliczeń i odpisów",
       expandedDescription: "Zamiast ręcznie przepisywać kwoty i pisać maile do każdego rodzica z osobna, program jednym kliknięciem generuje spersonalizowane powiadomienia. Wiadomość zawiera należność, uwzględnione odpisy za nieobecności oraz numer konta szkoły.",
-      extraNote: "Obsługa powiadomień e-mail oraz bramek SMS"
+      extraNote: "Wysyłka przez Outlook lub bezpośrednio w tle (SMTP / Microsoft 365)"
     },
     {
       id: 2,

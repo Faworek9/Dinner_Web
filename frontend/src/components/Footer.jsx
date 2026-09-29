@@ -53,11 +53,6 @@ export default function Footer({ onOpenManual, onOpenFeedback, onDownloadClick }
                 </a>
               </li>
               <li>
-                <a href="#opinions" className="hover:text-white transition-colors">
-                  Opinie szkół (140+ placówek)
-                </a>
-              </li>
-              <li>
                 <a href="#faq" className="hover:text-white transition-colors">
                   Najczęstsze pytania (FAQ)
                 </a>
@@ -73,7 +68,7 @@ export default function Footer({ onOpenManual, onOpenFeedback, onDownloadClick }
           {/* Kontakt */}
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-3">
-              Kontakt z autorem
+              Kontakt z nami
             </h4>
             <div className="space-y-2.5 text-xs sm:text-sm">
               <div className="flex items-center gap-2 text-slate-300">
@@ -83,7 +78,7 @@ export default function Footer({ onOpenManual, onOpenFeedback, onDownloadClick }
                 </a>
               </div>
               <p className="text-xs text-slate-400 pt-1 leading-relaxed">
-                Bezpośredni kontakt w sprawach wdrożenia, testów lub pytań o program.
+                Bezpośredni kontakt w sprawach wdrożenia, pomocy lub pytań o program.
               </p>
             </div>
           </div>

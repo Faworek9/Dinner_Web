@@ -80,10 +80,10 @@ export default function ContactSection() {
             <div className="card-clean p-7 shadow-card border border-slate-200">
               <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-slate-900">
                 <Mail className="w-5 h-5 text-school-600" />
-                <span>Bezpośredni kontakt z autorem</span>
+                <span>Bezpośredni kontakt z nami</span>
               </h3>
               <p className="text-slate-900 text-sm mb-6 leading-relaxed">
-                Napisz śmiało na poniższy adres lub skorzystaj z formularza obok. Na każdą wiadomość odpowiadam osobiście, bez infolinii i bez zbędnego pośrednictwa.
+                Napisz śmiało na poniższy adres lub skorzystaj z formularza obok. Na każdą wiadomość odpowiadamy osobiście, bez infolinii i bez zbędnego pośrednictwa.
               </p>
 
               <div className="bg-school-800/80 rounded-2xl p-5 border border-school-700 space-y-4">
@@ -135,7 +135,7 @@ export default function ContactSection() {
                 <span>Napisz do nas wiadomość</span>
               </h3>
               <p className="text-sm text-slate-500 mt-1">
-                Wypełnij poniższe pola – wiadomość trafi bezpośrednio na skrzynkę e-mail autora programu.
+                Wypełnij poniższe pola – wiadomość trafi bezpośrednio do nas.
               </p>
 
             </div>
@@ -238,7 +238,7 @@ export default function ContactSection() {
                   ) : (
                     <>
                       <Send className="w-5 h-5" />
-                      <span>Wyślij zapytanie do autora programu</span>
+                      <span>Wyślij wiadomość do nas</span>
                     </>
                   )}
                 </button>

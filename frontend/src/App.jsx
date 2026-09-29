@@ -4,7 +4,6 @@ import SecondaryNav from './components/SecondaryNav.jsx';
 import Hero from './components/Hero.jsx';
 import ProblemsSolutions from './components/ProblemsSolutions.jsx';
 import ManualGuide from './components/ManualGuide.jsx';
-import SocialProof from './components/SocialProof.jsx';
 import FaqSection from './components/FaqSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import DownloadModal from './components/DownloadModal.jsx';
@@ -16,7 +15,6 @@ export default function App() {
   const [activeManualStep, setActiveManualStep] = useState(0);
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [appInfo, setAppInfo] = useState(null);
-  const [statsData, setStatsData] = useState(null);
   const [faqData, setFaqData] = useState([]);
 
   useEffect(() => {
@@ -25,11 +23,6 @@ export default function App() {
       .then(res => res.ok ? res.json() : null)
       .then(data => data && setAppInfo(data))
       .catch(() => console.log('Używam danych domyślnych aplikacji'));
-
-    fetch('/api/stats')
-      .then(res => res.ok ? res.json() : null)
-      .then(data => data && setStatsData(data))
-      .catch(() => console.log('Używam danych domyślnych statystyk'));
 
     fetch('/api/faq')
       .then(res => res.ok ? res.json() : null)
@@ -91,11 +84,6 @@ export default function App() {
 
             <ProblemsSolutions 
               onOpenManual={() => handleOpenManual(0)} 
-            />
-
-
-            <SocialProof 
-              statsData={statsData} 
             />
 
             <FaqSection 

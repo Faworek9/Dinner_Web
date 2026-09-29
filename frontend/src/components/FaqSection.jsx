@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, PhoneCall } from 'lucide-react';
+import { ChevronDown, HelpCircle, Mail } from 'lucide-react';
 
 export default function FaqSection({ faqList, onContactClick }) {
   const [openIndex, setOpenIndex] = useState(0);
@@ -37,9 +37,9 @@ export default function FaqSection({ faqList, onContactClick }) {
     },
     {
       id: 6,
-      category: "Wersja próbna i licencja",
-      question: "Czy mogę wypróbować program za darmo przed podjęciem decyzji?",
-      answer: "Tak! Możesz bezpłatnie pobrać program i wypróbować go w swojej szkole na przykładowych lub własnych danych. Pobranie nie wymaga żadnej karty płatniczej ani podpisywania papierowych umów."
+      category: "Licencja i koszty",
+      question: "Czy program jest całkowicie darmowy?",
+      answer: "Tak! Program jest w 100% darmowy dla szkół i przedszkoli. Pobranie i korzystanie z pełnej wersji jest całkowicie bezpłatne – bez żadnych ukrytych opłat, subskrypcji, limitów czasowych ani podpisywania papierowych umów."
     }
   ];
 
@@ -105,15 +105,15 @@ export default function FaqSection({ faqList, onContactClick }) {
               Masz inne pytanie lub nietypową sytuację w szkole?
             </h4>
             <p className="text-slate-600 text-sm mt-0.5">
-              Zadzwoń do nas lub napisz – chętnie odpowiemy i doradzimy najlepsze rozwiązanie.
+              Napisz do nas – chętnie odpowiemy na pytania i doradzimy najlepsze rozwiązanie.
             </p>
           </div>
           <button
             onClick={onContactClick}
             className="btn-primary text-sm px-5 py-2.5 shrink-0 whitespace-nowrap"
           >
-            <PhoneCall className="w-4 h-4" />
-            Napisz lub zadzwoń
+            <Mail className="w-4 h-4" />
+            Napisz do nas
           </button>
         </div>
       </div>

@@ -198,7 +198,7 @@ export default function FeedbackPage({ onDownloadClick }) {
 
         </div>
 
-        {/* Dodatkowy boks: Bezpośredni kontakt z twórcą */}
+        {/* Dodatkowy boks: Bezpośredni kontakt z nami */}
         <div className="bg-slate-900 text-white rounded-3xl p-8 sm:p-10 border border-slate-800 shadow-2xl relative overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="max-w-xl">
@@ -210,7 +210,7 @@ export default function FeedbackPage({ onDownloadClick }) {
                 Wolisz porozmawiać lub napisać maila?
               </h3>
               <p className="text-slate-300 text-sm leading-relaxed">
-                Jeśli Twoja placówka potrzebuje indywidualnej wyceny, wsparcia technicznego lub chcesz omówić wdrożenie w całej gminie – skontaktuj się bezpośrednio z autorem programu.
+                Jeśli Twoja placówka potrzebuje pomocy przy wdrożeniu, wsparcia technicznego lub chcesz zadać pytanie – skontaktuj się bezpośrednio z nami.
               </p>
             </div>
             <div className="shrink-0 flex flex-col items-center gap-2 w-full sm:w-auto">
