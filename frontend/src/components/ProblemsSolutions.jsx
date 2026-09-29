@@ -17,7 +17,7 @@ export default function ProblemsSolutions({ onOpenManual }) {
       id: 1,
       category: "Powiadomienia e-mail",
       icon: Mail,
-      titleMain: "Wysyłaj rozliczenia do setek rodziców ",
+      titleMain: "Wysyłaj rozliczenia do wszystkich rodziców ",
       titleHighlight: "jednym kliknięciem myszy",
       expandedTitle: "Automatyczna wysyłka rozliczeń i odpisów",
       expandedDescription: "Zamiast ręcznie przepisywać kwoty i pisać maile do każdego rodzica z osobna, program jednym kliknięciem generuje spersonalizowane powiadomienia. Wiadomość zawiera należność, uwzględnione odpisy za nieobecności oraz numer konta szkoły.",
