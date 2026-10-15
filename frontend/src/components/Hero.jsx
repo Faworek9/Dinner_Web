@@ -22,7 +22,7 @@ export default function Hero({ onDownloadClick, onOpenManual }) {
           </p>
 
           {/* Przyciski Akcji */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <button
               onClick={onDownloadClick}
               className="btn-primary w-full sm:w-auto text-lg px-8 py-4 shadow-school-500/25 shadow-lg group"
@@ -41,7 +41,14 @@ export default function Hero({ onDownloadClick, onOpenManual }) {
           </div>
 
           {/* Szybkie zapewnienia bezpieczeństwa */}
-          <div className="max-w-2xl mx-auto pt-2 space-y-3">
+          <div className="max-w-2xl mx-auto space-y-3">
+            <div className="flex items-center justify-center gap-3 text-slate-700 bg-white/90 border border-slate-200/90 rounded-2xl px-5 sm:px-6 py-3.5 sm:py-4 text-sm sm:text-base font-medium shadow-sm">
+              <Gift className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 shrink-0" />
+              <span>
+                <strong className="font-semibold text-slate-900">Aplikacja jest całkowicie darmowa</strong> – bez ukrytych opłat i abonamentów
+              </span>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
               <div className="flex items-center gap-2.5 text-slate-700 bg-white/80 border border-slate-200/80 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm font-medium shadow-xs">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -55,13 +62,6 @@ export default function Hero({ onDownloadClick, onOpenManual }) {
                 <Clock className="w-4 h-4 text-amber-600 shrink-0" />
                 <span>Nauka w 15 minut</span>
               </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-2.5 text-slate-700 bg-white/80 border border-slate-200/80 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-medium shadow-xs">
-              <Gift className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>
-                <strong className="font-semibold text-slate-900">Aplikacja jest całkowicie darmowa</strong> – bez ukrytych opłat i abonamentów
-              </span>
             </div>
           </div>
         </div>

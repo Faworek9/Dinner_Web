@@ -154,6 +154,21 @@ function FormattedContent({ rawContent }) {
       return;
     }
 
+    // Sprawdź czy to cytat / ważna wskazówka: > tekst
+    const quoteMatch = trimmed.match(/^>\s*(.*)$/);
+    if (quoteMatch) {
+      flushList();
+      renderedBlocks.push(
+        <div
+          key={`quote-${idx}`}
+          className="my-3.5 p-3.5 sm:p-4 rounded-xl bg-amber-50/80 border-l-4 border-amber-500 text-slate-800 text-sm sm:text-base leading-relaxed shadow-2xs"
+        >
+          {parseInline(quoteMatch[1])}
+        </div>
+      );
+      return;
+    }
+
     // Sprawdź czy to lista numerowana: 1. 2. 3.
     const numMatch = trimmed.match(/^(\d+)\.\s+(.*)$/);
     // Sprawdź czy to punktator: - lub *
@@ -702,7 +717,7 @@ export default function ManualGuide({ onDownloadClick }) {
                             Opcja
                           </span>
                         </div>
-                        Gdy komórka w kolumnie posiłków w pliku Excel jest pusta, <strong>program ustawi 0 (skasuje posiłek)</strong>. Włącz tylko wtedy, gdy chcesz celowo wyczyścić obiady pustymi komórkami z pliku.
+                        Gdy w pliku Excel wpisano tylko <strong>1</strong>, a zamiast <strong>0</strong> pozostawiono puste komórki, opcja ta potraktuje je jako brak posiłku i wyzeruje obiady. <strong>Uwaga:</strong> odznacz tę opcję przy imporcie samych danych kontaktowych!
                       </div>
                     </div>
                   </div>
